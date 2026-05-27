@@ -152,23 +152,26 @@ export default function Hero() {
         </p>
 
         {/* Call to Actions */}
-        <div className="hero-reveal-element flex flex-wrap gap-6 mt-4 items-center justify-center">
-          {/* View My Work */}
+        <div className="hero-reveal-element flex flex-wrap gap-6 mt-6 items-center justify-center">
+          {/* View My Work (Primary Obsidian Glass Button) */}
           <MagneticButton range={15}>
             <Link
               to="/projects"
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent text-sm font-medium text-white shadow-[0_4px_30px_rgba(108,99,255,0.25)] hover:shadow-[0_4px_40px_rgba(0,212,255,0.45)] transition-all duration-300 flex items-center gap-2 group cursor-pointer"
+              className="px-8 py-3.5 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(108,99,255,0.2)] transition-all duration-500 flex items-center gap-2.5 group cursor-pointer relative overflow-hidden"
             >
-              View My Work
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+              {/* Sleek Ambient Inner Glow */}
+              <span className="absolute inset-0 bg-gradient-to-r from-primary-accent/5 to-secondary-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <span className="relative z-10">View My Work</span>
+              <ArrowUpRight className="w-4 h-4 text-text-secondary group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 relative z-10" />
             </Link>
           </MagneticButton>
 
-          {/* Download CV */}
+          {/* Download CV (Secondary Clean Border Button) */}
           <MagneticButton range={15}>
             <a
               href="#"
-              className="px-8 py-3.5 rounded-full border border-border-color bg-card-bg/25 text-sm font-medium text-text-primary hover:border-primary-accent hover:text-white transition-colors duration-300 cursor-pointer"
+              className="px-8 py-3.5 rounded-full border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/10 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
             >
               Download CV
             </a>

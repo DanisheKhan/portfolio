@@ -43,7 +43,7 @@ export default function Projects() {
 
         {/* Projects Alternating Display List */}
         <div className="flex flex-col gap-24 md:gap-36">
-          {PROJECTS_DATA.map((project, index) => {
+          {PROJECTS_DATA.slice(0, 3).map((project, index) => {
             const isEven = index % 2 === 0;
 
             return (
