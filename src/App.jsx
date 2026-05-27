@@ -59,7 +59,7 @@ function AppContent() {
             <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
               {/* Orb 1: Violet glow in top-left */}
               <div 
-                className="absolute rounded-full bg-primary-accent/15 filter blur-[120px] pointer-events-none glass-orb-1"
+                className="absolute rounded-full bg-primary-accent/15 filter blur-[60px] pointer-events-none glass-orb-1"
                 style={{
                   width: '50vw',
                   height: '50vw',
@@ -69,7 +69,7 @@ function AppContent() {
               />
               {/* Orb 2: Cyan glow in bottom-right */}
               <div 
-                className="absolute rounded-full bg-secondary-accent/15 filter blur-[150px] pointer-events-none glass-orb-2"
+                className="absolute rounded-full bg-secondary-accent/15 filter blur-[70px] pointer-events-none glass-orb-2"
                 style={{
                   width: '60vw',
                   height: '60vw',
@@ -79,7 +79,7 @@ function AppContent() {
               />
               {/* Orb 3: Deep Royal Blue in middle-left */}
               <div 
-                className="absolute rounded-full bg-blue-600/8 filter blur-[130px] pointer-events-none glass-orb-3"
+                className="absolute rounded-full bg-blue-600/8 filter blur-[65px] pointer-events-none glass-orb-3"
                 style={{
                   width: '45vw',
                   height: '45vw',
@@ -89,7 +89,7 @@ function AppContent() {
               />
               {/* Orb 4: Pink/Indigo in middle-right */}
               <div 
-                className="absolute rounded-full bg-purple-600/8 filter blur-[110px] pointer-events-none glass-orb-4"
+                className="absolute rounded-full bg-purple-600/8 filter blur-[55px] pointer-events-none glass-orb-4"
                 style={{
                   width: '40vw',
                   height: '40vw',
