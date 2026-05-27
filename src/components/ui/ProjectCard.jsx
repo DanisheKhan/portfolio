@@ -56,7 +56,7 @@ export default function ProjectCard({ project }) {
         <div className="absolute inset-0 bg-gradient-to-t from-primary-bg/90 via-primary-bg/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
         
         {/* Dynamic Project Number Badge */}
-        <span className="absolute top-4 left-4 glass-card px-3 py-1 text-xs rounded-full font-mono font-medium tracking-widest text-secondary-accent">
+        <span className="absolute top-4 left-4 px-3 py-1 text-xs font-mono font-semibold tracking-widest text-white bg-black/80 backdrop-blur-md border border-white/10 rounded-lg shadow-lg">
           {project.meta.number}
         </span>
 

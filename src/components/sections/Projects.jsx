@@ -66,7 +66,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-bg via-transparent to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
                   
                   {/* Dynamic Large Project Number overlay */}
-                  <span className="absolute top-6 left-6 glass-card px-4 py-1.5 text-xs font-mono font-medium tracking-widest text-secondary-accent">
+                  <span className="absolute top-6 left-6 px-3.5 py-1.5 text-xs font-mono font-semibold tracking-widest text-white bg-black/80 backdrop-blur-md border border-white/10 rounded-lg shadow-lg">
                     {project.meta.number}
                   </span>
 
