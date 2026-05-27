@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { AnimatePresence } from "framer-motion";
 
 // Global Layout Components
-import CustomCursor from "./components/layout/CustomCursor";
 import Preloader from "./components/layout/Preloader";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -44,9 +43,6 @@ function AppContent() {
 
   return (
     <>
-      {/* 1. Custom Pointer Cursor */}
-      <CustomCursor />
-
       {/* 2. Fullscreen Preloader Intro */}
       <AnimatePresence mode="wait">
         {isPreloading && (
