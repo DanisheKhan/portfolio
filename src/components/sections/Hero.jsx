@@ -155,9 +155,6 @@ export default function Hero() {
         }}
       />
 
-      {/* Dark Ambient Grid/Noise Overlay */}
-      <div className="absolute inset-0 z-10 bg-transparent noise-overlay opacity-[0.015] pointer-events-none" />
-
       {/* Content wrapper */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col items-center justify-center text-center relative z-20 gap-6">
         {/* Availability Badge */}

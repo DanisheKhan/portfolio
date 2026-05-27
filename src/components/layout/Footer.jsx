@@ -27,9 +27,6 @@ export default function Footer() {
 
   return (
     <footer className="relative w-full border-t border-border-color bg-primary-bg pt-16 pb-8 overflow-hidden select-none">
-      {/* Dynamic Background Noise Texture overlay */}
-      <div className="absolute inset-0 bg-transparent noise-overlay opacity-[0.02] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col gap-12">
         {/* Footer Top Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
