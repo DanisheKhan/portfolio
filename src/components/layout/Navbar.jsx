@@ -82,11 +82,11 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
                       {link.name}
-                      {/* Active indicator underline */}
+                      {/* Active indicator glassy capsule background */}
                       {isActive && (
                         <motion.div
-                          layoutId="activeNavIndicatorLine"
-                          className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary-accent to-secondary-accent rounded-full"
+                          layoutId="activeNavIndicatorCapsule"
+                          className="absolute inset-0 bg-white/[0.05] border border-white/[0.08] backdrop-blur-md rounded-full -z-10"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
