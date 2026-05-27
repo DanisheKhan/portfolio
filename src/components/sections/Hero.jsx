@@ -152,12 +152,12 @@ export default function Hero() {
         </p>
 
         {/* Call to Actions */}
-        <div className="hero-reveal-element flex flex-wrap gap-6 mt-6 items-center justify-center">
+        <div className="hero-reveal-element flex flex-wrap gap-5 mt-6 items-center justify-center">
           {/* View My Work (Primary Obsidian Glass Button) */}
           <MagneticButton range={15}>
             <Link
               to="/projects"
-              className="px-8 py-3.5 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(108,99,255,0.2)] transition-all duration-500 flex items-center gap-2.5 group cursor-pointer relative overflow-hidden"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(108,99,255,0.2)] transition-all duration-300 gap-2.5 group cursor-pointer relative overflow-hidden"
             >
               {/* Sleek Ambient Inner Glow */}
               <span className="absolute inset-0 bg-gradient-to-r from-primary-accent/5 to-secondary-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -171,7 +171,7 @@ export default function Hero() {
           <MagneticButton range={15}>
             <a
               href="#"
-              className="px-8 py-3.5 rounded-full border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/10 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/20 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
             >
               Download CV
             </a>

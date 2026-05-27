@@ -84,11 +84,11 @@ export default function About() {
           {/* Hexagon masked image wrapper */}
           <div className="w-[300px] sm:w-[350px] md:w-[400px] h-[360px] sm:h-[420px] md:h-[480px] overflow-hidden mask-hexagon bg-card-bg border border-border-color relative cursor-pointer shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
             <img
-              ref={imageRef}
-              src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=600&auto=format&fit=crop"
-              alt="Danish Khan Profile"
-              className="w-full h-full object-cover origin-top scale-110"
-            />
+                ref={imageRef}
+                src="/danish.jpeg"
+                alt="Danish Khan Profile"
+                className="w-full h-full object-cover origin-top scale-110"
+              />
           </div>
         </div>
 
