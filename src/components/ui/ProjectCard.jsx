@@ -1,47 +1,52 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 /**
  * ProjectCard Component
- * Implements 3D card tilt, tech tags, outbound assets and direct details link.
+ * Implements butter-smooth spring-physics 3D card tilt, tech tags, outbound assets and direct details link.
  */
 export default function ProjectCard({ project }) {
   const cardRef = useRef(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+
+  // High-performance Framer Motion coordinates (avoids React re-renders on mousemove)
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Soft spring config for elegant responsive dampening
+  const springConfig = { damping: 20, stiffness: 160, mass: 0.5 };
+
+  // Map normalized coordinates [-0.5, 0.5] to expressive 3D rotation angles [-18, 18] degrees
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [18, -18]), springConfig);
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-18, 18]), springConfig);
 
   const handleMouseMove = (e) => {
     const el = cardRef.current;
     if (!el) return;
 
     const { left, top, width, height } = el.getBoundingClientRect();
-    const x = (e.clientX - left - width / 2) / (width / 2); // Normalized between -1 and 1
-    const y = (e.clientY - top - height / 2) / (height / 2); // Normalized between -1 and 1
+    const relativeX = (e.clientX - left) / width - 0.5; // Normalized relative x between -0.5 and 0.5
+    const relativeY = (e.clientY - top) / height - 0.5; // Normalized relative y between -0.5 and 0.5
     
-    setCoords({ x, y });
+    x.set(relativeX);
+    y.set(relativeY);
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setCoords({ x: 0, y: 0 });
+    x.set(0);
+    y.set(0);
   };
-
-  // Convert coords into rotation degrees
-  const rotateX = coords.y * -15; // Max 15 deg tilt
-  const rotateY = coords.x * 15; // Max 15 deg tilt
 
   return (
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{
         transformStyle: "preserve-3d",
-        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-        transition: isHovered ? "none" : "transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)"
+        rotateX,
+        rotateY
       }}
       className="group relative w-full glass-card rounded-2xl overflow-hidden p-4 border border-border-color cursor-pointer bg-card-bg/25"
     >
