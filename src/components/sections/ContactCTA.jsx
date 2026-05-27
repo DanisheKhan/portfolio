@@ -10,7 +10,7 @@ import MagneticButton from "../ui/MagneticButton";
  */
 export default function ContactCTA() {
   return (
-    <section className="relative w-full py-24 md:py-36 bg-[#111111] overflow-hidden select-none border-t border-border-color/60">
+    <section className="relative w-full py-24 md:py-36 bg-secondary-bg overflow-hidden select-none border-t border-border-color/60">
       {/* Decorative gradient orb background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] md:w-[600px] h-[350px] md:h-[600px] rounded-full bg-primary-accent/10 blur-[120px] -z-10 pointer-events-none" />
 

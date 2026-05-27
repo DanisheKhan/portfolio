@@ -35,7 +35,7 @@ export default function About() {
 
   return (
     <PageTransition>
-      <div className="w-full relative bg-[#0A0A0A] pt-28 pb-20 select-none">
+      <div className="w-full relative bg-primary-bg pt-28 pb-20 select-none">
         
         {/* SECTION 1 - Dynamic Hero & Hexagon mask reveal */}
         <section className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 items-center border-b border-border-color/60 pb-16">

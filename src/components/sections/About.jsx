@@ -60,7 +60,7 @@ export default function About() {
   return (
     <section
       ref={triggerRef}
-      className="relative w-full py-20 md:py-32 bg-[#0A0A0A] overflow-hidden select-none"
+      className="relative w-full py-20 md:py-32 bg-primary-bg overflow-hidden select-none"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
         

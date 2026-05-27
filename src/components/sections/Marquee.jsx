@@ -22,7 +22,7 @@ export default function Marquee() {
   const doubleArray = (arr) => [...arr, ...arr, ...arr, ...arr];
 
   return (
-    <section className="w-full bg-[#111111] py-12 overflow-hidden border-y border-border-color/60 select-none">
+    <section className="w-full bg-secondary-bg py-12 overflow-hidden border-y border-border-color/60 select-none">
       <div className="flex flex-col gap-6 md:gap-8 max-w-full">
         {/* Row 1 Scrolling Leftwards (→ direction items) */}
         <div className="relative w-full flex items-center overflow-hidden group">

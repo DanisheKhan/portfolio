@@ -26,27 +26,12 @@ import "./App.css";
 function AppContent() {
   const location = useLocation();
   const [isPreloading, setIsPreloading] = useState(true);
-  const [theme, setTheme] = useState("dark"); // Default dark theme
 
-  // 1. Maintain Light/Dark document theme classes
+  // Revert to permanent premium dark mode
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "light") {
-      root.classList.remove("dark");
-      root.classList.add("light");
-      root.style.backgroundColor = "#F4F4F4";
-      root.style.color = "#0F0F0F";
-    } else {
-      root.classList.remove("light");
-      root.classList.add("dark");
-      root.style.backgroundColor = "#0A0A0A";
-      root.style.color = "#FFFFFF";
-    }
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
+    document.documentElement.classList.add("dark");
+    document.documentElement.classList.remove("light");
+  }, []);
 
   // Scroll to top instantly on every route/page transition
   useEffect(() => {
@@ -75,7 +60,7 @@ function AppContent() {
           <div className="flex flex-col min-h-screen bg-primary-bg text-text-primary selection:bg-primary-accent selection:text-white">
             
             {/* Scrolled blurred glassy navbar */}
-            <Navbar theme={theme} toggleTheme={toggleTheme} />
+            <Navbar />
 
             {/* Layout-animated AnimatePresence Routes wipe wrap */}
             <main className="flex-grow">

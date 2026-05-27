@@ -87,7 +87,7 @@ export default function Contact() {
 
   return (
     <PageTransition>
-      <div className="w-full min-h-screen bg-[#0A0A0A] pt-28 pb-20 select-none">
+      <div className="w-full min-h-screen bg-primary-bg pt-28 pb-20 select-none">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-stretch">
           
           {/* LEFT SIDE: Contact details */}

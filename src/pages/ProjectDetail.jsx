@@ -19,7 +19,7 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <PageTransition>
-        <div className="w-full h-screen bg-[#0A0A0A] flex flex-col justify-center items-center select-none text-center p-6 gap-6">
+        <div className="w-full h-screen bg-primary-bg flex flex-col justify-center items-center select-none text-center p-6 gap-6">
           <span className="text-sm font-mono text-primary-accent uppercase tracking-widest font-bold">404 Error</span>
           <h1 className="text-3xl md:text-5xl font-bold font-clash-display text-white">Project Not Found</h1>
           <Link to="/projects" className="px-6 py-2.5 rounded-full bg-primary-accent text-xs font-mono uppercase tracking-wider text-white shadow-lg shadow-primary-accent/25 hover:bg-secondary-accent transition-colors duration-300">
@@ -32,7 +32,7 @@ export default function ProjectDetail() {
 
   return (
     <PageTransition>
-      <div className="w-full relative bg-[#0A0A0A] pb-24 overflow-hidden select-none">
+      <div className="w-full relative bg-primary-bg pb-24 overflow-hidden select-none">
         
         {/* Project Header Hero Frame */}
         <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] flex items-end">

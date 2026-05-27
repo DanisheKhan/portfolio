@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-bg: #0A0A0A;
-  --color-secondary-bg: #111111;
-  --color-card-bg: #1A1A1A;
+  --color-primary-bg: var(--primary-bg);
+  --color-secondary-bg: var(--secondary-bg);
+  --color-card-bg: var(--card-bg);
+  --color-border-color: var(--border-color);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  
   --color-primary-accent: #6C63FF;
   --color-secondary-accent: #00D4FF;
-  --color-border-color: #2A2A2A;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #888888;
   
   --font-space-grotesk: "Space Grotesk", sans-serif;
   --font-clash-display: "Clash Display", sans-serif;
 }
 
+:root {
+  --primary-bg: #0A0A0A;
+  --secondary-bg: #111111;
+  --card-bg: #1A1A1A;
+  --border-color: #2A2A2A;
+  --text-primary: #FFFFFF;
+  --text-secondary: #888888;
+}
+}
+
 /* Custom Base Rules */
 @layer base {
   body {
-    background-color: #0A0A0A;
-    color: #FFFFFF;
+    background-color: var(--color-primary-bg);
+    color: var(--color-text-primary);
     font-family: var(--font-space-grotesk);
     overflow-x: hidden;
+    transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   
   h1, h2, h3, h4, h5, h6 {

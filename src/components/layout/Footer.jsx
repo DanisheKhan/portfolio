@@ -26,7 +26,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative w-full border-t border-border-color bg-[#0A0A0A] pt-16 pb-8 overflow-hidden select-none">
+    <footer className="relative w-full border-t border-border-color bg-primary-bg pt-16 pb-8 overflow-hidden select-none">
       {/* Dynamic Background Noise Texture overlay */}
       <div className="absolute inset-0 bg-transparent noise-overlay opacity-[0.02] pointer-events-none" />
 

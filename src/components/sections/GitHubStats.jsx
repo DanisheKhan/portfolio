@@ -34,7 +34,7 @@ export default function GitHubStats() {
   ];
 
   return (
-    <section className="relative w-full py-20 md:py-32 bg-[#0A0A0A] overflow-hidden select-none">
+    <section className="relative w-full py-20 md:py-32 bg-primary-bg overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-16">
         
         {/* Section Header */}

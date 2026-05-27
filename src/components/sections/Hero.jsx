@@ -136,7 +136,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen bg-[#0A0A0A] flex flex-col justify-center items-center overflow-hidden pt-20"
+      className="relative w-full h-screen bg-primary-bg flex flex-col justify-center items-center overflow-hidden pt-20"
     >
       {/* 3D Orbit Canvas Background */}
       <div className="absolute inset-0 z-0 opacity-40">
@@ -147,8 +147,13 @@ export default function Hero() {
         </Canvas>
       </div>
 
-      {/* Decorative Gradient Vigette radial mask overlay */}
-      <div className="absolute inset-0 z-10 bg-radial-[circle_at_center,_transparent_40%,_#0A0A0A_95%] pointer-events-none" />
+      {/* Decorative Gradient Vignette radial mask overlay */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle at center, transparent 40%, var(--primary-bg) 95%)"
+        }}
+      />
 
       {/* Dark Ambient Grid/Noise Overlay */}
       <div className="absolute inset-0 z-10 bg-transparent noise-overlay opacity-[0.015] pointer-events-none" />
