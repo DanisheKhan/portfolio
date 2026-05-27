@@ -40,17 +40,6 @@ export default function SmoothScroll({ children }) {
     // Disable GSAP lag smoothing to keep ticking locked together
     gsap.ticker.lagSmoothing(0);
 
-    // Listen to custom header scroll progress indicators
-    const handleScroll = ({ scroll, limit }) => {
-      const line = document.getElementById("scroll-progress-indicator-line");
-      if (line && limit > 0) {
-        const percent = scroll / limit;
-        line.style.transform = `scaleX(${percent})`;
-      }
-    };
-    
-    lenis.on("scroll", handleScroll);
-
     return () => {
       // Destroy Lenis instance on unmount to prevent leaks
       lenis.destroy();

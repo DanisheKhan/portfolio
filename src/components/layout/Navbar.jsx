@@ -22,17 +22,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll Progress line at the very top */}
-      <div className="fixed top-0 left-0 w-full h-[3px] z-[9999] pointer-events-none">
-        <motion.div
-          className="h-full bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent origin-left"
-          style={{
-            scaleX: 0,
-          }}
-          id="scroll-progress-indicator-line"
-        />
-      </div>
-
       {/* GSAP-Driven Staggered Navigation Overlay */}
       <StaggeredMenu
         position="right"
