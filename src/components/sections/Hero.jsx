@@ -5,6 +5,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import MagneticButton from "../ui/MagneticButton";
+import Plasma from "../ui/Plasma";
 
 // Custom R3F Component to render floating stellar particles
 function StarField() {
@@ -54,54 +55,7 @@ function StarField() {
 export default function Hero() {
   const nameRef = useRef(null);
   const containerRef = useRef(null);
-  const [currentRole, setCurrentRole] = useState("");
-  const [roleIndex, setRoleIndex] = useState(0);
 
-  const roles = [
-    "Full Stack MERN Developer",
-    "UI/UX Designer",
-    "Creative Frontend Coder",
-    "Problem Solver"
-  ];
-
-  // 1. Typewriter cycling role effect
-  useEffect(() => {
-    let currentText = "";
-    let isDeleting = false;
-    let charIndex = 0;
-    let typingSpeed = 100;
-
-    const type = () => {
-      const fullRole = roles[roleIndex];
-
-      if (isDeleting) {
-        currentText = fullRole.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50; // Deleting speed
-      } else {
-        currentText = fullRole.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100; // Normal typing speed
-      }
-
-      setCurrentRole(currentText);
-
-      // Handle transitions
-      if (!isDeleting && charIndex === fullRole.length) {
-        typingSpeed = 2000; // Pause at end of word
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        setRoleIndex((prev) => (prev + 1) % roles.length);
-        typingSpeed = 500; // Pause before starting next word
-      }
-
-      setTimeout(type, typingSpeed);
-    };
-
-    const timer = setTimeout(type, 1000);
-    return () => clearTimeout(timer);
-  }, [roleIndex]);
 
   // 2. Character-by-character split name entrance reveal via GSAP
   useEffect(() => {
@@ -138,13 +92,16 @@ export default function Hero() {
       ref={containerRef}
       className="relative w-full h-screen bg-primary-bg flex flex-col justify-center items-center overflow-hidden pt-20"
     >
-      {/* 3D Orbit Canvas Background */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <Canvas camera={{ position: [0, 0, 5], fov: 60 }}>
-          <ambientLight intensity={0.5} />
-          <StarField />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
+      {/* WebGL Fluid Plasma Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Plasma 
+          color="#6C63FF"
+          speed={0.2}
+          direction="pingpong"
+          scale={1.0}
+          opacity={0.7}
+          mouseInteractive={true}
+        />
       </div>
 
       {/* Decorative Gradient Vignette radial mask overlay */}
@@ -182,11 +139,10 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Typewriter role cycling description */}
+        {/* Static role description */}
         <div className="hero-reveal-element h-12 flex items-center justify-center">
-          <h2 className="text-xl md:text-3xl font-bold font-clash-display font-medium text-secondary-accent tracking-wide">
-            {currentRole}
-            <span className="animate-pulse duration-700 ml-1 font-extralight text-white">|</span>
+          <h2 className="text-xl md:text-3xl font-bold font-clash-display font-medium text-secondary-accent tracking-wide uppercase">
+            Full Stack Web Developer
           </h2>
         </div>
 
