@@ -95,11 +95,11 @@ export default function Hero() {
       {/* WebGL Fluid Plasma Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Plasma 
-          color="#6C63FF"
-          speed={0.2}
+          color="#8b5cf6"
+          speed={0.15}
           direction="pingpong"
-          scale={1.0}
-          opacity={0.7}
+          scale={1.2}
+          opacity={0.45}
           mouseInteractive={true}
         />
       </div>
