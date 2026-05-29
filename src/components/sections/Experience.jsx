@@ -14,13 +14,25 @@ export default function Experience() {
     content: (
       <div className="glass-card p-6 md:p-8 rounded-2xl border border-border-color/60 bg-card-bg/15 relative hover:border-primary-accent/30 transition-all duration-300">
         {/* Role & Icon */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-2.5 rounded-lg bg-primary-accent/15 border border-primary-accent/20">
-            <Briefcase className="w-4 h-4 text-primary-accent" />
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-lg bg-primary-accent/15 border border-primary-accent/20">
+              <Briefcase className="w-4 h-4 text-primary-accent" />
+            </div>
+            <h3 className="text-lg md:text-xl font-bold font-clash-display text-primary-accent">
+              {exp.company}
+            </h3>
           </div>
-          <h3 className="text-lg md:text-xl font-bold font-clash-display text-primary-accent">
-            {exp.company}
-          </h3>
+          {exp.link && (
+            <a
+              href={exp.link}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs text-secondary-accent hover:text-white transition-colors duration-300 font-mono tracking-wider px-3 py-1 bg-white/5 rounded-full border border-white/10 flex items-center gap-2"
+            >
+              Visit <span className="text-[10px]">↗</span>
+            </a>
+          )}
         </div>
         
         <h4 className="text-md font-semibold text-white mb-4 ml-1">

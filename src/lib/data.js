@@ -364,6 +364,27 @@ export const EXPERIENCE_DATA = [
       "Managed version control and team-based integrations leveraging Git and GitHub workflows for seamless deployment and feature iteration."
     ],
     tech: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Git", "GitHub"]
+  },
+  {
+    company: "Madina Perfumes",
+    role: "Freelance Full Stack Developer",
+    duration: "2026",
+    bullets: [
+      "Architected a full-stack e-commerce platform with user authentication, product catalogs, intuitive cart workflows, secure payment gateway integration, and a robust admin dashboard.",
+      "Engineered a luxury glassmorphism e-commerce hub driven by high-performance Supabase database structures and fully optimized image rendering networks."
+    ],
+    link: "https://www.madinaperfumes.in",
+    tech: ["React.js", "Vite", "Supabase", "Node.js", "Tailwind CSS", "Razorpay", "Cloudinary"]
+  },
+  {
+    company: "Independent Projects",
+    role: "Ongoing Full Stack Development",
+    duration: "Present",
+    bullets: [
+      "Continuously building and iterating on scalable web applications leveraging modern frontend frameworks and robust backends.",
+      "Exploring new system designs, real-time synchronization techniques, and advanced interactive UI components."
+    ],
+    tech: ["React Native", "ImageKit", "Razorpay", "Supabase", "SQL"]
   }
 ];
 
