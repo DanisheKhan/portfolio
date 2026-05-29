@@ -5,29 +5,28 @@
 
 export const PERSONAL_DETAILS = {
   name: "Danish Khan",
-  role: "Full Stack MERN Developer",
+  role: "Full Stack Developer",
   roles: [
-    "Full Stack MERN Developer",
-    "Backend & Systems Architect",
-    "Full Stack Software Engineer",
-    "Algorithmic Problem Solver"
+    "Full Stack Developer",
+    "MERN Stack Specialist",
+    "UI/UX Designer Intern"
   ],
-  bio: "Specializing in crafting interactive modern UIs and high-performance, scalable web environments.",
-  aboutDetailed: "Full Stack Developer specializing in building secure, clean, and highly optimized web applications. Focused on data structures, robust authentication flows, and seamless responsive client experiences. Driven by aesthetic excellence and flawless performance.",
-  location: "Bhusawal, Maharashtra, India",
+  bio: "Results-driven Full Stack Developer specializing in the MERN stack for building scalable, responsive, and secure web applications.",
+  aboutDetailed: "Results-driven Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js) for building scalable, responsive, and secure web applications. Proficient in architecting RESTful APIs, implementing robust authentication systems, and utilizing Data Structures & Algorithms (DSA) to write clean, optimized code. Experienced in modern frontend styling frameworks like Tailwind CSS and version control workflows.",
+  location: "Bhusawal, Jalgaon, Maharashtra, 425201",
   timezone: "IST (UTC+5:30)",
   availability: "Available for freelance & full-time roles 🟢",
   email: "danishkhan.jsx@gmail.com",
-  whatsapp: "https://wa.me/9322990946",
+  whatsapp: "https://wa.me/919322990946",
   github: "DanisheKhan",
-  linkedin: "danishkhan-jsx",
+  linkedin: "danish-jsx",
   cvLink: "#",
   responseTime: "< 24 hours",
   academic: {
     degree: "Bachelor of Technology (B. Tech) in Computer Science",
     institution: "Raisoni Engineering College, Maharashtra",
-    expectedDate: "Expected June 2026",
-    cgpa: "8.9 / 10.0"
+    expectedDate: "June 2026",
+    cgpa: "7.79 / 10"
   }
 };
 
@@ -47,10 +46,12 @@ export const SKILLS_DATA = {
       { name: "Next.js (basic)", level: 65 },
       { name: "JavaScript (ES6+)", level: 95 },
       { name: "TypeScript", level: 80 },
-      { name: "HTML5 / CSS3", level: 98 },
+      { name: "HTML / CSS", level: 98 },
       { name: "Tailwind CSS", level: 95 },
       { name: "Bootstrap", level: 90 },
       { name: "Redux Toolkit", level: 85 },
+      { name: "React Router DOM", level: 90 },
+      { name: "Axios", level: 85 },
       { name: "Context API", level: 90 }
     ]
   },
@@ -60,24 +61,26 @@ export const SKILLS_DATA = {
     items: [
       { name: "Node.js", level: 90 },
       { name: "Express.js", level: 90 },
-      { name: "RESTful APIs", level: 95 },
-      { name: "JWT Auth Flow", level: 92 },
-      { name: "SQL & MySQL", level: 82 },
-      { name: "MongoDB / Mongoose", level: 90 },
+      { name: "SQL & MySQL", level: 85 },
+      { name: "MongoDB & Mongoose", level: 90 },
       { name: "Appwrite", level: 88 },
+      { name: "RESTful APIs", level: 95 },
+      { name: "JWT Authentication", level: 92 },
       { name: "Supabase", level: 85 }
     ]
   },
   deployment: {
-    title: "Deployment & Dev Tools",
+    title: "Deployment & Tools",
     description: "Automating cloud operations and system version control.",
     items: [
-      { name: "Git & GitHub", level: 92 },
-      { name: "Vercel", level: 95 },
-      { name: "Onrender", level: 85 },
+      { name: "Vercel & Render", level: 90 },
       { name: "Cloudinary", level: 90 },
       { name: "Docker (basic)", level: 55 },
-      { name: "Postman", level: 90 }
+      { name: "GitHub Pages", level: 85 },
+      { name: "Git & GitHub", level: 92 },
+      { name: "Thunder Client", level: 85 },
+      { name: "Postman", level: 90 },
+      { name: "Chrome DevTools", level: 90 }
     ]
   }
 };
@@ -85,8 +88,8 @@ export const SKILLS_DATA = {
 export const PROJECTS_DATA = [
   {
     slug: "madina-perfumes",
-    title: "Madina Perfumes",
-    subtitle: "Full-stack e-commerce environment featuring authentication, product catalog, cart, admin interface, and secure payment handling.",
+    title: "Madina Perfumes (E-Commerce Platform)",
+    subtitle: "Architected a full-stack platform with user authentication, product catalogs, intuitive cart workflows, secure payment gateway integration, and a robust admin dashboard.",
     category: "Full-Stack",
     year: "2025",
     role: "Lead Full Stack Developer",
@@ -94,7 +97,7 @@ export const PROJECTS_DATA = [
     liveUrl: "https://www.madinaperfumes.in",
     githubUrl: "https://github.com/DanisheKhan",
     image: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800&auto=format&fit=crop",
-    tech: ["React.js", "Vite", "Supabase", "Node.js", "Tailwind CSS", "Framer Motion"],
+    tech: ["React.js", "Vite", "Supabase", "Node.js", "Tailwind CSS"],
     meta: {
       number: "01",
       type: "Web App"
@@ -118,8 +121,8 @@ export const PROJECTS_DATA = [
   },
   {
     slug: "home-share",
-    title: "Home Share",
-    subtitle: "A comprehensive property listing platform that allows users to browse, search, and filter real estate listings with detailed property information.",
+    title: "Home Share (Property Rental Web App)",
+    subtitle: "Built a features-rich web app enabling secure user authentication, property listings, interactive bookings, and integrated Cloudinary for high-performance media storage.",
     category: "Full-Stack",
     year: "2024",
     role: "Full Stack Engineer",
@@ -127,7 +130,7 @@ export const PROJECTS_DATA = [
     liveUrl: "https://homeshare-9joh.onrender.com/listings",
     githubUrl: "https://github.com/DanisheKhan",
     image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop",
-    tech: ["Node.js", "Express", "MongoDB", "Bootstrap"],
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "Bootstrap"],
     meta: {
       number: "02",
       type: "Web App"
@@ -150,35 +153,35 @@ export const PROJECTS_DATA = [
     }
   },
   {
-    slug: "mega-blog",
-    title: "Mega Blog",
-    subtitle: "A full-featured blogging platform that allows users to create, edit, and publish articles with rich text editing capabilities and seamless image management.",
+    slug: "portfolio-website",
+    title: "Portfolio Website",
+    subtitle: "Created a high-performance portfolio leveraging mobile-first design and optimized asset delivery using Vite for fast loading metrics.",
     category: "Full-Stack",
     year: "2025",
     role: "Lead Full Stack Developer",
     duration: "2 Months",
-    liveUrl: "https://mega-blog-brown-eta.vercel.app/",
+    liveUrl: "https://danishkhan.jsx",
     githubUrl: "https://github.com/DanisheKhan",
     image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=800&auto=format&fit=crop",
-    tech: ["React.js", "Redux Toolkit", "Appwrite", "Tailwind CSS"],
+    tech: ["React.js", "Tailwind CSS", "Framer Motion", "Vite"],
     meta: {
       number: "03",
       type: "Web App"
     },
     caseStudy: {
-      problem: "Modern digital publishing tools are often weighed down by heavy backend dependencies and complex administrative dashboards, discouraging lightweight and creative content management.",
-      solution: "Constructed a high-fidelity publishing hub utilizing Appwrite's robust serverless architecture and Redux Toolkit state syncs alongside TinyMCE for rich text curation.",
+      problem: "Creating an engaging portfolio requires balancing complex animations, robust styling, and extreme performance.",
+      solution: "Constructed a high-fidelity publishing hub utilizing React.js and Framer motion to create fluid interactions and a memorable experience.",
       architecture: [
-        "Developed a responsive blog application using React.js for the frontend and Appwrite as a backend service.",
-        "Implemented secure user authentication and authorization with Redux Toolkit for state management.",
-        "Created a rich text editor with TinyMCE for content creation with image upload functionality.",
-        "Built user-friendly post management with CRUD operations, categories, and search functionality."
+        "Developed a responsive portfolio application using React.js for the frontend.",
+        "Implemented smooth scrolling and page transitions.",
+        "Created rich animated sections with GSAP and Framer motion.",
+        "Built user-friendly component structure."
       ],
       benchmarks: {
-        performance: "96%",
-        accessibility: "95%",
-        seo: "98%",
-        loadTime: "0.8s"
+        performance: "100%",
+        accessibility: "100%",
+        seo: "100%",
+        loadTime: "0.2s"
       }
     }
   },
@@ -351,40 +354,16 @@ export const PROJECTS_DATA = [
 
 export const EXPERIENCE_DATA = [
   {
-    company: "Security & Defense Projects",
-    role: "Software Developer",
-    duration: "2021 - 2023",
+    company: "Meet Bros",
+    role: "Full Stack Developer & UI/UX Designer Intern (Remote)",
+    duration: "June 2025 - March 2026",
     bullets: [
-      "Enhanced application security and developed new features, adhering to standards set by the Passive Defense Organization and National Cyberspace Center.",
-      "Designed and implemented intuitive map interfaces using MapsUI, enhancing user experience and enabling seamless interactive map integration.",
-      "Developed applications for industrial automation, leveraging C++ and the Fatek API for PLC communication.",
-      "Enhanced responsiveness and usability of applications using Windows Forms and WPF frameworks.",
-      "Executed XML to SVG conversions using X-DOM, ensuring dynamic and efficient data visualization."
+      "Designed, developed, and launched multiple commercial and production-level web applications, including Vegeta Star Film, Dynameet, and HarryOm.",
+      "Utilized a full-stack engineering approach (React.js, Node.js, Express.js, Tailwind CSS) to build robust, interactive user interfaces and structured database architectures.",
+      "Engineered scalable, reusable UI components and optimized web performance metrics, successfully accelerating loading times across production platforms.",
+      "Managed version control and team-based integrations leveraging Git and GitHub workflows for seamless deployment and feature iteration."
     ],
-    tech: ["C++", "MapsUI", "WPF", "Windows Forms", "XML / SVG"]
-  },
-  {
-    company: "Car Manufacture",
-    role: "Back-End Developer",
-    duration: "2023 - 2024",
-    bullets: [
-      "Engineered systems for large-scale data ingestion and analysis, ensuring efficient data processing and storage.",
-      "Developed back-end systems enabling vehicle-to-cloud communication for telemetry, diagnostics, and remote control.",
-      "Implemented secure APIs, following ISO 26262 automotive safety standards.",
-      "Ensured data privacy for customers and partners through industry-compliant protocols.",
-      "Delivered remote features like over-the-air updates, real-time tracking, and remote start capabilities."
-    ],
-    tech: ["Node.js", "APIs", "ISO 26262", "OTA Updates", "Cloud Systems"]
-  },
-  {
-    company: "Self-Employed",
-    role: "Freelance Developer",
-    duration: "2025 - Present",
-    bullets: [
-      "Created a personal portfolio using Three.js, React, Vite, and WebAPI to showcase technical expertise.",
-      "Continuously enhancing technical skills and expanding expertise in modern web development and back-end technologies."
-    ],
-    tech: ["Three.js", "React.js", "Vite", "WebAPI", "GSAP"]
+    tech: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Git", "GitHub"]
   }
 ];
 

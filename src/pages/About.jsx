@@ -87,42 +87,49 @@ export default function About() {
 
   const milestones = [
     {
-      year: "2022",
-      title: "Academic Genesis",
+      year: "2020",
+      title: "Secondary School (Class X)",
       role: "Student",
-      org: "Raisoni College of Engineering",
-      desc: "Commenced B.Tech in CS — building solid foundations in DSA, systems, and algorithms.",
+      org: "Maharashtra State Board",
+      desc: "Completed secondary education with 89.60% distinction, focusing on core sciences and mathematics.",
+    },
+    {
+      year: "2022",
+      title: "Senior Secondary (Class XII)",
+      role: "Student",
+      org: "Maharashtra State Board",
+      desc: "Completed senior secondary education in Science Stream with 70%.",
     },
     {
       year: "2024",
-      title: "MERN Stack Era",
-      role: "Self-taught",
-      org: "Independent Projects",
-      desc: "Pivoted into JavaScript full-stack — engineering APIs, databases, and interactive UIs at depth.",
+      title: "MERN Stack Projects",
+      role: "Full Stack Engineer",
+      org: "Independent Work",
+      desc: "Engineered scalable platforms like Home Share, leveraging Node.js, React.js, and MongoDB.",
     },
     {
       year: "2025",
       title: "Professional Internship",
-      role: "Intern Developer",
+      role: "Full Stack Developer Intern",
       org: "Meet Bros",
-      desc: "Designed premium client wireframes, tuned delivery systems, and managed Git workflows in a professional setting.",
+      desc: "Designed and launched multiple commercial web applications with modern frontend frameworks and robust backends.",
     },
     {
       year: "2026",
-      title: "Now",
-      role: "Freelance Developer",
-      org: "Open to Opportunities",
-      desc: "Shipping production-grade projects, expanding into system design and scalable cloud architectures.",
+      title: "Bachelor of Technology",
+      role: "Student",
+      org: "Raisoni Engineering College",
+      desc: "Expected completion of B.Tech in Computer Science with a CGPA of 7.79/10.",
     },
   ];
 
   const deepSkills = [
     { name: "React.js / Next.js Architecture", proficiency: "Expert", pct: 95 },
     { name: "Node.js & Express REST APIs", proficiency: "Expert", pct: 90 },
-    { name: "MongoDB / Supabase Databases", proficiency: "Advanced", pct: 88 },
+    { name: "MongoDB & Supabase", proficiency: "Advanced", pct: 90 },
     { name: "JWT Auth & Security Flows", proficiency: "Advanced", pct: 92 },
-    { name: "Java DSA & Problem Solving", proficiency: "Advanced", pct: 85 },
-    { name: "UI Design & Interaction", proficiency: "Proficient", pct: 80 },
+    { name: "JavaScript / TypeScript", proficiency: "Expert", pct: 95 },
+    { name: "Tailwind CSS & UI Design", proficiency: "Expert", pct: 95 },
   ];
 
   const principles = [
