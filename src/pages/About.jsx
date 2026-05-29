@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTransition from "../components/layout/PageTransition";
 import { PERSONAL_DETAILS } from "../lib/data";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -309,27 +310,31 @@ export default function About() {
 
             {/* Education */}
             <div className="py-14 lg:pr-12">
-              <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold block mb-8">
-                ✦ Education
-              </span>
+              <ScrollReveal direction="up">
+                <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold block mb-8">
+                  ✦ Education
+                </span>
+              </ScrollReveal>
 
               <div className="flex flex-col gap-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl border border-primary-accent/20 bg-primary-accent/[0.06] flex items-center justify-center shrink-0 mt-1">
-                    <GraduationCap className="w-5 h-5 text-primary-accent" />
+                <ScrollReveal direction="up" delay={0.05}>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-xl border border-primary-accent/20 bg-primary-accent/[0.06] flex items-center justify-center shrink-0 mt-1">
+                      <GraduationCap className="w-5 h-5 text-primary-accent" />
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <h3 className="text-lg font-bold font-clash-display text-white leading-tight">
+                        Bachelor of Technology
+                      </h3>
+                      <p className="text-sm text-primary-accent/80 font-mono">
+                        Computer Science
+                      </p>
+                      <p className="text-xs text-text-secondary font-mono">
+                        Raisoni Engineering College, Maharashtra
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-1.5">
-                    <h3 className="text-lg font-bold font-clash-display text-white leading-tight">
-                      Bachelor of Technology
-                    </h3>
-                    <p className="text-sm text-primary-accent/80 font-mono">
-                      Computer Science
-                    </p>
-                    <p className="text-xs text-text-secondary font-mono">
-                      Raisoni Engineering College, Maharashtra
-                    </p>
-                  </div>
-                </div>
+                </ScrollReveal>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                   {[
@@ -338,9 +343,9 @@ export default function About() {
                     { label: "Timezone", value: "IST (UTC+5:30)" },
                     { label: "Response", value: "< 24 hours" },
                   ].map((d, i) => (
-                    <div key={i} className="flex flex-col gap-0.5 p-3 sm:p-3.5 rounded-xl border border-white/[0.05] bg-white/[0.01]">
-                      <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">{d.label}</span>
-                      <span className="text-sm font-bold font-clash-display text-white">{d.value}</span>
+                    <div key={i} className="bg-white/[0.02] border border-white/[0.05] p-3 rounded-lg flex flex-col gap-0.5">
+                      <span className="text-[9px] font-mono text-text-secondary uppercase">{d.label}</span>
+                      <span className="text-xs font-mono text-white">{d.value}</span>
                     </div>
                   ))}
                 </div>
@@ -349,22 +354,22 @@ export default function About() {
 
             {/* Principles */}
             <div className="py-14 lg:pl-12">
-              <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold block mb-8">
-                ✦ Principles
-              </span>
-              <div className="flex flex-col gap-5">
+              <ScrollReveal direction="up">
+                <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold block mb-8">
+                  ✦ Core Principles
+                </span>
+              </ScrollReveal>
+              <div className="flex flex-col gap-4">
                 {principles.map((p, i) => (
-                  <div key={i} className="group flex gap-4 p-4 rounded-xl border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.03] hover:border-primary-accent/20 transition-all duration-300">
-                    <span className="text-[10px] font-mono text-primary-accent/40 group-hover:text-primary-accent font-bold pt-0.5 shrink-0 transition-colors duration-300">
-                      {p.n}
-                    </span>
-                    <div>
-                      <h4 className="text-sm font-bold font-clash-display text-white group-hover:text-primary-accent transition-colors duration-300 mb-1">
-                        {p.t}
-                      </h4>
-                      <p className="text-xs text-text-secondary leading-relaxed font-light">{p.b}</p>
+                  <ScrollReveal key={i} direction="up" delay={i * 0.05}>
+                    <div className="flex items-start gap-4 group">
+                      <span className="text-[10px] font-mono text-primary-accent mt-1 opacity-50 font-bold">{p.n}</span>
+                      <div className="flex flex-col gap-1">
+                        <h4 className="text-sm font-bold text-white group-hover:text-primary-accent transition-colors duration-300">{p.t}</h4>
+                        <p className="text-xs text-text-secondary leading-relaxed font-light">{p.b}</p>
+                      </div>
                     </div>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>

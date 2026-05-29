@@ -13,7 +13,7 @@ import {
 import PageTransition from "../components/layout/PageTransition";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 const RESUME_PATH = "/DanishKhan_Resume.pdf";
 

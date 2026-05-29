@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
 import { gsap } from "gsap";
 import PageTransition from "../components/layout/PageTransition";
 import { PROJECTS_DATA } from "../lib/data";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 /**
  * ProjectDetail Page (/projects/:slug) — editorial case study redesign.
@@ -171,76 +172,84 @@ export default function ProjectDetail() {
             <div className="flex-1 min-w-0 flex flex-col gap-14">
 
               {/* Problem */}
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">01</span>
-                  <div className="flex-1 h-px bg-white/[0.06]" />
+              <ScrollReveal direction="up">
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">01</span>
+                    <div className="flex-1 h-px bg-white/[0.06]" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
+                    The Problem
+                  </h2>
+                  <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                    {project.caseStudy.problem}
+                  </p>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
-                  The Problem
-                </h2>
-                <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                  {project.caseStudy.problem}
-                </p>
-              </div>
+              </ScrollReveal>
 
               {/* Solution */}
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">02</span>
-                  <div className="flex-1 h-px bg-white/[0.06]" />
+              <ScrollReveal direction="up">
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">02</span>
+                    <div className="flex-1 h-px bg-white/[0.06]" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
+                    The Solution
+                  </h2>
+                  <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
+                    {project.caseStudy.solution}
+                  </p>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
-                  The Solution
-                </h2>
-                <p className="text-sm md:text-base text-text-secondary leading-relaxed font-light">
-                  {project.caseStudy.solution}
-                </p>
-              </div>
+              </ScrollReveal>
 
               {/* Architecture */}
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">03</span>
-                  <div className="flex-1 h-px bg-white/[0.06]" />
+              <ScrollReveal direction="up">
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">03</span>
+                    <div className="flex-1 h-px bg-white/[0.06]" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
+                    Architecture & Strategy
+                  </h2>
+                  <ol className="flex flex-col gap-4">
+                    {project.caseStudy.architecture.map((item, i) => (
+                      <li key={i} className="flex gap-4 items-start">
+                        <span className="text-[10px] font-mono text-primary-accent/50 mt-1.5 shrink-0 w-4">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-sm text-text-secondary leading-relaxed font-light">
+                          {item}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
-                  Architecture & Strategy
-                </h2>
-                <ol className="flex flex-col gap-4">
-                  {project.caseStudy.architecture.map((item, i) => (
-                    <li key={i} className="flex gap-4 items-start">
-                      <span className="text-[10px] font-mono text-primary-accent/50 mt-1.5 shrink-0 w-4">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <p className="text-sm text-text-secondary leading-relaxed font-light">
-                        {item}
-                      </p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+              </ScrollReveal>
 
               {/* Tech stack */}
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">04</span>
-                  <div className="flex-1 h-px bg-white/[0.06]" />
+              <ScrollReveal direction="up">
+                <div className="flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase">04</span>
+                    <div className="flex-1 h-px bg-white/[0.06]" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
+                    Tech Stack
+                  </h2>
+                  <div className="flex flex-wrap gap-2.5">
+                    {project.tech.map((t, i) => (
+                      <span
+                        key={i}
+                        className="px-3.5 py-1.5 rounded-xl border border-white/[0.07] bg-white/[0.02] text-[11px] font-mono text-text-secondary hover:text-white hover:border-white/[0.15] transition-all duration-200"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold font-clash-display text-white">
-                  Tech Stack
-                </h2>
-                <div className="flex flex-wrap gap-2.5">
-                  {project.tech.map((t, i) => (
-                    <span
-                      key={i}
-                      className="px-3.5 py-1.5 rounded-xl border border-white/[0.07] bg-white/[0.02] text-[11px] font-mono text-text-secondary hover:text-white hover:border-white/[0.15] transition-all duration-200"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </ScrollReveal>
 
             </div>
 
@@ -249,59 +258,65 @@ export default function ProjectDetail() {
               <div className="lg:sticky lg:top-32 flex flex-col gap-6">
 
                 {/* Live CTA */}
-                <div className="flex flex-col gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.01]">
-                  <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase">
-                    Live Deployment
-                  </span>
-                  <p className="text-xs text-text-secondary font-light leading-relaxed">
-                    Connect to the active production environment directly.
-                  </p>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary-accent hover:bg-primary-accent/90 text-[#080809] text-xs font-mono font-bold uppercase tracking-widest transition-colors duration-300"
-                  >
-                    Launch App
-                    <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-                  </a>
-                </div>
+                <ScrollReveal direction="up" delay={0.05}>
+                  <div className="flex flex-col gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.01]">
+                    <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase">
+                      Live Deployment
+                    </span>
+                    <p className="text-xs text-text-secondary font-light leading-relaxed">
+                      Connect to the active production environment directly.
+                    </p>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-primary-accent hover:bg-primary-accent/90 text-[#080809] text-xs font-mono font-bold uppercase tracking-widest transition-colors duration-300"
+                    >
+                      Launch App
+                      <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+                    </a>
+                  </div>
+                </ScrollReveal>
 
                 {/* Lighthouse scores */}
-                <div className="flex flex-col gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.01]">
-                  <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase">
-                    Lighthouse Scores
-                  </span>
-                  <div className="flex flex-col gap-3">
-                    {Object.entries(project.caseStudy.benchmarks).map(([key, val], i) => {
-                      const num = parseInt(val);
-                      const isHigh = num >= 90;
-                      return (
-                        <div key={i} className="flex items-center justify-between gap-3">
-                          <span className="text-[10px] font-mono text-text-secondary uppercase tracking-wider">
-                            {key}
-                          </span>
-                          <span
-                            className={`text-sm font-bold font-clash-display ${
-                              isHigh ? "text-green-400" : "text-primary-accent"
-                            }`}
-                          >
-                            {val}
-                          </span>
-                        </div>
-                      );
-                    })}
+                <ScrollReveal direction="up" delay={0.12}>
+                  <div className="flex flex-col gap-4 p-6 rounded-2xl border border-white/[0.07] bg-white/[0.01]">
+                    <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase">
+                      Lighthouse Scores
+                    </span>
+                    <div className="flex flex-col gap-3">
+                      {Object.entries(project.caseStudy.benchmarks).map(([key, val], i) => {
+                        const num = parseInt(val);
+                        const isHigh = num >= 90;
+                        return (
+                          <div key={i} className="flex items-center justify-between gap-3">
+                            <span className="text-[10px] font-mono text-text-secondary uppercase tracking-wider">
+                              {key}
+                            </span>
+                            <span
+                              className={`text-sm font-bold font-clash-display ${
+                                isHigh ? "text-green-400" : "text-primary-accent"
+                              }`}
+                            >
+                              {val}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
 
                 {/* Back link */}
-                <Link
-                  to="/projects"
-                  className="group flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] uppercase text-text-secondary hover:text-primary-accent transition-colors duration-300"
-                >
-                  <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
-                  All Projects
-                </Link>
+                <ScrollReveal direction="up" delay={0.18}>
+                  <Link
+                    to="/projects"
+                    className="group flex items-center gap-2 text-[10px] font-mono tracking-[0.2em] uppercase text-text-secondary hover:text-primary-accent transition-colors duration-300"
+                  >
+                    <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform duration-200" />
+                    All Projects
+                  </Link>
+                </ScrollReveal>
 
               </div>
             </div>

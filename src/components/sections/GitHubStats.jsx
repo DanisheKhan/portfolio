@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGithubData } from "../../hooks/useGithubData";
+import ScrollReveal from "../ui/ScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,30 +77,38 @@ export default function GitHubStats() {
         {/* ══ Header strip ══ */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-8 sm:py-12 border-b border-white/[0.05]">
           <div className="flex flex-col gap-1.5">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
-              ✦ Metrics
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
-              GitHub <span className="text-gradient italic">Activity.</span>
-            </h2>
+            <ScrollReveal direction="up">
+              <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
+                ✦ Metrics
+              </span>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.08}>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
+                GitHub <span className="text-gradient italic">Activity.</span>
+              </h2>
+            </ScrollReveal>
           </div>
 
-          <a
-            href="https://github.com/DanisheKhan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.2em] text-text-secondary hover:text-primary-accent transition-colors duration-300 uppercase"
-          >
-            @DanisheKhan
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          <ScrollReveal direction="up" delay={0.16}>
+            <a
+              href="https://github.com/DanisheKhan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.2em] text-text-secondary hover:text-primary-accent transition-colors duration-300 uppercase"
+            >
+              @DanisheKhan
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </ScrollReveal>
         </div>
 
         {/* ══ Stats row ══ */}
         <div className="grid grid-cols-2 md:grid-cols-4 border-b border-white/[0.05]">
           {stats.map((s, i) => (
-            <div
+            <ScrollReveal
               key={i}
+              direction="up"
+              delay={i * 0.05}
               className={`flex flex-col gap-2 py-7 sm:py-10 px-4 sm:px-6 border-white/[0.05] ${
                 i % 2 === 0 ? "border-r" : "border-r-0"
               } ${
@@ -122,12 +131,12 @@ export default function GitHubStats() {
               <span className="text-[10px] font-mono tracking-widest text-text-secondary uppercase">
                 {s.label}
               </span>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* ══ Heatmap ══ */}
-        <div className="py-10 border-b border-white/[0.05]">
+        <ScrollReveal direction="up" delay={0.15} className="py-10 border-b border-white/[0.05] w-full">
           <div className="flex items-center justify-between mb-5">
             <span className="text-[9px] font-mono tracking-[0.2em] text-text-secondary uppercase">
               Contribution activity · last 6 months
@@ -160,11 +169,11 @@ export default function GitHubStats() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* ══ Language breakdown as fact rows ══ */}
         {!loading && data?.languages?.length > 0 && (
-          <div className="flex flex-col pb-14 pt-4">
+          <ScrollReveal direction="up" delay={0.2} className="flex flex-col pb-14 pt-4 w-full">
             <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase mb-4">
               Language breakdown
             </span>
@@ -199,7 +208,7 @@ export default function GitHubStats() {
                 </div>
               ))}
             </div>
-          </div>
+          </ScrollReveal>
         )}
 
       </div>

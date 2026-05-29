@@ -5,6 +5,7 @@ import { ArrowUpRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/layout/PageTransition";
 import { PROJECTS_DATA } from "../lib/data";
 import { gsap } from "gsap";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 /**
  * Projects Catalog Page (/projects) — full editorial redesign.
@@ -101,28 +102,31 @@ export default function Projects() {
             {/* ── Sticky sidebar filter ── */}
             <div className="lg:w-44 shrink-0">
               <div className="lg:sticky lg:top-28 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none flex-nowrap lg:flex-wrap">
-                <span className="page-header-meta flex-none lg:flex-initial w-full text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase mb-1 hidden lg:block">
-                  Filter by
-                </span>
-                {filters.map((f) => (
-                  <button
-                    key={f.label}
-                    onClick={() => setActiveFilter(f.label)}
-                    className={`group flex items-center justify-between gap-2 px-4 py-2.5 rounded-xl text-xs font-mono tracking-wide transition-all duration-200 cursor-pointer ${
-                      activeFilter === f.label
-                        ? "bg-primary-accent/[0.12] border border-primary-accent/40 text-primary-accent"
-                        : "border border-white/[0.05] text-text-secondary hover:text-white hover:border-white/[0.1]"
-                    }`}
-                  >
-                    <span>{f.label === "UI/UX & Frontend" ? "UI / UX" : f.label}</span>
-                    <span
-                      className={`text-[9px] font-bold ${
-                        activeFilter === f.label ? "text-primary-accent" : "text-white/20"
+                <ScrollReveal direction="up" className="hidden lg:block w-full">
+                  <span className="page-header-meta flex-none lg:flex-initial w-full text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase mb-1">
+                    Filter by
+                  </span>
+                </ScrollReveal>
+                {filters.map((f, idx) => (
+                  <ScrollReveal key={f.label} direction="up" delay={idx * 0.05} className="flex-none lg:flex-initial w-full">
+                    <button
+                      onClick={() => setActiveFilter(f.label)}
+                      className={`group flex items-center justify-between gap-2 px-4 py-2.5 rounded-xl text-xs font-mono tracking-wide transition-all duration-200 cursor-pointer w-full ${
+                        activeFilter === f.label
+                          ? "bg-primary-accent/[0.12] border border-primary-accent/40 text-primary-accent"
+                          : "border border-white/[0.05] text-text-secondary hover:text-white hover:border-white/[0.1]"
                       }`}
                     >
-                      {f.count}
-                    </span>
-                  </button>
+                      <span>{f.label === "UI/UX & Frontend" ? "UI / UX" : f.label}</span>
+                      <span
+                        className={`text-[9px] font-bold ${
+                          activeFilter === f.label ? "text-primary-accent" : "text-white/20"
+                        }`}
+                      >
+                        {f.count}
+                      </span>
+                    </button>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
@@ -147,7 +151,9 @@ export default function Projects() {
                         ease: [0.16, 1, 0.3, 1],
                       }}
                     >
-                      <ProjectTile project={project} />
+                      <ScrollReveal direction="up" delay={i * 0.04} distance={30} once={true}>
+                        <ProjectTile project={project} />
+                      </ScrollReveal>
                     </motion.div>
                   ))}
                 </AnimatePresence>

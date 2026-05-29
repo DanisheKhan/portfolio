@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
 import PageTransition from "../components/layout/PageTransition";
 import { PERSONAL_DETAILS } from "../lib/data";
+import ScrollReveal from "../components/ui/ScrollReveal";
 
 /**
  * Contact Page (/contact) — full editorial redesign.
@@ -216,58 +217,66 @@ export default function Contact() {
 
             {/* Left: subject selector as a visual list */}
             <div className="py-10 sm:py-14 lg:pr-12 flex flex-col gap-5 sm:gap-6">
-              <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
-                What's this about?
-              </span>
+              <ScrollReveal direction="up" distance={20}>
+                <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
+                  What's this about?
+                </span>
+              </ScrollReveal>
               <div className="flex flex-col gap-2">
-                {subjects.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    onClick={() => setFormState((p) => ({ ...p, subject: s }))}
-                    className={`text-left px-4 py-3.5 rounded-xl border text-sm font-medium font-clash-display tracking-wide transition-all duration-200 ${
-                      formState.subject === s
-                        ? "border-primary-accent bg-primary-accent/[0.08] text-primary-accent"
-                        : "border-white/[0.05] bg-white/[0.01] text-text-secondary hover:text-white hover:border-white/[0.1]"
-                    }`}
-                  >
-                    {s}
-                    {formState.subject === s && (
-                      <span className="float-right text-primary-accent">✦</span>
-                    )}
-                  </button>
+                {subjects.map((s, idx) => (
+                  <ScrollReveal key={s} direction="up" delay={idx * 0.05} distance={20} className="w-full">
+                    <button
+                      type="button"
+                      onClick={() => setFormState((p) => ({ ...p, subject: s }))}
+                      className={`text-left px-4 py-3.5 rounded-xl border text-sm font-medium font-clash-display tracking-wide transition-all duration-200 w-full cursor-pointer ${
+                        formState.subject === s
+                          ? "border-primary-accent bg-primary-accent/[0.08] text-primary-accent"
+                          : "border-white/[0.05] bg-white/[0.01] text-text-secondary hover:text-white hover:border-white/[0.1]"
+                      }`}
+                    >
+                      {s}
+                      {formState.subject === s && (
+                        <span className="float-right text-primary-accent">✦</span>
+                      )}
+                    </button>
+                  </ScrollReveal>
                 ))}
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-white/[0.05] mt-4" />
+              <ScrollReveal direction="up" delay={0.2} distance={15}>
+                <div className="h-px bg-white/[0.05] mt-4" />
+              </ScrollReveal>
 
               {/* Social links */}
               <div className="flex flex-col gap-3">
-                <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
-                  Or reach out via
-                </span>
+                <ScrollReveal direction="up" delay={0.25} distance={20}>
+                  <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
+                    Or reach out via
+                  </span>
+                </ScrollReveal>
                 {socials.map((s, i) => (
-                  <a
-                    key={i}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-3 text-text-secondary hover:text-white transition-colors duration-300"
-                  >
-                    <span className="w-8 h-8 rounded-lg border border-white/[0.06] bg-white/[0.02] flex items-center justify-center group-hover:border-primary-accent/30 group-hover:text-primary-accent transition-all duration-300">
-                      {s.icon}
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="text-[9px] font-mono tracking-widest uppercase text-text-secondary">
-                        {s.label}
+                  <ScrollReveal key={i} direction="up" delay={0.3 + i * 0.05} distance={20} className="w-full">
+                    <a
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center gap-3 text-text-secondary hover:text-white transition-colors duration-300 w-full"
+                    >
+                      <span className="w-8 h-8 rounded-lg border border-white/[0.06] bg-white/[0.02] flex items-center justify-center group-hover:border-primary-accent/30 group-hover:text-primary-accent transition-all duration-300">
+                        {s.icon}
                       </span>
-                      <span className="text-xs font-mono group-hover:text-primary-accent transition-colors duration-300">
-                        {s.handle}
-                      </span>
-                    </div>
-                    <ArrowUpRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </a>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] font-mono tracking-widest uppercase text-text-secondary">
+                          {s.label}
+                        </span>
+                        <span className="text-xs font-mono group-hover:text-primary-accent transition-colors duration-300">
+                          {s.handle}
+                        </span>
+                      </div>
+                      <ArrowUpRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </a>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>

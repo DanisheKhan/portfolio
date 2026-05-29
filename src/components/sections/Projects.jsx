@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS_DATA } from "../../lib/data";
+import ScrollReveal from "../ui/ScrollReveal";
 
 /**
  * Projects Section — redesigned as a hover-image list.
@@ -45,22 +46,28 @@ export default function Projects() {
         ══════════════════════════════ */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 py-14 md:py-20 border-b border-white/[0.05]">
           <div className="flex flex-col gap-3">
-            <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
-              ✦ Case Studies
-            </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
-              Featured{" "}
-              <span className="text-gradient italic">Work.</span>
-            </h2>
+            <ScrollReveal direction="up">
+              <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
+                ✦ Case Studies
+              </span>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={0.08}>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
+                Featured{" "}
+                <span className="text-gradient italic">Work.</span>
+              </h2>
+            </ScrollReveal>
           </div>
 
-          <Link
-            to="/projects"
-            className="group inline-flex items-center gap-2 text-sm font-mono tracking-wider text-text-secondary hover:text-primary-accent transition-colors duration-300 self-start sm:self-end"
-          >
-            All Projects
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <ScrollReveal direction="up" delay={0.16} className="self-start sm:self-end">
+            <Link
+              to="/projects"
+              className="group inline-flex items-center gap-2 text-sm font-mono tracking-wider text-text-secondary hover:text-primary-accent transition-colors duration-300"
+            >
+              All Projects
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </ScrollReveal>
         </div>
 
         {/* ══════════════════════════════
@@ -72,65 +79,71 @@ export default function Projects() {
             const num = String(index + 1).padStart(2, "0");
 
             return (
-              <motion.div
+              <ScrollReveal
                 key={project.slug}
-                onHoverStart={() => setActiveIndex(index)}
-                onHoverEnd={() => setActiveIndex(null)}
-                className="group relative -mx-5 sm:-mx-6 md:-mx-12 px-5 sm:px-6 md:px-12"
+                direction="up"
+                delay={index * 0.06}
+                className="w-full"
               >
-                <Link to={`/projects/${project.slug}`}>
-                  <div className="flex items-center gap-3 sm:gap-5 md:gap-8 py-5 sm:py-6 md:py-8 border-b border-white/[0.05] transition-all duration-300">
+                <motion.div
+                  onHoverStart={() => setActiveIndex(index)}
+                  onHoverEnd={() => setActiveIndex(null)}
+                  className="group relative -mx-5 sm:-mx-6 md:-mx-12 px-5 sm:px-6 md:px-12"
+                >
+                  <Link to={`/projects/${project.slug}`}>
+                    <div className="flex items-center gap-3 sm:gap-5 md:gap-8 py-5 sm:py-6 md:py-8 border-b border-white/[0.05] transition-all duration-300">
 
-                    {/* Index */}
-                    <span
-                      className={`text-[11px] font-mono shrink-0 w-7 text-right transition-colors duration-300 ${
-                        isActive ? "text-primary-accent" : "text-white/20"
-                      }`}
-                    >
-                      {num}
-                    </span>
+                      {/* Index */}
+                      <span
+                        className={`text-[11px] font-mono shrink-0 w-7 text-right transition-colors duration-300 ${
+                          isActive ? "text-primary-accent" : "text-white/20"
+                        }`}
+                      >
+                        {num}
+                      </span>
 
-                    {/* Title */}
-                    <h3
-                      className={`flex-1 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold font-clash-display tracking-tight transition-all duration-300 ${
-                        isActive
-                          ? "text-primary-accent translate-x-2"
-                          : "text-white"
-                      }`}
-                    >
-                      {project.title}
-                    </h3>
+                      {/* Title */}
+                      <h3
+                        className={`flex-1 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold font-clash-display tracking-tight transition-all duration-300 ${
+                          isActive
+                            ? "text-primary-accent translate-x-2"
+                            : "text-white"
+                        }`}
+                      >
+                        {project.title}
+                      </h3>
 
-                    {/* Category badge — hidden on mobile */}
-                    <span className="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-white/[0.07] text-[10px] font-mono tracking-widest text-text-secondary uppercase shrink-0">
-                      {project.category}
-                    </span>
+                      {/* Category badge — hidden on mobile */}
+                      <span className="hidden md:inline-flex items-center px-3 py-1 rounded-full border border-white/[0.07] text-[10px] font-mono tracking-widest text-text-secondary uppercase shrink-0">
+                        {project.category}
+                      </span>
 
-                    {/* Year */}
-                    <span className="text-[11px] font-mono text-text-secondary shrink-0 hidden sm:block">
-                      {project.year}
-                    </span>
+                      {/* Year */}
+                      <span className="text-[11px] font-mono text-text-secondary shrink-0 hidden sm:block">
+                        {project.year}
+                      </span>
 
-                    {/* Arrow */}
-                    <div
-                      className={`shrink-0 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 ${
-                        isActive
-                          ? "border-primary-accent bg-primary-accent/10 scale-100 opacity-100"
-                          : "border-white/[0.08] scale-90 md:scale-75 opacity-60 md:opacity-0"
-                      }`}
-                    >
-                      <ArrowUpRight className="w-4 h-4 text-primary-accent" />
+                      {/* Arrow */}
+                      <div
+                        className={`shrink-0 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 ${
+                          isActive
+                            ? "border-primary-accent bg-primary-accent/10 scale-100 opacity-100"
+                            : "border-white/[0.08] scale-90 md:scale-75 opacity-60 md:opacity-0"
+                        }`}
+                      >
+                        <ArrowUpRight className="w-4 h-4 text-primary-accent" />
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
 
-                {/* Gold accent left bar */}
-                <span
-                  className={`absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary-accent to-secondary-accent transition-all duration-400 origin-top ${
-                    isActive ? "scale-y-100" : "scale-y-0"
-                  }`}
-                />
-              </motion.div>
+                  {/* Gold accent left bar */}
+                  <span
+                    className={`absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary-accent to-secondary-accent transition-all duration-400 origin-top ${
+                      isActive ? "scale-y-100" : "scale-y-0"
+                    }`}
+                  />
+                </motion.div>
+              </ScrollReveal>
             );
           })}
         </div>
@@ -138,18 +151,20 @@ export default function Projects() {
         {/* ══════════════════════════════
             Bottom strip
         ══════════════════════════════ */}
-        <div className="flex items-center justify-between py-10 border-t border-white/[0.05]">
-          <span className="text-xs font-mono tracking-[0.2em] text-text-secondary uppercase">
-            {PROJECTS_DATA.length}+ Projects Built
-          </span>
-          <Link
-            to="/projects"
-            className="group inline-flex items-center gap-2 h-10 px-6 rounded-full border border-white/[0.08] bg-white/[0.02] hover:bg-primary-accent hover:border-primary-accent text-xs font-mono tracking-wider text-text-secondary hover:text-[#0B0B0C] transition-all duration-300 font-semibold"
-          >
-            View All Work
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </div>
+        <ScrollReveal direction="up" delay={0.2} className="w-full">
+          <div className="flex items-center justify-between py-10 border-t border-white/[0.05]">
+            <span className="text-xs font-mono tracking-[0.2em] text-text-secondary uppercase">
+              {PROJECTS_DATA.length}+ Projects Built
+            </span>
+            <Link
+              to="/projects"
+              className="group inline-flex items-center gap-2 h-10 px-6 rounded-full border border-white/[0.08] bg-white/[0.02] hover:bg-primary-accent hover:border-primary-accent text-xs font-mono tracking-wider text-text-secondary hover:text-[#0B0B0C] transition-all duration-300 font-semibold"
+            >
+              View All Work
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
+        </ScrollReveal>
 
       </div>
 
