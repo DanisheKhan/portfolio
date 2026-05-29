@@ -19,7 +19,7 @@ import Contact from "./pages/Contact";
 import "./App.css";
 
 // Global Animated Custom Cursor
-import CustomCursor from "./components/ui/CustomCursor";
+import CustomCursor from "./components/CustomCursor";
 
 /**
  * AppContent Sub-component
