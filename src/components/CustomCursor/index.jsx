@@ -99,7 +99,7 @@ export default function CustomCursor() {
       {/* 1. Dynamic Outer trailing physics ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-7 h-7 -mt-3.5 -ml-3.5 rounded-full border border-white/20 bg-transparent pointer-events-none z-[99999] opacity-0 transition-[background-color,border-color,box-shadow,backdrop-filter,filter] duration-300 ease-out will-change-transform"
+        className="fixed top-0 left-0 w-7 h-7 -mt-3.5 -ml-3.5 rounded-full border border-white/20 bg-transparent pointer-events-none z-[99999] opacity-0 transition-[background-color,border-color,box-shadow,backdrop-filter,filter] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform"
       />
 
       {/* 2. Center pinpoint indicator dot */}

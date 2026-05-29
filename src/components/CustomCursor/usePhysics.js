@@ -33,7 +33,8 @@ export default function usePhysics() {
   const targetScale = useRef(1);
   const targetOpacity = useRef(0);
 
-  const alpha = 0.15; // LERP smoothing factor
+  const alpha = 0.15;        // Positional fluid trailing LERP factor
+  const factorAlpha = 0.28;  // Snappy, professional factor LERP (hover state transitions)
 
   // Exported methods to update hover states dynamically from other components
   const setHoverState = (isHovered, customScale = 1.8) => {
@@ -73,10 +74,10 @@ export default function usePhysics() {
       }
       const angle = lastAngle.current;
 
-      // 3. LERP factors for smooth transitions
-      hoverFactor.current += (targetHover.current - hoverFactor.current) * alpha;
-      scaleFactor.current += (targetScale.current - scaleFactor.current) * alpha;
-      opacityFactor.current += (targetOpacity.current - opacityFactor.current) * alpha;
+      // 3. Snappy LERP factors for professional, instant-response hover/fade transitions
+      hoverFactor.current += (targetHover.current - hoverFactor.current) * factorAlpha;
+      scaleFactor.current += (targetScale.current - scaleFactor.current) * factorAlpha;
+      opacityFactor.current += (targetOpacity.current - opacityFactor.current) * factorAlpha;
 
       // 4. Dynamic Squash & Stretch matrix calculations
       // Clamped stretch to 0.5 above 1.0 to prevent visual distortion
