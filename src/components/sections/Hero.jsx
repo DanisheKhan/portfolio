@@ -148,13 +148,13 @@ export default function Hero() {
         ════════════════════════════════ */}
         <div className="lg:hidden flex flex-col h-full min-h-[100dvh]">
 
-          {/* ── Top: dark content area ── */}
-          <div className="relative z-10 flex flex-col gap-5 px-5 pt-[4.75rem] pb-6 flex-shrink-0">
+          {/* ── Editorial Content Area ── */}
+          <div className="relative z-10 flex flex-col gap-4.5 px-5 pt-[4.25rem] pb-6">
 
             {/* Available badge */}
-            <div className="mobile-badge flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1]">
+            <div className="mobile-badge flex items-center gap-2 self-start px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] backdrop-blur-md">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-white/70">
+              <span className="text-[9px] font-mono tracking-[0.25em] uppercase text-white/80">
                 Available for work
               </span>
             </div>
@@ -163,17 +163,17 @@ export default function Hero() {
             <div className="flex flex-col gap-0">
               <div className="overflow-hidden">
                 <h1
-                  className="mobile-name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] text-white uppercase"
-                  style={{ fontSize: "clamp(3rem, 14vw, 5.5rem)" }}
+                  className="mobile-name-line font-black font-clash-display tracking-[-0.04em] leading-[0.85] text-white uppercase"
+                  style={{ fontSize: "clamp(3.2rem, 14vw, 5.5rem)" }}
                 >
                   DANISH
                 </h1>
               </div>
               <div className="overflow-hidden">
                 <h1
-                  className="mobile-name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] uppercase"
+                  className="mobile-name-line font-black font-clash-display tracking-[-0.04em] leading-[0.85] uppercase"
                   style={{
-                    fontSize: "clamp(3rem, 14vw, 5.5rem)",
+                    fontSize: "clamp(3.2rem, 14vw, 5.5rem)",
                     background: "linear-gradient(135deg, #C5A880 0%, #E8D5B0 50%, #C5A880 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
@@ -186,80 +186,61 @@ export default function Hero() {
             </div>
 
             {/* Role */}
-            <div className="mobile-role flex items-center gap-3">
-              <span className="h-px w-6 bg-primary-accent/60 shrink-0" />
-              <span className="text-[11px] font-mono tracking-[0.28em] text-primary-accent uppercase">
+            <div className="mobile-role flex items-center gap-2.5">
+              <span className="h-px w-5 bg-primary-accent/60 shrink-0" />
+              <span className="text-[9px] font-mono tracking-[0.28em] text-primary-accent uppercase font-bold">
                 Full Stack Engineer
               </span>
             </div>
 
+            {/* Premium Editorial Portrait Frame - Optimized aspect for mobile viewports */}
+            <div className="mobile-photo relative w-full aspect-[1.18] rounded-[2.15rem] overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)] my-1">
+              <img
+                src="/danish.jpeg"
+                alt="Danish Khan"
+                className="w-full h-full object-cover object-[40%_10%]"
+              />
+              {/* Inner gradients to give a luxury look */}
+              <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080809]/80 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-[#080809]/40 to-transparent" />
+              {/* Sleek golden accent border line */}
+              <div className="absolute inset-0 rounded-[2.15rem] border border-primary-accent/15 pointer-events-none" />
+            </div>
+
             {/* Bio */}
-            <p className="mobile-bio text-sm text-white/55 leading-relaxed font-light max-w-[85%]">
-              Crafting high-performance web apps — pixel-perfect UIs,
-              robust backends and scalable systems.
+            <p className="mobile-bio text-xs sm:text-sm text-white/60 leading-relaxed font-light max-w-[95%]">
+              Crafting <span className="text-white font-medium">high-performance</span> web applications — specializing in <span className="text-primary-accent font-medium">pixel-perfect UIs</span>, robust backends, and scalable software systems.
             </p>
 
             {/* CTAs */}
             <div className="mobile-ctas flex gap-3">
               <Link
                 to="/projects"
-                className="group flex-1 flex items-center justify-center gap-2 h-11 rounded-xl bg-primary-accent text-[#080809] text-xs font-bold tracking-widest uppercase transition-all duration-300 active:scale-95"
+                className="group flex-1 flex items-center justify-center gap-2 h-11 rounded-xl bg-primary-accent text-[#080809] text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,168,128,0.25)] active:scale-95 cursor-pointer"
               >
                 View Work
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </Link>
               <Link
                 to="/resume"
-                className="flex-1 flex items-center justify-center h-11 rounded-xl border border-white/[0.12] bg-white/[0.03] text-xs font-medium tracking-widest uppercase text-white/60 hover:text-white transition-all duration-300 active:scale-95"
+                className="flex-1 flex items-center justify-center h-11 rounded-xl border border-white/[0.1] bg-white/[0.02] backdrop-blur-md text-xs font-semibold tracking-widest uppercase text-white/70 hover:text-white hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 Resume
               </Link>
             </div>
 
-            {/* Meta */}
-            <div className="mobile-meta flex items-center gap-2">
-              <MapPin className="w-3 h-3 text-white/25 shrink-0" />
-              <span className="text-[10px] font-mono text-white/30 tracking-wider">
-                {PERSONAL_DETAILS.location}
-              </span>
-              <span className="h-3 w-px bg-white/10 mx-1" />
-              <span className="text-[10px] font-mono text-white/30 tracking-wider">
+            {/* Meta tags as premium pills */}
+            <div className="mobile-meta flex flex-wrap gap-2 items-center pt-0.5">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.02] border border-white/[0.05] text-[9px] font-mono text-white/50 tracking-wider">
+                <MapPin className="w-3 h-3 text-primary-accent/60 shrink-0" />
+                Bhusawal, Maharashtra
+              </div>
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.02] border border-white/[0.05] text-[9px] font-mono text-white/50 tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
                 Open to Remote
-              </span>
+              </div>
             </div>
-          </div>
 
-          {/* ── Bottom: Portrait photo rising from below ── */}
-          <div className="mobile-photo relative flex-1 min-h-[45vh] overflow-hidden">
-            <img
-              src="/danish.jpeg"
-              alt="Danish Khan"
-              className="w-full h-full object-cover object-[40%_10%]"
-            />
-            {/* Top gradient — blends into dark content area above */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to bottom, #080809 0%, rgba(8,8,9,0.7) 15%, rgba(8,8,9,0.1) 38%, transparent 60%)",
-              }}
-            />
-            {/* Bottom gradient — blends into stats rail below */}
-            <div
-              className="absolute bottom-0 left-0 right-0"
-              style={{
-                height: "45%",
-                background: "linear-gradient(to top, #080809 0%, rgba(8,8,9,0.75) 30%, transparent 100%)",
-              }}
-            />
-            {/* Left & right edge softening */}
-            <div
-              className="absolute inset-y-0 left-0"
-              style={{ width: "15%", background: "linear-gradient(to right, #080809, transparent)" }}
-            />
-            <div
-              className="absolute inset-y-0 right-0"
-              style={{ width: "15%", background: "linear-gradient(to left, #080809, transparent)" }}
-            />
           </div>
         </div>
 
