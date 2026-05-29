@@ -65,8 +65,8 @@ export default function CustomCursor() {
       dot.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0)`;
 
       const isHovered = ring.classList.contains("cursor-hovered");
-      const scaleX = isHovered ? 5.2 : stretch;
-      const scaleY = isHovered ? 5.2 : squash;
+      const scaleX = isHovered ? 1.8 : stretch;
+      const scaleY = isHovered ? 1.8 : squash;
       
       ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) rotate(${angle}deg) scale(${scaleX}, ${scaleY})`;
 
@@ -179,8 +179,8 @@ export default function CustomCursor() {
           border-color: rgba(0, 212, 255, 0.8) !important;
           background: rgba(255, 255, 255, 0.03) !important;
           box-shadow: 0 0 35px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
-          backdrop-filter: blur(2.5px) contrast(130%) saturate(140%) brightness(115%) !important;
-          -webkit-backdrop-filter: blur(2.5px) contrast(130%) saturate(140%) brightness(115%) !important;
+          backdrop-filter: blur(1.2px) contrast(125%) saturate(130%) brightness(110%) !important;
+          -webkit-backdrop-filter: blur(1.2px) contrast(125%) saturate(130%) brightness(110%) !important;
         }
         .dot-hovered {
           opacity: 0 !important;
