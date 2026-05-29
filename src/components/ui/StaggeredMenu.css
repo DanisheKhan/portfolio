@@ -197,7 +197,7 @@
   margin: 0;
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--sm-accent, #5227ff);
+  color: var(--sm-accent, #C5A880);
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -226,7 +226,7 @@
 }
 
 .sm-socials-link:focus-visible {
-  outline: 2px solid var(--sm-accent, #5227ff);
+  outline: 2px solid var(--sm-accent, #C5A880);
   outline-offset: 3px;
 }
 
@@ -252,7 +252,7 @@
 }
 
 .sm-socials-link:hover {
-  color: var(--sm-accent, #5227ff);
+  color: var(--sm-accent, #C5A880);
 }
 
 .sm-panel-title {
@@ -315,7 +315,7 @@
 }
 
 .sm-panel-item:hover {
-  color: var(--sm-accent, #5227ff);
+  color: var(--sm-accent, #C5A880);
 }
 
 .sm-panel-list[data-numbering] {
@@ -330,7 +330,7 @@
   right: 2.8em;
   font-size: 14px;
   font-weight: 500;
-  color: var(--sm-accent, #5227ff);
+  color: var(--sm-accent, #C5A880);
   letter-spacing: 0;
   pointer-events: none;
   user-select: none;

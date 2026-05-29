@@ -5,7 +5,7 @@ import './StaggeredMenu.css';
 
 export const StaggeredMenu = ({
   position = 'right',
-  colors = ['#B497CF', '#5227FF'],
+  colors = ['#111112', '#C5A880'],
   items = [],
   socialItems = [],
   displaySocials = true,
@@ -14,7 +14,7 @@ export const StaggeredMenu = ({
   logoText = "DANISH.",
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
-  accentColor = '#5227FF',
+  accentColor = '#C5A880',
   changeMenuColorOnOpen = true,
   isFixed = true,
   closeOnClickAway = true,

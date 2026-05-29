@@ -210,7 +210,7 @@ export default function EditorialHomepage() {
             </h2>
 
             <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-light">
-              Designing premium frontend platforms, building secure API frameworks, and governance structures. Focused on dynamic, high-framerate executions and layout stability.
+              Architecting secure and highly scalable full stack environments, optimizing backend databases, and building robust API infrastructures alongside layout-stable user interfaces.
             </p>
 
             {/* 2x2 grid containing glassmorphic metric cards */}

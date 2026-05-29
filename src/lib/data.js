@@ -8,9 +8,9 @@ export const PERSONAL_DETAILS = {
   role: "Full Stack MERN Developer",
   roles: [
     "Full Stack MERN Developer",
-    "UI/UX Designer",
-    "Creative Frontend Coder",
-    "Problem Solver"
+    "Backend & Systems Architect",
+    "Full Stack Software Engineer",
+    "Algorithmic Problem Solver"
   ],
   bio: "Specializing in crafting interactive modern UIs and high-performance, scalable web environments.",
   aboutDetailed: "Full Stack Developer specializing in building secure, clean, and highly optimized web applications. Focused on data structures, robust authentication flows, and seamless responsive client experiences. Driven by aesthetic excellence and flawless performance.",

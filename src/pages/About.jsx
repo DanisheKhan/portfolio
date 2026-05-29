@@ -28,7 +28,7 @@ export default function About() {
   ];
 
   const deepSkills = [
-    { name: "React.js & Creative Frontend UI", level: 95 },
+    { name: "Full Stack React & Scalable Architecture", level: 95 },
     { name: "Node.js & Express API Architectures", level: 90 },
     { name: "Database Engineering & Custom Schemas", level: 88 }
   ];

@@ -256,3 +256,13 @@ input:focus, textarea:focus, select:focus {
               inset 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
   outline: none !important;
 }
+
+/* Typing Animation Cursor Keyframes */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink-cursor {
+  animation: blink-cursor 0.8s step-end infinite;
+}

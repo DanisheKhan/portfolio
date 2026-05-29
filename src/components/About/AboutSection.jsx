@@ -81,7 +81,7 @@ export default function AboutSection() {
           </h2>
 
           <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
-            Creative Frontend Developer and Systems Engineer focused on fluid web architectures, secure database schemas, and seamless responsive client experiences. Driven by aesthetic excellence and layout-stable rendering.
+            Full Stack Software Engineer focused on high-performance database systems, secure API architectures, and seamless responsive client experiences. Driven by algorithmic efficiency and layout-stable rendering.
           </p>
 
           {/* 2x2 Metric Cards Grid with local mouse tracking */}

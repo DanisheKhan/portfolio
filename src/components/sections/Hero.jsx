@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import MagneticButton from "../ui/MagneticButton";
 import Plasma from "../ui/Plasma";
+import { TypingAnimation } from "../ui/typing-animation";
+import { PERSONAL_DETAILS } from "../../lib/data";
 
 // Custom R3F Component to render floating stellar particles
 function StarField() {
@@ -139,10 +141,17 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Static role description */}
+        {/* Dynamic role description */}
         <div className="hero-reveal-element h-12 flex items-center justify-center">
           <h2 className="text-xl md:text-3xl font-bold font-clash-display font-medium text-secondary-accent tracking-wide uppercase">
-            Full Stack Web Developer
+            <TypingAnimation
+              words={PERSONAL_DETAILS.roles}
+              loop={true}
+              typeSpeed={120}
+              deleteSpeed={60}
+              delay={100}
+              pauseDelay={2000}
+            />
           </h2>
         </div>
 
