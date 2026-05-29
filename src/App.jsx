@@ -14,6 +14,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
+import Resume from "./pages/Resume";
 
 // Styling
 import "./App.css";
@@ -115,6 +116,7 @@ function AppContent() {
                     <Route path="/projects" element={<Projects />} />
                     <Route path="/projects/:slug" element={<ProjectDetail />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/resume" element={<Resume />} />
                     {/* Fallback route redirect */}
                     <Route path="*" element={<Home />} />
                   </Routes>

@@ -11,6 +11,7 @@ export default function Navbar() {
     { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
     { label: 'About', ariaLabel: 'Learn about Danish', link: '/about' },
     { label: 'Projects', ariaLabel: 'View my works', link: '/projects' },
+    { label: 'Resume', ariaLabel: 'View my resume', link: '/resume' },
     { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
   ];
 

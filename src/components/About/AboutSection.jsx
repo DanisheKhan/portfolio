@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom";
 
 /**
  * AboutSection Component
@@ -112,12 +113,15 @@ export default function AboutSection() {
           </div>
 
           {/* Minimalist interactive pill CTA button */}
-          <button className="group mt-4 inline-flex items-center gap-4 px-6 py-3 w-fit rounded-full bg-white/5 border border-white/10 hover:border-white/20 text-white font-medium transition-all duration-300">
+          <Link
+            to="/resume"
+            className="group mt-4 inline-flex items-center gap-4 px-6 py-3 w-fit rounded-full bg-white/5 border border-white/10 hover:border-white/20 text-white font-medium transition-all duration-300"
+          >
             <span className="text-sm font-mono tracking-wider font-medium">Download Resume</span>
             <span className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center transition-transform duration-300 ease-out group-hover:translate-x-2 shrink-0">
               <ArrowRight className="w-4 h-4 text-white" />
             </span>
-          </button>
+          </Link>
         </div>
 
         {/* Right Column: Visual Gallery Asset Suite */}

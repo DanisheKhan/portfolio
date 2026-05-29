@@ -179,7 +179,8 @@ export default function Hero() {
           {/* Download CV (Secondary Clean Border Button) */}
           <MagneticButton range={15}>
             <a
-              href="#"
+              href="/DanishKhan_Resume.pdf"
+              download="DanishKhan_Resume.pdf"
               className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/20 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
             >
               Download CV
