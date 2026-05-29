@@ -1,201 +1,266 @@
-import React, { useState, useEffect, useRef, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Points, PointMaterial } from "@react-three/drei";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import MagneticButton from "../ui/MagneticButton";
 import Plasma from "../ui/Plasma";
-import { TypingAnimation } from "../ui/typing-animation";
 import { PERSONAL_DETAILS } from "../../lib/data";
 
-// Custom R3F Component to render floating stellar particles
-function StarField() {
-  const pointsRef = useRef();
-
-  // Create random 3D points
-  const [positions] = useState(() => {
-    const arr = [];
-    for (let i = 0; i < 200; i++) {
-      arr.push((Math.random() - 0.5) * 10); // X
-      arr.push((Math.random() - 0.5) * 10); // Y
-      arr.push((Math.random() - 0.5) * 10); // Z
-    }
-    return new Float32Array(arr);
-  });
-
-  // Rotate point fields slowly on every frame
-  useFrame((state, delta) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y += delta * 0.05;
-      pointsRef.current.rotation.x += delta * 0.02;
-    }
-  });
-
-  return (
-    <group ref={pointsRef}>
-      <points>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            args={[positions, 3]}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#C5A880"
-          size={0.06}
-          sizeAttenuation
-          depthWrite={false}
-          transparent
-          opacity={0.6}
-        />
-      </points>
-    </group>
-  );
-}
-
+/**
+ * Hero Section — redesigned with a classic editorial split layout:
+ * - Left: stacked name + bio + CTAs
+ * - Right: portrait with overlay card + rotating role badge
+ * - Bottom: minimal stat rail
+ */
 export default function Hero() {
-  const nameRef = useRef(null);
   const containerRef = useRef(null);
+  const tlRef = useRef(null);
 
-
-  // 2. Character-by-character split name entrance reveal via GSAP
   useEffect(() => {
-    const nameLetters = nameRef.current?.querySelectorAll(".char") || [];
-    
     const ctx = gsap.context(() => {
-      gsap.from(nameLetters, {
-        y: "110%",
+      const tl = gsap.timeline({ delay: 0.2 });
+
+      // Reveal lines by unclipping from bottom
+      tl.from(".hero-line", {
+        y: "100%",
         opacity: 0,
-        stagger: 0.06,
+        stagger: 0.12,
         duration: 1.0,
         ease: "power4.out",
-        delay: 0.6
-      });
-      
-      // Animate pulsing badge & CTAs in
-      gsap.from(".hero-reveal-element", {
-        y: 30,
-        opacity: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 1.2
-      });
+      })
+        .from(
+          ".hero-fade",
+          {
+            opacity: 0,
+            y: 18,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: "power3.out",
+          },
+          "-=0.5"
+        )
+        .from(
+          ".hero-right",
+          {
+            opacity: 0,
+            x: 40,
+            duration: 1.0,
+            ease: "power3.out",
+          },
+          "-=0.9"
+        )
+        .from(
+          ".hero-stat",
+          {
+            opacity: 0,
+            y: 10,
+            stagger: 0.08,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
+
+      tlRef.current = tl;
     }, containerRef);
 
     return () => ctx.revert();
   }, []);
 
-  const titleString = "DANISH KHAN";
+  const stats = [
+    { value: "7+", label: "Projects" },
+    { value: "20+", label: "Technologies" },
+    { value: "MERN", label: "Core Stack" },
+    { value: "B.Tech", label: "AI & CS" },
+  ];
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen bg-primary-bg flex flex-col justify-center items-center overflow-hidden pt-20"
+      className="relative w-full min-h-screen bg-primary-bg flex flex-col justify-between overflow-hidden"
     >
-      {/* WebGL Fluid Plasma Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Plasma 
+      {/* ── Ambient Plasma blob (toned down) ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <Plasma
           color="#C5A880"
-          speed={0.15}
+          speed={0.12}
           direction="pingpong"
-          scale={1.2}
-          opacity={0.45}
-          mouseInteractive={true}
+          scale={1.4}
+          opacity={0.35}
+          mouseInteractive={false}
         />
       </div>
 
-      {/* Decorative Gradient Vignette radial mask overlay */}
+      {/* Radial vignette */}
       <div
-        className="absolute inset-0 z-10 pointer-events-none"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle at center, transparent 40%, var(--primary-bg) 95%)"
+          backgroundImage:
+            "radial-gradient(ellipse 80% 60% at 30% 50%, transparent 30%, var(--primary-bg) 85%)",
         }}
       />
 
-      {/* Content wrapper */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col items-center justify-center text-center relative z-20 gap-6">
-        {/* Availability Badge */}
-        <div className="hero-reveal-element inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-border-color/80 text-xs font-mono font-medium text-white select-none">
-          <span className="w-2 h-2 rounded-full bg-green-500 pulse-glow-dot inline-block" />
-          Available for freelance & full-time work
-        </div>
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-primary-bg to-transparent z-[2] pointer-events-none" />
 
-        {/* Dynamic Name (Clip path mask split GSAP entry) */}
-        <div className="overflow-hidden py-2 select-none">
-          <h1
-            ref={nameRef}
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-bold font-clash-display tracking-tight text-white flex select-none"
-          >
-            {titleString.split("").map((char, index) => (
-              <span
-                key={index}
-                className={`char inline-block select-none ${
-                  char === " " ? "w-[1.2rem] sm:w-[2.2rem]" : ""
-                }`}
-              >
-                {char}
+      {/* ══════════════════════════════════
+          Main content grid
+      ══════════════════════════════════ */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex-1 flex items-center">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 pt-28 pb-16">
+
+          {/* ── LEFT COLUMN ── */}
+          <div className="flex flex-col justify-center gap-8 max-w-2xl">
+
+            {/* Eyebrow: availability badge */}
+            <div className="hero-fade flex items-center gap-3">
+              <span className="flex items-center gap-1.5 text-[10px] font-mono tracking-[0.25em] uppercase text-text-secondary">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 pulse-glow-dot" />
+                Available for work
               </span>
-            ))}
-          </h1>
-        </div>
+              <span className="h-px w-12 bg-white/10" />
+              <span className="flex items-center gap-1 text-[10px] font-mono tracking-[0.15em] text-text-secondary uppercase">
+                <MapPin className="w-2.5 h-2.5" />
+                {PERSONAL_DETAILS.location}
+              </span>
+            </div>
 
-        {/* Dynamic role description */}
-        <div className="hero-reveal-element h-12 flex items-center justify-center">
-          <h2 className="text-xl md:text-3xl font-bold font-clash-display font-medium text-secondary-accent tracking-wide uppercase">
-            <TypingAnimation
-              words={PERSONAL_DETAILS.roles}
-              loop={true}
-              typeSpeed={120}
-              deleteSpeed={60}
-              delay={100}
-              pauseDelay={2000}
-            />
-          </h2>
-        </div>
+            {/* Name — big editorial stacked display */}
+            <div className="flex flex-col gap-0 -mt-2">
+              <div className="overflow-hidden">
+                <div className="hero-line text-[clamp(3.5rem,9vw,7.5rem)] font-bold font-clash-display leading-[0.9] tracking-tight text-white uppercase">
+                  Danish
+                </div>
+              </div>
+              <div className="overflow-hidden">
+                <div className="hero-line text-[clamp(3.5rem,9vw,7.5rem)] font-bold font-clash-display leading-[0.9] tracking-tight text-gradient italic">
+                  Khan.
+                </div>
+              </div>
+            </div>
 
-        {/* Bio Copy */}
-        <p className="hero-reveal-element text-sm md:text-lg max-w-xl text-text-secondary leading-relaxed font-light">
-          Specializing in crafting interactive modern UIs and high-performance, scalable web environments.
-        </p>
+            {/* Thin rule + role */}
+            <div className="hero-fade flex items-center gap-4">
+              <span className="h-px w-8 bg-primary-accent/60 shrink-0" />
+              <span className="text-xs font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
+                Full Stack Software Engineer
+              </span>
+            </div>
 
-        {/* Call to Actions */}
-        <div className="hero-reveal-element flex flex-wrap gap-5 mt-6 items-center justify-center">
-          {/* View My Work (Primary Obsidian Glass Button) */}
-          <MagneticButton range={15}>
-            <Link
-              to="/projects"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(197,168,128,0.2)] transition-all duration-300 gap-2.5 group cursor-pointer relative overflow-hidden"
-            >
-              {/* Sleek Ambient Inner Glow */}
-              <span className="absolute inset-0 bg-gradient-to-r from-primary-accent/5 to-secondary-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <span className="relative z-10">View My Work</span>
-              <ArrowUpRight className="w-4 h-4 text-text-secondary group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 relative z-10" />
-            </Link>
-          </MagneticButton>
+            {/* Bio */}
+            <p className="hero-fade text-sm md:text-base text-text-secondary leading-relaxed font-light max-w-md">
+              Engineering premium, high-performance web applications — from
+              pixel-perfect interfaces to robust backend architectures and
+              scalable database systems.
+            </p>
 
-          {/* Download CV (Secondary Clean Border Button) */}
-          <MagneticButton range={15}>
-            <a
-              href="/DanishKhan_Resume.pdf"
-              download="DanishKhan_Resume.pdf"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-white/[0.08] bg-white/[0.01] hover:bg-white/[0.04] hover:border-white/20 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
-            >
-              Download CV
-            </a>
-          </MagneticButton>
+            {/* CTAs */}
+            <div className="hero-fade flex flex-wrap gap-4 items-center">
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-2.5 h-12 px-7 rounded-full bg-primary-accent text-[#0B0B0C] text-sm font-semibold tracking-wide transition-all duration-300 hover:bg-secondary-accent hover:shadow-[0_0_40px_rgba(197,168,128,0.35)] hover:-translate-y-0.5 select-none"
+              >
+                View My Work
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+
+              <a
+                href="/DanishKhan_Resume.pdf"
+                download="DanishKhan_Resume.pdf"
+                className="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/[0.1] bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/20 text-sm font-medium tracking-wide text-text-secondary hover:text-white transition-all duration-300 select-none"
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+
+          {/* ── RIGHT COLUMN — portrait card ── */}
+          <div className="hero-right hidden lg:flex flex-col items-center justify-center gap-6 relative">
+
+            {/* Portrait frame */}
+            <div className="relative group select-none">
+              {/* Wireframe offset */}
+              <div className="absolute inset-0 border border-primary-accent/20 rounded-[28px] translate-x-3.5 translate-y-3.5 transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2 -z-10" />
+
+              {/* Main portrait */}
+              <div className="w-[280px] xl:w-[320px] aspect-[3/4] rounded-[28px] overflow-hidden border border-white/[0.08] bg-secondary-bg relative shadow-[0_40px_80px_rgba(0,0,0,0.6)]">
+                <img
+                  src="/danish.jpeg"
+                  alt="Danish Khan"
+                  className="w-full h-full object-cover object-top scale-105 transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+                {/* Bottom gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+                {/* Hover-reveal name card */}
+                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 opacity-0 translate-y-3 transition-all duration-400 ease-out group-hover:opacity-100 group-hover:translate-y-0 flex items-center justify-between">
+                  <div>
+                    <p className="text-white text-xs font-mono font-bold uppercase tracking-widest">
+                      Danish Khan
+                    </p>
+                    <p className="text-[10px] text-text-secondary font-mono mt-0.5">
+                      Full Stack Developer
+                    </p>
+                  </div>
+                  <span className="text-sm">✦</span>
+                </div>
+              </div>
+
+              {/* Floating badge top-right */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-primary-accent/10 border border-primary-accent/20 backdrop-blur-md flex items-center justify-center shadow-[0_0_30px_rgba(197,168,128,0.15)]">
+                <div className="text-center">
+                  <p className="text-primary-accent font-bold text-lg font-clash-display leading-none">10</p>
+                  <p className="text-[8px] text-primary-accent/70 font-mono uppercase tracking-wider leading-tight">Mo. Exp</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Vertical role ticker */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/[0.06]">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary-accent animate-pulse shrink-0" />
+              <span className="text-[10px] font-mono tracking-[0.2em] text-text-secondary uppercase">
+                MERN · Next.js · TypeScript
+              </span>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      {/* Dynamic Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50 select-none animate-bounce duration-[1.5s] cursor-pointer">
-        <span className="text-[10px] font-mono tracking-widest text-text-secondary font-medium uppercase">
-          SCROLL DOWN
+      {/* ══════════════════════════════════
+          Bottom stat rail
+      ══════════════════════════════════ */}
+      <div className="relative z-10 border-t border-white/[0.05] max-w-7xl mx-auto w-full px-6 md:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/[0.05] py-5">
+          {stats.map((s, i) => (
+            <div key={i} className="hero-stat flex flex-col items-center gap-0.5 px-6">
+              <span className="text-xl md:text-2xl font-bold font-clash-display text-white">
+                {s.value}
+              </span>
+              <span className="text-[10px] font-mono tracking-[0.2em] text-text-secondary uppercase">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-24 left-8 z-20 hidden md:flex flex-col items-center gap-2 select-none">
+        <span
+          className="h-12 w-px bg-gradient-to-b from-transparent to-white/20"
+          style={{ animation: "scrollLine 2s ease-in-out infinite" }}
+        />
+        <span className="text-[9px] font-mono tracking-[0.3em] text-text-secondary uppercase rotate-90 origin-center translate-y-6">
+          Scroll
         </span>
-        <ArrowDown className="w-4 h-4 text-white" />
       </div>
+
+      <style>{`
+        @keyframes scrollLine {
+          0%, 100% { opacity: 0.3; transform: scaleY(1); }
+          50% { opacity: 1; transform: scaleY(1.3); }
+        }
+      `}</style>
     </section>
   );
 }
