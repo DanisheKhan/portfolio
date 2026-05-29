@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
 import {
   FaReact,
   FaNodeJs,
@@ -86,14 +87,39 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
     }
   };
 
-  /* ─── spotlight mouse-tracking for the card glow ─── */
+  /* ─── 3D tilt + spotlight mouse tracking ─── */
   const cardRef = useRef(null);
+
   const handleMouseMove = (e) => {
     const card = cardRef.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);   // -1 to 1
+    const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+    // Spotlight CSS vars
     card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
     card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+    // Smooth 3D tilt via GSAP
+    gsap.to(card, {
+      rotateY: dx * 6,
+      rotateX: -dy * 5,
+      duration: 0.4,
+      ease: "power2.out",
+      transformPerspective: 900,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    gsap.to(card, {
+      rotateY: 0,
+      rotateX: 0,
+      duration: 0.6,
+      ease: "elastic.out(1, 0.5)",
+    });
   };
 
   /* ─── stagger children ─── */
@@ -115,11 +141,13 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
     <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      className={`skill-panel relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-2xl p-7 md:p-9 flex flex-col gap-7 transition-all duration-500 hover:border-white/[0.12] ${className}`}
+      style={{ transformStyle: "preserve-3d" }}
+      className={`skill-panel relative overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-2xl p-7 md:p-9 flex flex-col gap-7 transition-[border-color] duration-500 hover:border-white/[0.12] ${className}`}
     >
       {/* Spotlight radial glow that follows cursor */}
       <div className="pointer-events-none absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-500 skill-spotlight" />
@@ -151,8 +179,7 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
             <motion.div
               key={i}
               variants={chip}
-              whileHover={{ y: -5, scale: 1.04 }}
-              className="skill-chip group/chip relative overflow-hidden flex items-center gap-3 px-4 py-3 rounded-xl border border-white/[0.06] bg-white/[0.02] cursor-default select-none transition-all duration-300 hover:border-white/[0.16]"
+              className="skill-chip group/chip relative overflow-hidden flex items-center gap-3 px-4 py-3 rounded-xl border border-white/[0.06] bg-white/[0.02] cursor-default select-none transition-all duration-300 hover:border-white/[0.14] hover:-translate-y-[3px]"
               style={{ "--glow": color }}
             >
               {/* chip glow blob */}
