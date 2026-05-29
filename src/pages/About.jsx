@@ -62,13 +62,43 @@ export default function About() {
           {/* Masked Portrait Photo Reveal */}
           <div className="lg:col-span-5 flex justify-center items-center relative">
             <ScrollReveal direction="none" delay={0.3}>
-              <div className="w-[280px] sm:w-[320px] md:w-[380px] h-[320px] sm:h-[380px] md:h-[440px] overflow-hidden mask-hexagon bg-card-bg border border-border-color cursor-pointer relative shadow-lg">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
-                  alt="Danish Portrait"
-                  className="w-full h-full object-cover origin-top scale-105"
-                />
+              
+              {/* Classic Portrait Frame Wrapper */}
+              <div className="relative group cursor-pointer w-[280px] sm:w-[320px] md:w-[360px] aspect-[4/5] mx-auto lg:mx-0">
+                
+                {/* Background Offset Outline Frame (Classic Editorial Design) */}
+                <div className="absolute inset-0 border border-white/10 rounded-[32px] translate-x-5 translate-y-5 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:translate-y-3 group-hover:border-primary-accent/40 -z-10" />
+
+                {/* Glowing Accent Border Container */}
+                <div className="w-full h-full rounded-[32px] bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-[1.5px] transition-all duration-500 ease-out group-hover:from-primary-accent/50 group-hover:to-secondary-accent/50 group-hover:shadow-[0_20px_50px_rgba(108,99,255,0.2)]">
+                  
+                  {/* Inner Image Mask and Layer */}
+                  <div className="w-full h-full overflow-hidden rounded-[30px] bg-secondary-bg relative">
+                    <img
+                      src="/danish.jpeg"
+                      alt="Danish Portrait"
+                      className="w-full h-full object-cover origin-top scale-105 transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    
+                    {/* Elegant overlay vignette on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
+                    
+                    {/* Tech corner accents or styling inside the frame */}
+                    <div className="absolute bottom-4 left-5 right-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 flex justify-between items-center z-10">
+                      <div className="flex flex-col">
+                        <span className="text-white text-xs font-mono font-semibold tracking-wider uppercase">Danish Khan</span>
+                        <span className="text-[10px] text-text-secondary font-mono">Full Stack Developer</span>
+                      </div>
+                      <div className="w-7 h-7 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/10 text-white text-[10px]">
+                        ✨
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
+
             </ScrollReveal>
           </div>
         </section>
