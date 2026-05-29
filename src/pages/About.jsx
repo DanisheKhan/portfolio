@@ -319,7 +319,7 @@ export default function About() {
                       Bachelor of Technology
                     </h3>
                     <p className="text-sm text-primary-accent/80 font-mono">
-                      AI & Computer Science
+                      Computer Science
                     </p>
                     <p className="text-xs text-text-secondary font-mono">
                       Raisoni Engineering College, Maharashtra
@@ -330,7 +330,7 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-4 mt-2">
                   {[
                     { label: "Expected", value: "June 2026" },
-                    { label: "CGPA", value: "8.9 / 10.0" },
+                    { label: "CGPA", value: "7.79 / 10.0" },
                     { label: "Timezone", value: "IST (UTC+5:30)" },
                     { label: "Response", value: "< 24 hours" },
                   ].map((d, i) => (
