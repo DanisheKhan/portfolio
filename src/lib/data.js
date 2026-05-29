@@ -391,33 +391,33 @@ export const EXPERIENCE_DATA = [
 export const SERVICES_DATA = [
   {
     title: "Full Stack Development",
-    icon: "database",
-    description: "Constructing robust, secure backends connected to pixel-perfect reactive client views."
+    icon: "code",
+    description: "Constructing robust end-to-end applications from database design to pixel-perfect client views."
+  },
+  {
+    title: "Frontend Development",
+    icon: "layout",
+    description: "Crafting highly responsive, interactive, and visually stunning user interfaces using React and modern CSS."
+  },
+  {
+    title: "Backend Development",
+    icon: "server",
+    description: "Building secure, scalable, and high-performance server architectures and business logic."
   },
   {
     title: "UI/UX Interface Design",
-    icon: "layout",
+    icon: "compass",
     description: "Designing award-winning dark interfaces emphasizing visual hierarchies and micro-motions."
   },
   {
     title: "Database Systems",
-    icon: "server",
+    icon: "database",
     description: "Creating highly efficient relational and document structures optimizing querying pipelines."
   },
   {
     title: "RESTful API Engineering",
-    icon: "code",
-    description: "Designing scalable endpoint infrastructures featuring fast auth and strict request schemas."
-  },
-  {
-    title: "Performance Diagnostics",
     icon: "zap",
-    description: "Auditing application runtime behaviors, media streams, and load paths for ultimate velocity."
-  },
-  {
-    title: "Architecture Consulting",
-    icon: "compass",
-    description: "Structuring clean repository setups, CI workflows, and scalable component libraries."
+    description: "Designing scalable endpoint infrastructures featuring fast auth and strict request schemas."
   }
 ];
 
