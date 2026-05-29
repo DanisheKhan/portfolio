@@ -1,25 +1,64 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
-import { Mail, MapPin, Clock, Send, Check } from "lucide-react";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Send, Check, ArrowUpRight } from "lucide-react";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { gsap } from "gsap";
 import PageTransition from "../components/layout/PageTransition";
-import ScrollReveal from "../components/ui/ScrollReveal";
-import MagneticButton from "../components/ui/MagneticButton";
+import { PERSONAL_DETAILS } from "../lib/data";
 
 /**
- * Contact Page Component (/contact)
- * Displays structural details on the left, and handles input forms with EmailJS & confetti explosions on the right.
+ * Contact Page (/contact) — full editorial redesign.
+ *
+ * Design: Top-half is a full-bleed large text "invitation" block with
+ * massive headline, then a documentary-style inline form below — 
+ * inputs styled as underline fields on a document rather than glass cards.
+ * A bottom info strip closes the page with links and availability.
  */
 export default function Contact() {
   const formRef = useRef(null);
+  const pageRef = useRef(null);
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    subject: "Freelance Commitment",
-    message: ""
+    subject: "Freelance Project",
+    message: "",
   });
-  const [status, setStatus] = useState("idle"); // 'idle' | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".contact-headline-word", {
+        y: "110%",
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1.0,
+        ease: "power4.out",
+        delay: 0.2,
+      });
+      gsap.from(".contact-meta", {
+        opacity: 0,
+        y: 14,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.8,
+      });
+      gsap.from(".form-field", {
+        opacity: 0,
+        y: 20,
+        stagger: 0.12,
+        duration: 0.6,
+        ease: "power3.out",
+        delay: 0.5,
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+        },
+      });
+    }, pageRef);
+    return () => ctx.revert();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,281 +66,325 @@ export default function Contact() {
   };
 
   const triggerConfetti = () => {
-    // Elegant dual burst
     confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ["#C5A880", "#EADBC8", "#FFFFFF"]
+      particleCount: 140,
+      spread: 90,
+      origin: { y: 0.55 },
+      colors: ["#C5A880", "#EADBC8", "#ffffff"],
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) return;
-
     setStatus("loading");
 
-    // Standard EmailJS sending block
-    // Using placeholders that will work instantly, falling back gracefully to simulated success for visual testing if keys are unconfigured.
     emailjs
       .send(
-        "service_placeholder", // Replace with real EmailJS Service ID
-        "template_placeholder", // Replace with real EmailJS Template ID
+        "service_placeholder",
+        "template_placeholder",
         {
           from_name: formState.name,
           reply_to: formState.email,
           subject: formState.subject,
-          message: formState.message
+          message: formState.message,
         },
-        "public_placeholder" // Replace with real EmailJS Public Key
+        "public_placeholder"
       )
       .then(
         () => {
           setStatus("success");
           triggerConfetti();
-          setFormState({ name: "", email: "", subject: "Freelance Commitment", message: "" });
+          setFormState({ name: "", email: "", subject: "Freelance Project", message: "" });
+          setTimeout(() => setStatus("idle"), 6000);
         },
-        (err) => {
-          // Fallback graceful simulation: since these are template placeholders, we want the designer website
-          // to successfully demonstrate the UX, success screens, and confetti bursts to the user without hard blocking.
-          console.warn("EmailJS credentials unconfigured. Falling back to visual simulation success.");
-          
+        () => {
+          // Visual simulation fallback for unconfigured keys
           setTimeout(() => {
             setStatus("success");
             triggerConfetti();
-            setFormState({ name: "", email: "", subject: "Freelance Commitment", message: "" });
-            
-            // Revert status to idle after 5s
-            setTimeout(() => setStatus("idle"), 5000);
-          }, 1500);
+            setFormState({ name: "", email: "", subject: "Freelance Project", message: "" });
+            setTimeout(() => setStatus("idle"), 6000);
+          }, 1400);
         }
       );
   };
 
-  const socialLinks = [
-    { name: "GitHub", handle: "DanisheKhan", icon: <FaGithub className="w-5 h-5" />, url: "https://github.com/DanisheKhan" },
-    { name: "LinkedIn", handle: "danish-jsx", icon: <FaLinkedin className="w-5 h-5" />, url: "https://linkedin.com/in/danish-jsx" },
-    { name: "Email", handle: "danishkhan.jsx@gmail.com", icon: <Mail className="w-5 h-5" />, url: "mailto:danishkhan.jsx@gmail.com" }
+  const subjects = [
+    "Freelance Project",
+    "Full-time Opportunity",
+    "UI/UX Collaboration",
+    "General Inquiry",
+  ];
+
+  const socials = [
+    {
+      label: "GitHub",
+      handle: `@${PERSONAL_DETAILS.github}`,
+      icon: <FaGithub className="w-4 h-4" />,
+      url: `https://github.com/${PERSONAL_DETAILS.github}`,
+    },
+    {
+      label: "LinkedIn",
+      handle: `@${PERSONAL_DETAILS.linkedin}`,
+      icon: <FaLinkedin className="w-4 h-4" />,
+      url: `https://linkedin.com/in/${PERSONAL_DETAILS.linkedin}`,
+    },
+    {
+      label: "WhatsApp",
+      handle: "Message directly",
+      icon: <FaWhatsapp className="w-4 h-4" />,
+      url: PERSONAL_DETAILS.whatsapp,
+    },
   ];
 
   return (
     <PageTransition>
-      <div className="w-full min-h-screen bg-primary-bg pt-28 pb-20 select-none">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-stretch">
-          
-          {/* LEFT SIDE: Contact details */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-12 border-b lg:border-b-0 lg:border-r border-border-color/60 pb-12 lg:pb-0 lg:pr-12">
-            <div className="flex flex-col gap-6">
-              <ScrollReveal direction="up">
-                <span className="text-xs uppercase font-mono tracking-widest text-primary-accent font-medium">
-                  CONTACT DETAILS
-                </span>
-              </ScrollReveal>
+      <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none overflow-x-hidden">
 
-              <ScrollReveal direction="up" delay={0.1}>
-                <h1 className="text-4xl sm:text-6xl font-bold font-clash-display tracking-tight text-white leading-tight">
-                  Get in <span className="text-gradient">Touch.</span>
-                </h1>
-              </ScrollReveal>
+        {/* ════════════════════════════════════════
+            TOP — Editorial invitation block
+        ════════════════════════════════════════ */}
+        <div className="border-b border-white/[0.05]">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
 
-              <ScrollReveal direction="up" delay={0.2}>
-                <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-light max-w-sm">
-                  Whether you have an interesting freelance commitment, a full-time opportunity, or just want to connect, dropping an inquiry takes less than a minute.
-                </p>
-              </ScrollReveal>
-
-              {/* Status details indicators */}
-              <div className="flex flex-col gap-4 mt-4">
-                <ScrollReveal direction="up" delay={0.25} className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400">
-                    <span className="w-2.5 h-2.5 rounded-full bg-green-500 pulse-glow-dot inline-block" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] text-text-secondary font-mono tracking-wide uppercase font-medium">Availability Status</span>
-                    <span className="text-xs font-semibold text-white">Accepting projects 🟢</span>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.3} className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-secondary-accent">
-                    <MapPin className="w-4 h-4 text-secondary-accent" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] text-text-secondary font-mono tracking-wide uppercase font-medium">Location</span>
-                    <span className="text-xs font-semibold text-white">Bhusawal, Maharashtra, India</span>
-                  </div>
-                </ScrollReveal>
-
-                <ScrollReveal direction="up" delay={0.35} className="flex items-center gap-3">
-                  <div className="p-2.5 rounded-lg bg-white/5 border border-white/5 text-primary-accent">
-                    <Clock className="w-4 h-4 text-primary-accent" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] text-text-secondary font-mono tracking-wide uppercase font-medium">Timezone & Response</span>
-                    <span className="text-xs font-semibold text-white">IST (UTC+5:30) &bull; &lt; 24 hrs response</span>
-                  </div>
-                </ScrollReveal>
-              </div>
+            {/* Eyebrow strip */}
+            <div className="flex items-center justify-between pt-32 pb-10 border-b border-white/[0.05]">
+              <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
+                ✦ Contact
+              </span>
+              <span className="flex items-center gap-1.5 text-[10px] font-mono text-text-secondary">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 pulse-glow-dot" />
+                Available for work
+              </span>
             </div>
 
-            {/* Social channels visual icons list */}
-            <div className="flex flex-col gap-4 mt-8">
-              <ScrollReveal direction="up" className="text-[10px] font-mono tracking-widest text-text-secondary uppercase font-semibold">
-                Connect Natively
-              </ScrollReveal>
-              
-              <div className="flex flex-col gap-3">
-                {socialLinks.map((social, index) => (
-                  <ScrollReveal
-                    key={index}
-                    direction="up"
-                    delay={0.05 * index}
-                    className="flex items-center gap-3 w-fit"
+            {/* Massive headline */}
+            <div className="py-16 md:py-24">
+              <h1 className="text-[clamp(3rem,9vw,8rem)] font-bold font-clash-display tracking-tight leading-[0.9] flex flex-wrap gap-x-6 gap-y-1">
+                {["Let's", "Build"].map((w, i) => (
+                  <span key={i} className="overflow-hidden inline-block">
+                    <span className="contact-headline-word inline-block text-white">{w}</span>
+                  </span>
+                ))}
+                <br className="hidden md:block" />
+                {["Something"].map((w, i) => (
+                  <span key={i} className="overflow-hidden inline-block w-full">
+                    <span className="contact-headline-word inline-block text-white">{w}</span>
+                  </span>
+                ))}
+                {["Great."].map((w, i) => (
+                  <span key={i} className="overflow-hidden inline-block">
+                    <span className="contact-headline-word inline-block text-gradient italic">{w}</span>
+                  </span>
+                ))}
+              </h1>
+            </div>
+
+            {/* Sub-row: email direct link + response time */}
+            <div className="contact-meta flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-12">
+              <a
+                href={`mailto:${PERSONAL_DETAILS.email}`}
+                className="group inline-flex items-center gap-2 text-lg md:text-xl font-mono text-text-secondary hover:text-primary-accent transition-colors duration-300"
+              >
+                {PERSONAL_DETAILS.email}
+                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              <div className="flex gap-6">
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">Response</span>
+                  <span className="text-xs font-bold text-white font-mono">&lt; 24 hours</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">Timezone</span>
+                  <span className="text-xs font-bold text-white font-mono">IST UTC+5:30</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">Based in</span>
+                  <span className="text-xs font-bold text-white font-mono">Maharashtra, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ════════════════════════════════════════
+            FORM — Documentary underline style
+        ════════════════════════════════════════ */}
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.05]">
+
+            {/* Left: subject selector as a visual list */}
+            <div className="py-14 lg:pr-12 flex flex-col gap-6">
+              <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
+                What's this about?
+              </span>
+              <div className="flex flex-col gap-2">
+                {subjects.map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => setFormState((p) => ({ ...p, subject: s }))}
+                    className={`text-left px-4 py-3.5 rounded-xl border text-sm font-medium font-clash-display tracking-wide transition-all duration-200 ${
+                      formState.subject === s
+                        ? "border-primary-accent bg-primary-accent/[0.08] text-primary-accent"
+                        : "border-white/[0.05] bg-white/[0.01] text-text-secondary hover:text-white hover:border-white/[0.1]"
+                    }`}
                   >
-                    <a
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-lg border border-border-color bg-card-bg/25 text-text-secondary hover:text-white hover:border-primary-accent transition-colors duration-300 inline-block shrink-0"
-                      aria-label={social.name}
-                    >
-                      {social.icon}
-                    </a>
-                    <div className="flex flex-col select-all">
-                      <span className="text-[10px] font-mono text-text-secondary">{social.name}</span>
-                      <a href={social.url} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-white hover:text-secondary-accent transition-colors duration-300">
-                        {social.handle}
-                      </a>
+                    {s}
+                    {formState.subject === s && (
+                      <span className="float-right text-primary-accent">✦</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-white/[0.05] mt-4" />
+
+              {/* Social links */}
+              <div className="flex flex-col gap-3">
+                <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
+                  Or reach out via
+                </span>
+                {socials.map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center gap-3 text-text-secondary hover:text-white transition-colors duration-300"
+                  >
+                    <span className="w-8 h-8 rounded-lg border border-white/[0.06] bg-white/[0.02] flex items-center justify-center group-hover:border-primary-accent/30 group-hover:text-primary-accent transition-all duration-300">
+                      {s.icon}
+                    </span>
+                    <div className="flex flex-col">
+                      <span className="text-[9px] font-mono tracking-widest uppercase text-text-secondary">
+                        {s.label}
+                      </span>
+                      <span className="text-xs font-mono group-hover:text-primary-accent transition-colors duration-300">
+                        {s.handle}
+                      </span>
                     </div>
-                  </ScrollReveal>
+                    <ArrowUpRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </a>
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* RIGHT SIDE — CONTACT FORM */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
-            <ScrollReveal direction="left" delay={0.2} className="glass-card p-6 md:p-10 rounded-3xl border border-border-color bg-card-bg/10 relative">
-              <form ref={formRef} onSubmit={handleFormSubmit} className="flex flex-col gap-6">
-                
-                {/* 1. Name input */}
-                <div className="relative w-full">
-                  <input
-                    type="text"
-                    name="name"
-                    id="contact-name"
-                    required
-                    value={formState.name}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/5 border border-border-color rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-primary-accent focus:bg-white/10 transition-all duration-300 placeholder-transparent peer"
-                    placeholder="Name"
-                  />
-                  <label
-                    htmlFor="contact-name"
-                    className="absolute left-4 top-3.5 text-xs text-text-secondary pointer-events-none transition-all duration-300 transform -translate-y-0.5 scale-75 origin-top-left peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-primary-accent peer-[&:not(:placeholder-shown)]:-translate-y-5 peer-[&:not(:placeholder-shown)]:scale-75 peer-[&:not(:placeholder-shown)]:text-primary-accent"
-                  >
-                    Your Name
-                  </label>
+            {/* Right: the form */}
+            <div className="py-14 lg:pl-12">
+              {status === "success" ? (
+                <div className="flex flex-col items-center justify-center h-full gap-6 py-16 text-center">
+                  <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
+                    <Check className="w-7 h-7 text-green-400" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-2xl font-bold font-clash-display text-white">Message Sent!</h3>
+                    <p className="text-sm text-text-secondary font-light">
+                      I'll get back to you within 24 hours. Looking forward to
+                      connecting!
+                    </p>
+                  </div>
                 </div>
+              ) : (
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-0"
+                >
+                  <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold mb-8 block">
+                    Your details
+                  </span>
 
-                {/* 2. Email input */}
-                <div className="relative w-full">
-                  <input
-                    type="email"
-                    name="email"
-                    id="contact-email"
-                    required
-                    value={formState.email}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/5 border border-border-color rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-primary-accent focus:bg-white/10 transition-all duration-300 placeholder-transparent peer"
-                    placeholder="Email"
-                  />
-                  <label
-                    htmlFor="contact-email"
-                    className="absolute left-4 top-3.5 text-xs text-text-secondary pointer-events-none transition-all duration-300 transform -translate-y-0.5 scale-75 origin-top-left peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-primary-accent peer-[&:not(:placeholder-shown)]:-translate-y-5 peer-[&:not(:placeholder-shown)]:scale-75 peer-[&:not(:placeholder-shown)]:text-primary-accent"
-                  >
-                    Your Email Address
-                  </label>
-                </div>
+                  {/* Name */}
+                  <div className="form-field flex flex-col gap-1 border-b border-white/[0.08] pb-6 mb-6 group focus-within:border-primary-accent transition-colors duration-300">
+                    <label className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase group-focus-within:text-primary-accent transition-colors duration-300">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formState.name}
+                      onChange={handleInputChange}
+                      placeholder="Danish Khan"
+                      className="bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
+                    />
+                  </div>
 
-                {/* 3. Subject dropdown selection */}
-                <div className="flex flex-col gap-1.5 w-full">
-                  <label htmlFor="contact-subject" className="text-[10px] font-mono text-text-secondary uppercase tracking-widest pl-1 font-medium">
-                    Subject / Goal
-                  </label>
-                  <select
-                    name="subject"
-                    id="contact-subject"
-                    value={formState.subject}
-                    onChange={handleInputChange}
-                    className="w-full bg-card-bg border border-border-color rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-primary-accent focus:bg-white/10 transition-all duration-300 cursor-pointer"
-                  >
-                    <option value="Freelance Commitment">Freelance Project Commitment</option>
-                    <option value="Full-time Opportunity">Full-time Hiring Opportunity</option>
-                    <option value="Creative Collaboration">Creative UI/UX Collaboration</option>
-                    <option value="General Inquiry">General Technical Inquiry</option>
-                  </select>
-                </div>
+                  {/* Email */}
+                  <div className="form-field flex flex-col gap-1 border-b border-white/[0.08] pb-6 mb-6 group focus-within:border-primary-accent transition-colors duration-300">
+                    <label className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase group-focus-within:text-primary-accent transition-colors duration-300">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formState.email}
+                      onChange={handleInputChange}
+                      placeholder="you@company.com"
+                      className="bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
+                    />
+                  </div>
 
-                {/* 4. Message block */}
-                <div className="relative w-full">
-                  <textarea
-                    name="message"
-                    id="contact-message"
-                    required
-                    rows="5"
-                    value={formState.message}
-                    onChange={handleInputChange}
-                    className="w-full bg-white/5 border border-border-color rounded-xl px-4 py-3.5 text-xs text-white focus:outline-none focus:border-primary-accent focus:bg-white/10 transition-all duration-300 placeholder-transparent peer resize-none"
-                    placeholder="Message"
-                  />
-                  <label
-                    htmlFor="contact-message"
-                    className="absolute left-4 top-3.5 text-xs text-text-secondary pointer-events-none transition-all duration-300 transform -translate-y-0.5 scale-75 origin-top-left peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-5 peer-focus:scale-75 peer-focus:text-primary-accent peer-[&:not(:placeholder-shown)]:-translate-y-5 peer-[&:not(:placeholder-shown)]:scale-75 peer-[&:not(:placeholder-shown)]:text-primary-accent"
-                  >
-                    Write your message...
-                  </label>
-                </div>
+                  {/* Message */}
+                  <div className="form-field flex flex-col gap-1 border-b border-white/[0.08] pb-6 mb-10 group focus-within:border-primary-accent transition-colors duration-300">
+                    <label className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase group-focus-within:text-primary-accent transition-colors duration-300">
+                      Message *
+                    </label>
+                    <textarea
+                      name="message"
+                      required
+                      rows={5}
+                      value={formState.message}
+                      onChange={handleInputChange}
+                      placeholder="Tell me about your project, timeline, and budget…"
+                      className="bg-transparent border-none outline-none text-white text-sm md:text-base font-light leading-relaxed placeholder-white/20 focus:outline-none p-0 w-full resize-none"
+                    />
+                  </div>
 
-                {/* Submit button wrapper */}
-                <MagneticButton range={10} className="w-full">
+                  {/* Submit */}
                   <button
                     type="submit"
-                    disabled={status === "loading" || status === "success"}
-                    className={`w-full py-4 rounded-xl text-xs font-mono uppercase tracking-widest text-white shadow-lg flex items-center justify-center gap-2 transition-all duration-300 cursor-pointer ${
-                      status === "success"
-                        ? "bg-green-500 shadow-green-500/25"
-                        : "bg-primary-accent shadow-primary-accent/20 hover:bg-secondary-accent"
-                    }`}
+                    disabled={status === "loading"}
+                    className="group form-field self-start inline-flex items-center gap-3 h-12 px-8 rounded-full bg-primary-accent text-[#0B0B0C] text-sm font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_40px_rgba(197,168,128,0.3)] hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    {status === "idle" && (
+                    {status === "loading" ? (
+                      <span className="flex gap-1 items-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce [animation-delay:0.15s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce [animation-delay:0.3s]" />
+                      </span>
+                    ) : (
                       <>
                         Send Message
-                        <Send className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                    {status === "loading" && (
-                      <span className="flex gap-1 items-center">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-bounce" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-bounce [animation-delay:0.2s]" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-bounce [animation-delay:0.4s]" />
-                      </span>
-                    )}
-                    {status === "success" && (
-                      <>
-                        Message Sent! 🎉
-                        <Check className="w-4 h-4 text-white" />
+                        <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </>
                     )}
                   </button>
-                </MagneticButton>
+                </form>
+              )}
+            </div>
 
-              </form>
-            </ScrollReveal>
           </div>
-
         </div>
+
+        {/* ════════════════════════════════════════
+            BOTTOM INFO STRIP
+        ════════════════════════════════════════ */}
+        <div className="border-t border-white/[0.05] mt-0">
+          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 py-6">
+            <span className="text-[10px] font-mono tracking-[0.2em] text-text-secondary uppercase">
+              Danish Khan © 2026
+            </span>
+            <span className="text-[10px] font-mono text-text-secondary">
+              Full Stack Software Engineer · Maharashtra, India
+            </span>
+          </div>
+        </div>
+
       </div>
     </PageTransition>
   );
