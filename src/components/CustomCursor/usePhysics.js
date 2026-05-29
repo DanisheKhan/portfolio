@@ -114,6 +114,15 @@ export default function usePhysics() {
       ring.style.transform = `matrix(${a}, ${b}, ${c}, ${d}, ${ringPos.current.x}, ${ringPos.current.y})`;
       ring.style.opacity = opacityFactor.current;
 
+      // Automatically find child spans (broadcast tracking labels) and apply counter-transform matrices
+      const textSpan = ring.querySelector("span");
+      if (textSpan) {
+        const textOpacity = parseFloat(textSpan.style.opacity) || 0;
+        if (textOpacity > 0.01) {
+          textSpan.style.transform = `rotate(${-angle * (180 / Math.PI)}deg) scale(${1 / scaleX}, ${1 / scaleY})`;
+        }
+      }
+
       // Store historical positions
       lastRingPos.current.x = ringPos.current.x;
       lastRingPos.current.y = ringPos.current.y;
