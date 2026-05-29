@@ -18,6 +18,9 @@ import Contact from "./pages/Contact";
 // Styling
 import "./App.css";
 
+// Global Animated Custom Cursor
+import CustomCursor from "./components/ui/CustomCursor";
+
 /**
  * AppContent Sub-component
  * Separated to allow useLocation hooks within the Router Context boundary.
@@ -123,6 +126,7 @@ function AppContent() {
   
             </div>
           </SmoothScroll>
+          <CustomCursor />
         </>
       )}
     </>
