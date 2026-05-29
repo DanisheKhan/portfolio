@@ -266,3 +266,21 @@ input:focus, textarea:focus, select:focus {
 .animate-blink-cursor {
   animation: blink-cursor 0.8s step-end infinite;
 }
+
+/* ── Skill panel spotlight (cursor-tracked radial glow) ── */
+.skill-panel {
+  --mx: 50%;
+  --my: 50%;
+}
+.skill-spotlight {
+  background: radial-gradient(
+    400px circle at var(--mx) var(--my),
+    rgba(197, 168, 128, 0.07) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.skill-panel:hover .skill-spotlight {
+  opacity: 1;
+}
