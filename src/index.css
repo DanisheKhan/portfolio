@@ -284,3 +284,29 @@ input:focus, textarea:focus, select:focus {
 .skill-panel:hover .skill-spotlight {
   opacity: 1;
 }
+
+/* ── Marquee infinite scroll animations ── */
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-left {
+  animation: marquee-left 28s linear infinite;
+  width: max-content;
+}
+
+.marquee-right {
+  animation: marquee-right 28s linear infinite;
+  width: max-content;
+}
+
+.marquee-left:hover,
+.marquee-right:hover {
+  animation-play-state: paused;
+}
