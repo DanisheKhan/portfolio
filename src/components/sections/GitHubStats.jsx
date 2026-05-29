@@ -1,37 +1,37 @@
 import React from "react";
-import { GitBranch, Star, Eye, Code2 } from "lucide-react";
+import { GitBranch, Star, Users, Code2 } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
+import { useGithubData } from "../../hooks/useGithubData";
 
 /**
  * GitHubStats Section Component
  * Render custom-designed stats, contributions grids, and language breakdowns under DanisheKhan.
  */
 export default function GitHubStats() {
+  const { data, loading } = useGithubData("DanisheKhan");
+
   // Generate random visual contributions colors for matrix grid
   const gridColors = ["bg-white/5", "bg-green-900/30", "bg-green-700/40", "bg-green-500/60", "bg-green-400/80"];
-  const daysInYear = Array.from({ length: 180 }, () => {
-    // Bias towards low-medium contributions
-    const r = Math.random();
-    if (r < 0.4) return gridColors[0];
-    if (r < 0.7) return gridColors[1];
-    if (r < 0.88) return gridColors[2];
-    if (r < 0.97) return gridColors[3];
-    return gridColors[4];
-  });
+  
+  // Use real daily counts or fallback to an empty grid if loading
+  const daysInYear = loading || !data 
+    ? Array.from({ length: 180 }, () => gridColors[0]) 
+    : data.dailyCounts.map(count => {
+        if (count === 0) return gridColors[0];
+        if (count < 3) return gridColors[1];
+        if (count < 6) return gridColors[2];
+        if (count < 10) return gridColors[3];
+        return gridColors[4];
+      });
 
   const gitStats = [
-    { label: "Total Contributions", value: "1,248", icon: <GitBranch className="w-5 h-5 text-primary-accent" /> },
-    { label: "Public Repositories", value: "32", icon: <Code2 className="w-5 h-5 text-secondary-accent" /> },
-    { label: "GitHub Stars", value: "48", icon: <Star className="w-5 h-5 text-yellow-400" /> },
-    { label: "Profile Views", value: "2,482", icon: <Eye className="w-5 h-5 text-primary-accent" /> }
+    { label: "Total Contributions", value: loading ? "..." : data?.totalContributions?.toLocaleString() || "0", icon: <GitBranch className="w-5 h-5 text-primary-accent" /> },
+    { label: "Public Repositories", value: loading ? "..." : data?.publicRepos?.toLocaleString() || "0", icon: <Code2 className="w-5 h-5 text-secondary-accent" /> },
+    { label: "Current Streak", value: loading ? "..." : `${data?.currentStreak || 0} Days`, icon: <Star className="w-5 h-5 text-orange-400" /> },
+    { label: "Longest Streak", value: loading ? "..." : `${data?.longestStreak || 0} Days`, icon: <Star className="w-5 h-5 text-yellow-400" /> }
   ];
 
-  const languages = [
-    { name: "JavaScript", percent: 65, color: "bg-yellow-400" },
-    { name: "React / HTML5", percent: 20, color: "bg-secondary-accent" },
-    { name: "CSS / Tailwind", percent: 10, color: "bg-primary-accent" },
-    { name: "Database / SQL", percent: 5, color: "bg-green-500" }
-  ];
+  const languages = loading || !data ? [] : data.languages;
 
   return (
     <section className="relative w-full py-20 md:py-32 bg-primary-bg overflow-hidden select-none">
@@ -88,35 +88,43 @@ export default function GitHubStats() {
             <ScrollReveal
               direction="up"
               delay={0.2}
-              className="glass-card p-6 rounded-2xl border border-border-color bg-card-bg/25 flex flex-col gap-6"
+              className="glass-card p-6 rounded-2xl border border-border-color bg-card-bg/25 flex flex-col gap-6 min-h-[180px]"
             >
               <h3 className="text-sm font-bold text-white uppercase font-mono tracking-widest">
                 Language Breakdown
               </h3>
               
-              {/* Stacked bar visual representation */}
-              <div className="w-full h-3 rounded-full overflow-hidden flex bg-border-color">
-                {languages.map((lang, idx) => (
-                  <div
-                    key={idx}
-                    className={`h-full ${lang.color}`}
-                    style={{ width: `${lang.percent}%` }}
-                  />
-                ))}
-              </div>
-
-              {/* Language labels grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {languages.map((lang, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <span className={`w-2.5 h-2.5 rounded-full ${lang.color} inline-block`} />
-                    <div className="flex flex-col">
-                      <span className="text-xs text-text-primary font-medium">{lang.name}</span>
-                      <span className="text-[10px] text-text-secondary font-mono">{lang.percent}%</span>
-                    </div>
+              {loading ? (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-full border-2 border-primary-accent border-t-transparent animate-spin" />
+                </div>
+              ) : (
+                <>
+                  {/* Stacked bar visual representation */}
+                  <div className="w-full h-3 rounded-full overflow-hidden flex bg-border-color">
+                    {languages.map((lang, idx) => (
+                      <div
+                        key={idx}
+                        className={`h-full ${lang.color}`}
+                        style={{ width: `${lang.percent}%` }}
+                      />
+                    ))}
                   </div>
-                ))}
-              </div>
+
+                  {/* Language labels grid */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {languages.map((lang, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <span className={`w-2.5 h-2.5 rounded-full ${lang.color} inline-block shrink-0`} />
+                        <div className="flex flex-col">
+                          <span className="text-xs text-text-primary font-medium truncate">{lang.name}</span>
+                          <span className="text-[10px] text-text-secondary font-mono">{lang.percent}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
             </ScrollReveal>
           </div>
 
@@ -148,18 +156,25 @@ export default function GitHubStats() {
               </div>
 
               {/* Contribution Grid Swarm */}
-              <div className="grid grid-cols-[repeat(26,_minmax(0,_1fr))] gap-[3px] md:gap-[5px] w-full max-w-full overflow-hidden">
-                {daysInYear.map((colorVal, idx) => (
-                  <div
-                    key={idx}
-                    className={`aspect-square w-full rounded-[2px] transition-transform duration-300 hover:scale-125 hover:z-10 cursor-pointer ${colorVal}`}
-                  />
-                ))}
+              <div className="relative">
+                {loading && (
+                   <div className="absolute inset-0 z-20 flex items-center justify-center bg-card-bg/50 backdrop-blur-sm rounded-xl">
+                      <div className="w-8 h-8 rounded-full border-2 border-primary-accent border-t-transparent animate-spin" />
+                   </div>
+                )}
+                <div className="grid grid-cols-[repeat(26,_minmax(0,_1fr))] gap-[3px] md:gap-[5px] w-full max-w-full overflow-hidden">
+                  {daysInYear.map((colorVal, idx) => (
+                    <div
+                      key={idx}
+                      className={`aspect-square w-full rounded-[2px] transition-transform duration-300 hover:scale-125 hover:z-10 cursor-pointer ${colorVal}`}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Map Guide Labels */}
               <div className="flex justify-between items-center text-[10px] font-mono text-text-secondary pt-4 border-t border-border-color/60">
-                <span>Jan</span>
+                <span>6 Months Ago</span>
                 <div className="flex items-center gap-1.5">
                   <span>Less</span>
                   <span className="w-2.5 h-2.5 rounded-[1px] bg-white/5" />
@@ -169,7 +184,7 @@ export default function GitHubStats() {
                   <span className="w-2.5 h-2.5 rounded-[1px] bg-green-400/80" />
                   <span>More</span>
                 </div>
-                <span>Jun</span>
+                <span>Today</span>
               </div>
             </ScrollReveal>
           </div>
