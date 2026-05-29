@@ -34,7 +34,7 @@ export default function ContactCTA() {
       {/* Gold glow — bottom-center */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] bg-primary-accent/[0.07] blur-[80px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-16 sm:py-20 md:py-28 relative z-10">
 
         {/* ── Top label ── */}
         <motion.span
@@ -52,7 +52,7 @@ export default function ContactCTA() {
             <motion.div {...fadeUp(0.05)} className="overflow-hidden">
               <h2
                 className="font-bold font-clash-display tracking-tight text-white leading-[0.9] uppercase"
-                style={{ fontSize: "clamp(3rem, 8vw, 8rem)" }}
+                style={{ fontSize: "clamp(1.8rem, 8vw, 8rem)" }}
               >
                 Let's Work
               </h2>
@@ -61,7 +61,7 @@ export default function ContactCTA() {
               <h2
                 className="font-bold font-clash-display tracking-tight leading-[0.9] uppercase italic"
                 style={{
-                  fontSize: "clamp(3rem, 8vw, 8rem)",
+                  fontSize: "clamp(1.8rem, 8vw, 8rem)",
                   background: "linear-gradient(135deg, #C5A880 0%, #E8D5B0 55%, #C5A880 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -85,15 +85,15 @@ export default function ContactCTA() {
 
             <a
               href="mailto:danishkhan.jsx@gmail.com"
-              className="group inline-flex items-center gap-2 text-sm font-mono text-white/40 hover:text-primary-accent transition-colors duration-300"
+              className="group inline-flex items-center gap-2 text-sm font-mono text-white/40 hover:text-primary-accent transition-colors duration-300 break-all"
             >
               danishkhan.jsx@gmail.com
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0" />
             </a>
 
             <Link
               to="/contact"
-              className="group self-start inline-flex items-center gap-2.5 h-12 px-7 rounded-full bg-primary-accent text-[#080809] text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_36px_rgba(197,168,128,0.4)] hover:-translate-y-0.5"
+              className="group w-full sm:w-auto self-start inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-primary-accent text-[#080809] text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_36px_rgba(197,168,128,0.4)] active:scale-95"
             >
               Say Hello
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />

@@ -27,7 +27,7 @@ export default function Services() {
       {/* ── Top border ── */}
       <div className="border-t border-white/[0.05]" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
         {/* ══════════════════════════════
             Header
@@ -61,7 +61,7 @@ export default function Services() {
               <motion.div
                 key={index}
                 initial={false}
-                className="group relative flex items-center gap-6 md:gap-10 py-7 md:py-9 border-b border-white/[0.05] cursor-default overflow-hidden transition-colors duration-300 hover:bg-white/[0.015] -mx-6 md:-mx-12 px-6 md:px-12"
+                className="group relative flex items-center gap-4 sm:gap-6 md:gap-10 py-5 sm:py-7 md:py-9 border-b border-white/[0.05] cursor-default overflow-hidden transition-colors duration-300 hover:bg-white/[0.015] -mx-4 sm:-mx-6 md:-mx-12 px-4 sm:px-6 md:px-12"
               >
                 {/* Gold sweep accent line */}
                 <span className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary-accent to-secondary-accent scale-y-0 group-hover:scale-y-100 transition-transform duration-400 ease-out origin-top" />
@@ -72,22 +72,27 @@ export default function Services() {
                 </span>
 
                 {/* Icon */}
-                <div className="shrink-0 w-10 h-10 flex items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.02] group-hover:border-primary-accent/30 group-hover:bg-primary-accent/[0.06] transition-all duration-300">
+                <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.02] group-hover:border-primary-accent/30 group-hover:bg-primary-accent/[0.06] transition-all duration-300">
                   <Icon className="w-4 h-4 text-text-secondary group-hover:text-primary-accent transition-colors duration-300" />
                 </div>
 
-                {/* Title */}
-                <h3 className="flex-1 text-lg md:text-2xl font-bold font-clash-display tracking-tight text-white group-hover:text-primary-accent transition-colors duration-300">
-                  {service.title}
-                </h3>
+                {/* Title + Desc Column */}
+                <div className="flex-1 flex flex-col gap-1 md:gap-0 min-w-0">
+                  <h3 className="text-base sm:text-lg md:text-2xl font-bold font-clash-display tracking-tight text-white group-hover:text-primary-accent transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  <p className="md:hidden text-xs text-text-secondary font-light leading-relaxed mt-1">
+                    {service.description}
+                  </p>
+                </div>
 
-                {/* Description — slides in on hover */}
+                {/* Description — slides in on hover (desktop only) */}
                 <p className="hidden md:block text-sm text-text-secondary font-light leading-relaxed max-w-xs xl:max-w-sm opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-400 ease-out">
                   {service.description}
                 </p>
 
                 {/* Arrow */}
-                <div className="shrink-0 w-9 h-9 rounded-full border border-white/[0.06] flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-out bg-primary-accent/[0.05]">
+                <div className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white/[0.06] flex items-center justify-center transition-all duration-300 ease-out bg-primary-accent/[0.05] opacity-50 scale-90 md:opacity-0 md:scale-75 group-hover:opacity-100 group-hover:scale-100">
                   <ArrowUpRight className="w-4 h-4 text-primary-accent" />
                 </div>
               </motion.div>

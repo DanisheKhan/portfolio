@@ -65,8 +65,8 @@ export default function Experience() {
   }));
 
   return (
-    <section className="relative w-full py-20 md:py-32 bg-secondary-bg overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-16">
+    <section className="relative w-full py-16 sm:py-20 md:py-32 bg-secondary-bg overflow-hidden select-none">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 flex flex-col gap-10 md:gap-16">
         
         {/* Section Header */}
         <div className="flex flex-col gap-4">
@@ -86,7 +86,7 @@ export default function Experience() {
         </div>
 
         {/* Timeline Layout */}
-        <div className="relative mt-8 w-full -mx-4 md:-mx-10">
+        <div className="relative mt-4 sm:mt-8 w-full -mx-4 md:-mx-10">
           <Timeline data={timelineData} />
         </div>
 

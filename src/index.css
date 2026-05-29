@@ -14,6 +14,9 @@
   --font-space-grotesk: "Space Grotesk", sans-serif;
   --font-clash-display: "Clash Display", sans-serif;
   --font-serif: "Cormorant Garamond", serif;
+
+  /* xs breakpoint: 400px — bridges gap between mobile and sm (640px) */
+  --breakpoint-xs: 25rem;
 }
 
 :root {
@@ -28,6 +31,12 @@
 
 /* Custom Base Rules */
 @layer base {
+  html {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-primary-bg);
     background-image: 
@@ -38,6 +47,8 @@
     color: var(--color-text-primary);
     font-family: var(--font-space-grotesk);
     overflow-x: hidden;
+    /* Prevent content from stretching outside the viewport */
+    max-width: 100vw;
     transition: background-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
                 color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
                 border-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -46,6 +57,17 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-clash-display);
     font-weight: 600;
+  }
+
+  * {
+    min-width: 0;
+    /* Better touch UX: no 300ms tap delay */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Ensure buttons and links have touch-friendly tap targets */
+  button, a, [role="button"] {
+    touch-action: manipulation;
   }
 }
 
@@ -100,6 +122,14 @@
   .mask-hexagon:hover,
   .group:hover .mask-hexagon {
     clip-path: polygon(50% 3%, 97% 27%, 97% 73%, 50% 97%, 3% 73%, 3% 27%);
+  }
+  /* Hide scrollbar utility */
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }
 

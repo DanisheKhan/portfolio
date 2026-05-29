@@ -26,12 +26,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative w-full border-t border-border-color bg-primary-bg pt-16 pb-8 overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col gap-12">
+    <footer className="relative w-full border-t border-border-color bg-primary-bg pt-12 sm:pt-16 pb-8 overflow-hidden select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10 flex flex-col gap-10 sm:gap-12">
         {/* Footer Top Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8">
           <div>
-            <h3 className="text-3xl font-bold font-clash-display tracking-tight text-white mb-2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold font-clash-display tracking-tight text-white mb-2">
               Let's create something extraordinary.
             </h3>
             <p className="text-sm text-text-secondary">
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
 
         {/* Middle grid section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-8 border-y border-border-color/60">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 py-8 border-y border-border-color/60">
           {/* Quick Navigation Channels */}
           <div className="flex flex-col gap-4">
             <span className="text-xs uppercase font-mono tracking-widest text-text-secondary font-medium">
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
 
           {/* Availability details */}
-          <div className="flex flex-col gap-2 text-right items-end">
+          <div className="flex flex-col gap-2 sm:text-right sm:items-end">
             <span className="text-xs uppercase font-mono tracking-widest text-text-secondary font-medium">
               Current Location
             </span>
@@ -102,8 +102,8 @@ export default function Footer() {
         </div>
 
         {/* Large Decorative Nameplate Section */}
-        <div className="w-full flex items-center justify-center pointer-events-none select-none">
-          <h2 className="text-[12vw] font-black font-clash-display tracking-tighter leading-none text-white/5 uppercase select-none pointer-events-none">
+        <div className="w-full flex items-center justify-center pointer-events-none select-none overflow-hidden">
+          <h2 className="text-[clamp(3rem,12vw,12rem)] font-black font-clash-display tracking-tighter leading-none text-white/5 uppercase select-none pointer-events-none">
             DANISH
           </h2>
         </div>

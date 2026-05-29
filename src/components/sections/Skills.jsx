@@ -41,7 +41,7 @@ export default function Skills() {
         <div className="absolute -right-32 bottom-1/4 w-[400px] h-[400px] rounded-full bg-secondary-accent/[0.05] blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col gap-20 md:gap-28">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-12 relative z-10 flex flex-col gap-16 sm:gap-20 md:gap-28">
 
         {/* ── Header ── */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">

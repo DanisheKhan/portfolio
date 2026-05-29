@@ -149,7 +149,7 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-6 md:px-12">
 
             {/* Eyebrow strip */}
-            <div className="flex items-center justify-between pt-32 pb-10 border-b border-white/[0.05]">
+            <div className="flex items-center justify-between pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 border-b border-white/[0.05]">
               <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
                 ✦ Contact
               </span>
@@ -160,8 +160,8 @@ export default function Contact() {
             </div>
 
             {/* Massive headline */}
-            <div className="py-16 md:py-24">
-              <h1 className="text-[clamp(3rem,9vw,8rem)] font-bold font-clash-display tracking-tight leading-[0.9] flex flex-wrap gap-x-6 gap-y-1">
+            <div className="py-8 sm:py-10 md:py-16 lg:py-24">
+              <h1 className="text-[clamp(2rem,9vw,8rem)] font-bold font-clash-display tracking-tight leading-[0.9] flex flex-wrap gap-x-3 sm:gap-x-6 gap-y-1">
                 {["Let's", "Build"].map((w, i) => (
                   <span key={i} className="overflow-hidden inline-block">
                     <span className="contact-headline-word inline-block text-white">{w}</span>
@@ -182,15 +182,15 @@ export default function Contact() {
             </div>
 
             {/* Sub-row: email direct link + response time */}
-            <div className="contact-meta flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-12">
+            <div className="contact-meta flex flex-col gap-4 pb-8 sm:pb-12">
               <a
                 href={`mailto:${PERSONAL_DETAILS.email}`}
-                className="group inline-flex items-center gap-2 text-lg md:text-xl font-mono text-text-secondary hover:text-primary-accent transition-colors duration-300"
+                className="group inline-flex items-center gap-2 text-sm sm:text-base md:text-xl font-mono text-text-secondary hover:text-primary-accent transition-colors duration-300 break-all"
               >
                 {PERSONAL_DETAILS.email}
-                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
               </a>
-              <div className="flex gap-6">
+              <div className="flex flex-wrap gap-4 sm:gap-6">
                 <div className="flex flex-col">
                   <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">Response</span>
                   <span className="text-xs font-bold text-white font-mono">&lt; 24 hours</span>
@@ -211,11 +211,11 @@ export default function Contact() {
         {/* ════════════════════════════════════════
             FORM — Documentary underline style
         ════════════════════════════════════════ */}
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.05]">
 
             {/* Left: subject selector as a visual list */}
-            <div className="py-14 lg:pr-12 flex flex-col gap-6">
+            <div className="py-10 sm:py-14 lg:pr-12 flex flex-col gap-5 sm:gap-6">
               <span className="text-[10px] font-mono tracking-[0.25em] text-text-secondary uppercase font-semibold">
                 What's this about?
               </span>
@@ -273,7 +273,7 @@ export default function Contact() {
             </div>
 
             {/* Right: the form */}
-            <div className="py-14 lg:pl-12">
+            <div className="py-10 sm:py-14 lg:pl-12">
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center h-full gap-6 py-16 text-center">
                   <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center">
@@ -309,7 +309,7 @@ export default function Contact() {
                       value={formState.name}
                       onChange={handleInputChange}
                       placeholder="Danish Khan"
-                      className="bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
+                      className="contact-input bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
                     />
                   </div>
 
@@ -325,7 +325,7 @@ export default function Contact() {
                       value={formState.email}
                       onChange={handleInputChange}
                       placeholder="you@company.com"
-                      className="bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
+                      className="contact-input bg-transparent border-none outline-none text-white text-base md:text-lg font-clash-display placeholder-white/20 focus:outline-none p-0 w-full"
                     />
                   </div>
 
@@ -341,7 +341,7 @@ export default function Contact() {
                       value={formState.message}
                       onChange={handleInputChange}
                       placeholder="Tell me about your project, timeline, and budget…"
-                      className="bg-transparent border-none outline-none text-white text-sm md:text-base font-light leading-relaxed placeholder-white/20 focus:outline-none p-0 w-full resize-none"
+                      className="contact-textarea bg-transparent border-none outline-none text-white text-sm md:text-base font-light leading-relaxed placeholder-white/20 focus:outline-none p-0 w-full resize-none"
                     />
                   </div>
 
@@ -349,7 +349,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="group form-field self-start inline-flex items-center gap-3 h-12 px-8 rounded-full bg-primary-accent text-[#0B0B0C] text-sm font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_40px_rgba(197,168,128,0.3)] hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="group form-field w-full sm:w-auto self-start inline-flex items-center justify-center gap-3 h-12 px-8 rounded-full bg-primary-accent text-[#0B0B0C] text-sm font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_40px_rgba(197,168,128,0.3)] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {status === "loading" ? (
                       <span className="flex gap-1 items-center">
@@ -375,7 +375,7 @@ export default function Contact() {
             BOTTOM INFO STRIP
         ════════════════════════════════════════ */}
         <div className="border-t border-white/[0.05] mt-0">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 py-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 py-5 sm:py-6">
             <span className="text-[10px] font-mono tracking-[0.2em] text-text-secondary uppercase">
               Danish Khan © 2026
             </span>
@@ -384,6 +384,24 @@ export default function Contact() {
             </span>
           </div>
         </div>
+
+        <style>{`
+          .contact-input, .contact-textarea {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+          }
+          .contact-input:focus, .contact-textarea:focus {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            outline: none !important;
+          }
+        `}</style>
 
       </div>
     </PageTransition>

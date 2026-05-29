@@ -61,8 +61,8 @@ export default function Projects() {
             Header
         ════════════════════════════════ */}
         <div className="border-b border-white/[0.05]">
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <div className="flex items-center justify-between pt-32 pb-10 border-b border-white/[0.05]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+            <div className="flex items-center justify-between pt-24 sm:pt-28 md:pt-32 pb-8 sm:pb-10 border-b border-white/[0.05]">
               <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
                 ✦ The Catalog
               </span>
@@ -92,16 +92,16 @@ export default function Projects() {
           </div>
         </div>
 
-        {/* ════════════════════════════════
+        {/* ════════════════════════════
             Body: sidebar + grid
-        ════════════════════════════════ */}
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-14">
+        ════════════════════════════ */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-10 sm:py-14">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
 
             {/* ── Sticky sidebar filter ── */}
             <div className="lg:w-44 shrink-0">
-              <div className="lg:sticky lg:top-28 flex flex-row lg:flex-col gap-2 flex-wrap">
-                <span className="page-header-meta w-full text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase mb-1 hidden lg:block">
+              <div className="lg:sticky lg:top-28 flex flex-row lg:flex-col gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-none flex-nowrap lg:flex-wrap">
+                <span className="page-header-meta flex-none lg:flex-initial w-full text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase mb-1 hidden lg:block">
                   Filter by
                 </span>
                 {filters.map((f) => (
@@ -201,19 +201,22 @@ function ProjectTile({ project }) {
             {project.meta.type}
           </span>
 
-          {/* Live link */}
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-primary-accent flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 shadow-lg"
+          {/* Live link — use button (not <a>) to avoid nested anchor inside <Link> */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+            }}
+            aria-label={`Open ${project.title} live site`}
+            className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-primary-accent flex items-center justify-center transition-all duration-300 shadow-lg scale-90 md:scale-75 opacity-100 md:opacity-0 group-hover:opacity-100 group-hover:scale-100 cursor-pointer"
           >
             <ExternalLink className="w-3.5 h-3.5 text-[#0B0B0C]" />
-          </a>
+          </button>
 
           {/* Tech pills at bottom on hover */}
-          <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-3 left-3 flex flex-wrap gap-1.5 transition-opacity duration-300 opacity-100 md:opacity-0 group-hover:opacity-100">
             {project.tech.slice(0, 3).map((t, i) => (
               <span
                 key={i}

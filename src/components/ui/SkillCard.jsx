@@ -165,13 +165,7 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
 
       {/* ── Chip Grid ── */}
       <div
-        className={`grid gap-3 relative z-10 ${
-          categoryKey === "frontend"
-            ? "grid-cols-2 sm:grid-cols-3"
-            : categoryKey === "backend"
-            ? "grid-cols-2"
-            : "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
-        }`}
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 relative z-10"
       >
         {data.items.map((skill, i) => {
           const { icon, color } = getSkillMeta(skill.name);
@@ -179,7 +173,7 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
             <motion.div
               key={i}
               variants={chip}
-              className="skill-chip group/chip relative overflow-hidden flex items-center gap-3 px-4 py-3 rounded-xl border border-white/[0.06] bg-white/[0.02] cursor-default select-none transition-all duration-300 hover:border-white/[0.14] hover:-translate-y-[3px]"
+              className="skill-chip group/chip relative overflow-hidden flex items-center gap-2 sm:gap-3 px-2.5 sm:px-4 py-2.5 sm:py-3 rounded-xl border border-white/[0.06] bg-white/[0.02] cursor-default select-none transition-all duration-300 hover:border-white/[0.14] hover:-translate-y-[3px]"
               style={{ "--glow": color }}
             >
               {/* chip glow blob */}
@@ -192,13 +186,13 @@ export default function SkillCard({ categoryKey, data, className = "" }) {
 
               {/* icon wrapper */}
               <span
-                className="relative z-10 flex items-center justify-center w-8 h-8 rounded-lg border border-white/[0.06] bg-white/[0.03] text-lg shrink-0 transition-all duration-300 group-hover/chip:scale-110"
+                className="relative z-10 flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-lg border border-white/[0.06] bg-white/[0.03] text-sm sm:text-lg shrink-0 transition-all duration-300 group-hover/chip:scale-110"
                 style={{ color }}
               >
                 {icon}
               </span>
 
-              <span className="relative z-10 text-[11px] sm:text-xs font-medium tracking-wide text-text-primary group-hover/chip:text-white transition-colors duration-300 font-mono leading-tight">
+              <span className="relative z-10 text-[10px] sm:text-xs font-medium tracking-wide text-text-primary group-hover/chip:text-white transition-colors duration-300 font-mono leading-tight">
                 {skill.name}
               </span>
             </motion.div>

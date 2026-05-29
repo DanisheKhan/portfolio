@@ -76,10 +76,10 @@ export default function Projects() {
                 key={project.slug}
                 onHoverStart={() => setActiveIndex(index)}
                 onHoverEnd={() => setActiveIndex(null)}
-                className="group relative -mx-6 md:-mx-12 px-6 md:px-12"
+                className="group relative -mx-5 sm:-mx-6 md:-mx-12 px-5 sm:px-6 md:px-12"
               >
                 <Link to={`/projects/${project.slug}`}>
-                  <div className="flex items-center gap-5 md:gap-8 py-6 md:py-8 border-b border-white/[0.05] transition-all duration-300">
+                  <div className="flex items-center gap-3 sm:gap-5 md:gap-8 py-5 sm:py-6 md:py-8 border-b border-white/[0.05] transition-all duration-300">
 
                     {/* Index */}
                     <span
@@ -92,7 +92,7 @@ export default function Projects() {
 
                     {/* Title */}
                     <h3
-                      className={`flex-1 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold font-clash-display tracking-tight transition-all duration-300 ${
+                      className={`flex-1 text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold font-clash-display tracking-tight transition-all duration-300 ${
                         isActive
                           ? "text-primary-accent translate-x-2"
                           : "text-white"
@@ -116,7 +116,7 @@ export default function Projects() {
                       className={`shrink-0 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-300 ${
                         isActive
                           ? "border-primary-accent bg-primary-accent/10 scale-100 opacity-100"
-                          : "border-white/[0.08] scale-75 opacity-0"
+                          : "border-white/[0.08] scale-90 md:scale-75 opacity-60 md:opacity-0"
                       }`}
                     >
                       <ArrowUpRight className="w-4 h-4 text-primary-accent" />
@@ -153,9 +153,9 @@ export default function Projects() {
 
       </div>
 
-      {/* ══════════════════════════════
-          Floating cursor image preview
-      ══════════════════════════════ */}
+      {/* ════════════════════════════
+          Floating cursor image preview — desktop only (hover-based)
+      ════════════════════════════ */}
       <AnimatePresence>
         {activeIndex !== null && (
           <motion.div
@@ -164,10 +164,10 @@ export default function Projects() {
             animate={{ opacity: 1, scale: 1, rotate: 2 }}
             exit={{ opacity: 0, scale: 0.88, rotate: -3 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="pointer-events-none fixed z-50 w-[260px] sm:w-[320px] aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)]"
+            className="pointer-events-none fixed z-50 w-[220px] sm:w-[260px] lg:w-[320px] aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] hidden md:block"
             style={{
-              left: mousePos.x + sectionRef.current?.getBoundingClientRect().left || 0,
-              top: mousePos.y + sectionRef.current?.getBoundingClientRect().top || 0,
+              left: mousePos.x + (sectionRef.current?.getBoundingClientRect().left || 0),
+              top: mousePos.y + (sectionRef.current?.getBoundingClientRect().top || 0),
               transform: "translate(-50%, -120%)",
             }}
           >

@@ -147,24 +147,28 @@ export default function About() {
         ════════════════════════════════════════ */}
         <section className="about-hero relative min-h-screen flex flex-col justify-end overflow-hidden">
 
-          {/* Portrait — fills right half, parallax on scroll */}
-          <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[52%] overflow-hidden pointer-events-none">
+          {/* Portrait — fills right half on lg, full bg on mobile */}
+          <div className="absolute inset-0 lg:left-auto lg:right-0 lg:top-0 lg:bottom-0 lg:w-[52%] overflow-hidden pointer-events-none">
             <div className="about-portrait w-full h-full">
               <img
                 src="/danish.jpeg"
                 alt="Danish Khan"
                 className="w-full h-full object-cover object-top"
               />
-              {/* Left fade to blend into content */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-bg via-primary-bg/60 to-transparent lg:via-primary-bg/40" />
+              {/* Mobile overlay — strong gradient so text reads clearly */}
+              <div className="absolute inset-0 lg:hidden" style={{
+                background: "linear-gradient(to right, rgba(11,11,12,0.95) 0%, rgba(11,11,12,0.88) 60%, rgba(11,11,12,0.7) 100%)"
+              }} />
+              {/* Left fade to blend into content (desktop) */}
+              <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-primary-bg via-primary-bg/60 to-transparent lg:via-primary-bg/40" />
               {/* Bottom fade */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary-bg via-transparent to-primary-bg/40" />
             </div>
           </div>
 
           {/* Content overlay */}
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pb-16 pt-32">
-            <div className="max-w-2xl flex flex-col gap-8">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full pb-12 sm:pb-16 pt-24 sm:pt-32">
+            <div className="max-w-2xl flex flex-col gap-6 sm:gap-8">
 
               {/* Eyebrow */}
               <span className="meta-item text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
@@ -174,12 +178,12 @@ export default function About() {
               {/* Name — stacked massive */}
               <div className="flex flex-col -space-y-2">
                 <div className="overflow-hidden">
-                  <div className="name-line text-[clamp(4rem,10vw,8rem)] font-bold font-clash-display leading-[0.88] tracking-tight text-white">
+                  <div className="name-line text-[clamp(3rem,10vw,8rem)] font-bold font-clash-display leading-[0.88] tracking-tight text-white">
                     Danish
                   </div>
                 </div>
                 <div className="overflow-hidden">
-                  <div className="name-line text-[clamp(4rem,10vw,8rem)] font-bold font-clash-display leading-[0.88] tracking-tight text-gradient italic">
+                  <div className="name-line text-[clamp(3rem,10vw,8rem)] font-bold font-clash-display leading-[0.88] tracking-tight text-gradient italic">
                     Khan.
                   </div>
                 </div>
@@ -202,7 +206,7 @@ export default function About() {
               </p>
 
               {/* Meta row */}
-              <div className="meta-item flex flex-wrap gap-5 pt-2">
+              <div className="meta-item flex flex-wrap gap-3 sm:gap-5 pt-2">
                 <span className="flex items-center gap-1.5 text-[11px] font-mono text-text-secondary">
                   <MapPin className="w-3 h-3 text-primary-accent/60" />
                   {PERSONAL_DETAILS.location}
@@ -213,18 +217,18 @@ export default function About() {
                 </span>
                 <a
                   href={`mailto:${PERSONAL_DETAILS.email}`}
-                  className="flex items-center gap-1.5 text-[11px] font-mono text-text-secondary hover:text-primary-accent transition-colors duration-300"
+                  className="flex items-center gap-1.5 text-[11px] font-mono text-text-secondary hover:text-primary-accent transition-colors duration-300 break-all"
                 >
-                  <Mail className="w-3 h-3" />
+                  <Mail className="w-3 h-3 shrink-0" />
                   {PERSONAL_DETAILS.email}
                 </a>
               </div>
 
               {/* CTAs */}
-              <div className="meta-item flex gap-4 pt-2">
+              <div className="meta-item flex flex-col xs:flex-row flex-wrap gap-3 sm:gap-4 pt-2">
                 <Link
                   to="/resume"
-                  className="group inline-flex items-center gap-2 h-11 px-6 rounded-full bg-primary-accent text-[#0B0B0C] text-xs font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_30px_rgba(197,168,128,0.3)] hover:-translate-y-0.5"
+                  className="group inline-flex items-center justify-center xs:justify-start gap-2 h-11 px-6 rounded-full bg-primary-accent text-[#0B0B0C] text-xs font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_30px_rgba(197,168,128,0.3)] active:scale-95"
                 >
                   View Résumé
                   <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -233,7 +237,7 @@ export default function About() {
                   href={`https://github.com/${PERSONAL_DETAILS.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 h-11 px-6 rounded-full border border-white/[0.1] bg-white/[0.02] text-xs font-mono tracking-wider text-text-secondary hover:text-white hover:border-white/20 transition-all duration-300"
+                  className="inline-flex items-center justify-center xs:justify-start gap-2 h-11 px-6 rounded-full border border-white/[0.1] bg-white/[0.02] text-xs font-mono tracking-wider text-text-secondary hover:text-white hover:border-white/20 transition-all duration-300 active:scale-95"
                 >
                   GitHub
                   <ExternalLink className="w-3 h-3" />
@@ -247,7 +251,7 @@ export default function About() {
             SECTION 2 — TIMELINE
         ════════════════════════════════════════ */}
         <section className="timeline-section border-t border-white/[0.05]">
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
             {/* Header */}
             <div className="flex items-center justify-between py-12 border-b border-white/[0.05]">
@@ -264,7 +268,7 @@ export default function About() {
               {milestones.map((m, i) => (
                 <div
                   key={i}
-                  className="timeline-item group flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 py-8 border-b border-white/[0.05] hover:bg-white/[0.015] -mx-6 md:-mx-12 px-6 md:px-12 transition-colors duration-300"
+                  className="timeline-item group flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-8 py-6 sm:py-8 border-b border-white/[0.05] hover:bg-white/[0.015] -mx-4 sm:-mx-6 md:-mx-12 px-4 sm:px-6 md:px-12 transition-colors duration-300"
                 >
                   {/* Year */}
                   <span className="text-3xl md:text-4xl font-bold font-clash-display text-white/10 group-hover:text-primary-accent/40 transition-colors duration-300 shrink-0 w-20 leading-none pt-1">
@@ -301,7 +305,7 @@ export default function About() {
             SECTION 3 — EDUCATION + PRINCIPLES
         ════════════════════════════════════════ */}
         <section className="border-t border-white/[0.05]">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.05]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.05]">
 
             {/* Education */}
             <div className="py-14 lg:pr-12">
@@ -327,14 +331,14 @@ export default function About() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                   {[
                     { label: "Expected", value: "June 2026" },
                     { label: "CGPA", value: "7.79 / 10.0" },
                     { label: "Timezone", value: "IST (UTC+5:30)" },
                     { label: "Response", value: "< 24 hours" },
                   ].map((d, i) => (
-                    <div key={i} className="flex flex-col gap-0.5 p-3.5 rounded-xl border border-white/[0.05] bg-white/[0.01]">
+                    <div key={i} className="flex flex-col gap-0.5 p-3 sm:p-3.5 rounded-xl border border-white/[0.05] bg-white/[0.01]">
                       <span className="text-[9px] font-mono tracking-widest text-text-secondary uppercase">{d.label}</span>
                       <span className="text-sm font-bold font-clash-display text-white">{d.value}</span>
                     </div>
@@ -371,7 +375,7 @@ export default function About() {
             SECTION 4 — SKILL CAPABILITY TABLE
         ════════════════════════════════════════ */}
         <section className="skills-section border-t border-white/[0.05]">
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
             <div className="flex items-center justify-between py-12 border-b border-white/[0.05]">
               <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
@@ -386,11 +390,11 @@ export default function About() {
             </div>
 
             {/* Skills table */}
-            <div className="flex flex-col pb-16">
+            <div className="flex flex-col pb-12 sm:pb-16">
               {deepSkills.map((s, i) => (
                 <div
                   key={i}
-                  className="skill-row group flex items-center gap-6 py-5 border-b border-white/[0.05] hover:bg-white/[0.015] -mx-6 md:-mx-12 px-6 md:px-12 transition-colors duration-300"
+                  className="skill-row group flex items-center gap-4 sm:gap-6 py-4 sm:py-5 border-b border-white/[0.05] hover:bg-white/[0.015] -mx-4 sm:-mx-6 md:-mx-12 px-4 sm:px-6 md:px-12 transition-colors duration-300"
                 >
                   {/* Name */}
                   <span className="flex-1 text-sm font-medium text-white group-hover:text-primary-accent transition-colors duration-300 font-clash-display">

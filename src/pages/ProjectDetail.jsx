@@ -76,7 +76,7 @@ export default function ProjectDetail() {
       <div ref={pageRef} className="w-full relative bg-primary-bg overflow-hidden select-none">
 
         {/* ══ Full-bleed hero ══ */}
-        <div className="relative w-full h-screen overflow-hidden">
+        <div className="relative w-full overflow-hidden" style={{ height: "min(100vh, 100svh)" }}>
           {/* Background image */}
           <img
             ref={heroRef}
@@ -91,25 +91,25 @@ export default function ProjectDetail() {
           {/* Back link — top left */}
           <Link
             to="/projects"
-            className="absolute top-28 left-6 md:left-12 inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.25em] uppercase text-white/50 hover:text-white transition-colors duration-300 z-10"
+            className="absolute top-20 sm:top-28 left-5 sm:left-6 md:left-12 inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.25em] uppercase text-white/50 hover:text-white transition-colors duration-300 z-10"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Back to Catalog
           </Link>
 
           {/* Category badge — top right */}
-          <span className="absolute top-28 right-6 md:right-12 text-[9px] font-mono tracking-[0.2em] uppercase border border-white/10 px-3 py-1.5 rounded-full text-white/50 z-10">
+          <span className="absolute top-20 sm:top-28 right-5 sm:right-6 md:right-12 text-[9px] font-mono tracking-[0.2em] uppercase border border-white/10 px-3 py-1.5 rounded-full text-white/50 z-10">
             {project.category}
           </span>
 
           {/* Title — pinned to bottom */}
-          <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-14">
-            <div ref={titleRef} className="flex flex-wrap gap-x-5 overflow-hidden">
+          <div className="absolute bottom-0 left-0 right-0 z-10 px-5 sm:px-6 md:px-12 pb-10 sm:pb-14">
+            <div ref={titleRef} className="flex flex-wrap gap-x-3 sm:gap-x-5 overflow-hidden">
               {words.map((word, i) => (
                 <div key={i} className="overflow-hidden">
                   <span
                     className="hero-title-word inline-block font-bold font-clash-display text-white tracking-tight leading-none"
-                    style={{ fontSize: "clamp(3rem, 9vw, 9rem)" }}
+                    style={{ fontSize: "clamp(2rem, 9vw, 9rem)" }}
                   >
                     {word}
                   </span>
@@ -121,7 +121,7 @@ export default function ProjectDetail() {
 
         {/* ══ Metadata strip ══ */}
         <div className="border-b border-white/[0.06]">
-          <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 md:grid-cols-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 grid grid-cols-2 md:grid-cols-4">
             {[
               { label: "Role",      value: project.role },
               { label: "Duration",  value: project.duration },
@@ -130,7 +130,15 @@ export default function ProjectDetail() {
             ].map((cell, i) => (
               <div
                 key={i}
-                className={`meta-cell flex flex-col gap-1.5 py-8 ${i > 0 ? "pl-8 border-l border-white/[0.06]" : ""}`}
+                className={`meta-cell flex flex-col gap-1.5 py-4 sm:py-8 border-white/[0.06] ${
+                  i % 2 !== 0 ? "border-l" : "border-l-0"
+                } ${
+                  i > 0 ? "md:border-l" : "md:border-l-0"
+                } ${
+                  i % 2 !== 0 ? "pl-4 sm:pl-8" : "pl-0"
+                } ${
+                  i >= 2 ? "border-t md:border-t-0 pt-4 sm:pt-8" : ""
+                }`}
               >
                 <span className="text-[9px] font-mono tracking-[0.25em] text-text-secondary uppercase">
                   {cell.label}
@@ -156,8 +164,8 @@ export default function ProjectDetail() {
         </div>
 
         {/* ══ Body: case study + sidebar ══ */}
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-12 sm:py-16 md:py-24">
+          <div className="flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-20">
 
             {/* ── Left: long-form content ── */}
             <div className="flex-1 min-w-0 flex flex-col gap-14">

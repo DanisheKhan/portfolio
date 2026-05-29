@@ -71,15 +71,15 @@ export default function GitHubStats() {
       ref={sectionRef}
       className="relative w-full bg-primary-bg overflow-hidden select-none border-t border-white/[0.05]"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
         {/* ══ Header strip ══ */}
-        <div className="flex items-center justify-between py-12 border-b border-white/[0.05]">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-8 sm:py-12 border-b border-white/[0.05]">
           <div className="flex flex-col gap-1.5">
             <span className="text-[10px] font-mono tracking-[0.3em] text-primary-accent uppercase font-semibold">
               ✦ Metrics
             </span>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-clash-display tracking-tight leading-[1.0] text-white">
               GitHub <span className="text-gradient italic">Activity.</span>
             </h2>
           </div>
@@ -88,7 +88,7 @@ export default function GitHubStats() {
             href="https://github.com/DanisheKhan"
             target="_blank"
             rel="noopener noreferrer"
-            className="group hidden sm:inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.2em] text-text-secondary hover:text-primary-accent transition-colors duration-300 uppercase"
+            className="group inline-flex items-center gap-2 text-[11px] font-mono tracking-[0.2em] text-text-secondary hover:text-primary-accent transition-colors duration-300 uppercase"
           >
             @DanisheKhan
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -100,9 +100,13 @@ export default function GitHubStats() {
           {stats.map((s, i) => (
             <div
               key={i}
-              className={`flex flex-col gap-2 py-10 px-6 ${
-                i < 3 ? "border-r border-white/[0.05]" : ""
-              }`}
+              className={`flex flex-col gap-2 py-7 sm:py-10 px-4 sm:px-6 border-white/[0.05] ${
+                i % 2 === 0 ? "border-r" : "border-r-0"
+              } ${
+                i < 3 ? "md:border-r" : "md:border-r-0"
+              } ${
+                i >= 2 ? "border-t" : "border-t-0"
+              } md:border-t-0`}
             >
               <div className="flex items-center gap-2 text-text-secondary">
                 <span className="text-primary-accent/60">{s.icon}</span>
@@ -112,7 +116,7 @@ export default function GitHubStats() {
               <CountUp
                 to={loading ? 0 : s.raw}
                 sectionRef={sectionRef}
-                className="text-3xl md:text-4xl lg:text-5xl font-bold font-clash-display text-white leading-none"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-clash-display text-white leading-none"
               />
 
               <span className="text-[10px] font-mono tracking-widest text-text-secondary uppercase">
@@ -143,13 +147,17 @@ export default function GitHubStats() {
                 <div className="w-6 h-6 rounded-full border-2 border-primary-accent border-t-transparent animate-spin" />
               </div>
             )}
-            <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-[3px] md:gap-[4px] w-full">
-              {daysGrid.map((cls, i) => (
-                <div
-                  key={i}
-                  className={`aspect-square w-full rounded-[2px] ${cls} transition-all duration-200 hover:scale-125 hover:brightness-125 cursor-default`}
-                />
-              ))}
+            <div className="w-full overflow-x-auto scrollbar-none pb-1">
+              <div className="min-w-[550px] md:min-w-0">
+                <div className="grid grid-cols-[repeat(26,minmax(0,1fr))] gap-[2px] sm:gap-[3px] md:gap-[4px] w-full">
+                  {daysGrid.map((cls, i) => (
+                    <div
+                      key={i}
+                      className={`aspect-square w-full rounded-[2px] ${cls} transition-all duration-200 hover:scale-125 hover:brightness-125 cursor-default`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -173,7 +181,7 @@ export default function GitHubStats() {
             </div>
 
             {/* Language rows */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               {data.languages.map((lang, i) => (
                 <div
                   key={i}
