@@ -55,8 +55,8 @@ export default function Hero() {
   const stats = [
     { value: "7+",     label: "Projects" },
     { value: "20+",    label: "Technologies" },
-    { value: "MERN",   label: "Core Stack" },
-    { value: "B.Tech", label: "AI & CS" },
+    { value: "MERN & JAVA",   label: "Core Stack" },
+    { value: "B.Tech", label: "CS" },
   ];
 
   return (
@@ -172,13 +172,12 @@ export default function Hero() {
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </Link>
 
-              <a
-                href="/DanishKhan_Resume.pdf"
-                download
+              <Link
+                to="/resume"
                 className="inline-flex items-center gap-2 h-11 px-6 rounded-full border border-white/[0.08] text-xs font-medium tracking-widest uppercase text-white/40 hover:text-white hover:border-white/20 transition-all duration-300"
               >
-                Download CV
-              </a>
+                View Resume
+              </Link>
             </div>
           </div>
         </div>
