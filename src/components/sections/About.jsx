@@ -64,7 +64,64 @@ export default function About() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
         
-        {/* Left column: 3D Mask Hexagon Image Portrayal */}
+        {/* Left column: Bio copy and stats grid */}
+        <div className="lg:col-span-7 flex flex-col gap-6">
+          <ScrollReveal direction="left">
+            <span className="text-xs uppercase font-mono tracking-widest text-primary-accent font-medium bg-primary-accent/10 px-3.5 py-1.5 rounded-full border border-primary-accent/20">
+              About Me
+            </span>
+          </ScrollReveal>
+
+          <ScrollReveal direction="left" delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-clash-display tracking-tight text-white leading-tight mt-2">
+              Crafting premium solutions <br className="hidden sm:inline" />
+              with <span className="text-gradient">modern technical skill.</span>
+            </h2>
+          </ScrollReveal>
+
+          <ScrollReveal direction="left" delay={0.2}>
+            <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
+              Full Stack Developer specializing in building secure, clean, and highly optimized web applications. Focused on data structures, robust authentication flows, and seamless responsive client experiences. Driven by aesthetic excellence and flawless performance.
+            </p>
+          </ScrollReveal>
+
+          {/* Stat Counters Grid */}
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 my-6 w-full">
+            {stats.map((stat, index) => (
+              <ScrollReveal
+                key={index}
+                direction="up"
+                delay={0.1 * index}
+                className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.05] p-5 flex flex-col gap-1 hover:border-primary-accent/30 transition-all duration-300 group/stat"
+              >
+                {/* Subtle light leak inside stats on hover */}
+                <div className="absolute -right-10 -bottom-10 w-24 h-24 rounded-full bg-gradient-to-tr from-primary-accent/10 to-secondary-accent/10 blur-xl opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500" />
+                
+                <span className="text-3xl md:text-4xl font-bold font-clash-display text-white group-hover/stat:text-gradient transition-all duration-300">
+                  <CountUp end={stat.end} suffix={stat.suffix} />
+                </span>
+                <span className="text-[10px] sm:text-xs text-text-secondary font-mono tracking-wider font-semibold uppercase">
+                  {stat.label}
+                </span>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* More details page navigation */}
+          <ScrollReveal direction="left" delay={0.4} className="mt-2">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-3 group px-6 py-3.5 rounded-full bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.08] hover:border-primary-accent/30 text-white font-medium transition-all duration-300 shadow-lg w-fit"
+            >
+              <span>More About Me</span>
+              <div className="w-8 h-8 rounded-full bg-white/5 group-hover:bg-primary-accent flex items-center justify-center transition-colors duration-300">
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300 text-white" />
+              </div>
+            </Link>
+          </ScrollReveal>
+        </div>
+
+        {/* Right column: 3D Mask Hexagon Image Portrayal */}
         <div className="lg:col-span-5 flex justify-center items-center relative">
           
           {/* Glow backdrop mesh */}
@@ -133,64 +190,6 @@ export default function About() {
 
           </div>
         </div>
-
-        {/* Right column: Bio copy and stats grid */}
-        <div className="lg:col-span-7 flex flex-col gap-6">
-          <ScrollReveal direction="left">
-            <span className="text-xs uppercase font-mono tracking-widest text-primary-accent font-medium bg-primary-accent/10 px-3.5 py-1.5 rounded-full border border-primary-accent/20">
-              About Me
-            </span>
-          </ScrollReveal>
-
-          <ScrollReveal direction="left" delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-clash-display tracking-tight text-white leading-tight mt-2">
-              Crafting premium solutions <br className="hidden sm:inline" />
-              with <span className="text-gradient">modern technical skill.</span>
-            </h2>
-          </ScrollReveal>
-
-          <ScrollReveal direction="left" delay={0.2}>
-            <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
-              Full Stack Developer specializing in building secure, clean, and highly optimized web applications. Focused on data structures, robust authentication flows, and seamless responsive client experiences. Driven by aesthetic excellence and flawless performance.
-            </p>
-          </ScrollReveal>
-
-          {/* Stat Counters Grid */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-6 my-6">
-            {stats.map((stat, index) => (
-              <ScrollReveal
-                key={index}
-                direction="up"
-                delay={0.1 * index}
-                className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent border border-white/[0.05] p-5 flex flex-col gap-1 hover:border-primary-accent/30 transition-all duration-300 group/stat"
-              >
-                {/* Subtle light leak inside stats on hover */}
-                <div className="absolute -right-10 -bottom-10 w-24 h-24 rounded-full bg-gradient-to-tr from-primary-accent/10 to-secondary-accent/10 blur-xl opacity-0 group-hover/stat:opacity-100 transition-opacity duration-500" />
-                
-                <span className="text-3xl md:text-4xl font-bold font-clash-display text-white group-hover/stat:text-gradient transition-all duration-300">
-                  <CountUp end={stat.end} suffix={stat.suffix} />
-                </span>
-                <span className="text-[10px] sm:text-xs text-text-secondary font-mono tracking-wider font-semibold uppercase">
-                  {stat.label}
-                </span>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          {/* More details page navigation */}
-          <ScrollReveal direction="left" delay={0.4} className="mt-2">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-3 group px-6 py-3.5 rounded-full bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.08] hover:border-primary-accent/30 text-white font-medium transition-all duration-300 shadow-lg"
-            >
-              <span>More About Me</span>
-              <div className="w-8 h-8 rounded-full bg-white/5 group-hover:bg-primary-accent flex items-center justify-center transition-colors duration-300">
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300 text-white" />
-              </div>
-            </Link>
-          </ScrollReveal>
-        </div>
-
       </div>
     </section>
   );
