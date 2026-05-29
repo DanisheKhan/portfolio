@@ -90,7 +90,7 @@ export default function AboutSection() {
     {
       icon: <GraduationCap className="w-4 h-4" />,
       label: "Education",
-      value: "B.Tech — AI & Computer Science",
+      value: "B.Tech — Computer Science",
       sub: PERSONAL_DETAILS.academic.institution,
     },
     {
@@ -218,52 +218,28 @@ export default function AboutSection() {
         </div>
 
         {/* ══════════════════════════════
-            Philosophy cards + bio column
+            Bio section
         ══════════════════════════════ */}
-        <div className="about-cards grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-8 md:gap-14 pb-20">
-
-          {/* Bio column */}
-          <div className="about-card flex flex-col gap-6 justify-center">
-            <p className="text-base text-text-secondary leading-[1.9] font-light">
+        <div className="about-cards flex flex-col items-start gap-8 pb-20 max-w-4xl">
+          <div className="about-card flex flex-col gap-6">
+            <p className="text-lg md:text-xl text-text-secondary leading-[1.8] font-light">
               I'm a <span className="text-white font-medium">Full Stack Software Engineer</span> based
-              in Maharashtra, India — currently pursuing a B.Tech in AI &amp; Computer Science.
+              in Maharashtra, India — currently pursuing a B.Tech in Computer Science.
               I've interned across full-stack environments and bring a developer's precision to
               every project I touch.
             </p>
-            <p className="text-base text-text-secondary leading-[1.9] font-light">
+            <p className="text-lg md:text-xl text-text-secondary leading-[1.8] font-light">
               My craft sits at the intersection of engineering rigour and visual design — writing
               clean, typed APIs as carefully as I compose a grid layout.
             </p>
 
             <Link
               to="/resume"
-              className="group mt-2 inline-flex items-center gap-3 w-fit text-sm font-mono tracking-wider text-primary-accent hover:text-white transition-colors duration-300"
+              className="group mt-4 inline-flex items-center gap-3 w-fit text-sm font-mono tracking-wider text-primary-accent hover:text-white transition-colors duration-300"
             >
               View Full Résumé
               <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
-          </div>
-
-          {/* Principle cards column */}
-          <div className="flex flex-col gap-4">
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="about-card group flex gap-5 p-5 rounded-2xl border border-white/[0.05] bg-white/[0.01] hover:bg-white/[0.03] hover:border-white/[0.1] transition-all duration-400"
-              >
-                <span className="text-[11px] font-mono text-primary-accent/50 group-hover:text-primary-accent font-bold shrink-0 pt-0.5 transition-colors duration-300">
-                  {card.number}
-                </span>
-                <div className="flex flex-col gap-1.5">
-                  <h3 className="text-sm font-bold font-clash-display tracking-wide text-white group-hover:text-primary-accent transition-colors duration-300">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs text-text-secondary leading-relaxed font-light">
-                    {card.body}
-                  </p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
