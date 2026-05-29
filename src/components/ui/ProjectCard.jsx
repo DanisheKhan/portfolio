@@ -114,6 +114,17 @@ export default function ProjectCard({ project }) {
             </span>
           )}
         </div>
+
+        {/* Overview Button */}
+        <div className="mt-6">
+          <Link
+            to={`/projects/${project.slug}`}
+            className="w-full flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-mono font-bold uppercase tracking-widest text-white transition-all duration-300 group/btn"
+          >
+            <span>Project Overview</span>
+            <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+          </Link>
+        </div>
       </div>
     </motion.div>
   );
