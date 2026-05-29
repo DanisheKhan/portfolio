@@ -8,20 +8,21 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   
-  --color-primary-accent: #6C63FF;
-  --color-secondary-accent: #00D4FF;
+  --color-primary-accent: #C5A880;
+  --color-secondary-accent: #EADBC8;
   
   --font-space-grotesk: "Space Grotesk", sans-serif;
   --font-clash-display: "Clash Display", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
 }
 
 :root {
-  --primary-bg: #030303;
-  --secondary-bg: #0A0A0C;
-  --card-bg: #0F0F12;
+  --primary-bg: #0B0B0C;
+  --secondary-bg: #111112;
+  --card-bg: #161618;
   --border-color: rgba(255, 255, 255, 0.05);
-  --text-primary: #FFFFFF;
-  --text-secondary: #8E9296;
+  --text-primary: #F4F4F6;
+  --text-secondary: #9A9A9F;
 }
 
 
@@ -67,9 +68,9 @@
 
   .glass-card-hover:hover {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
-    border-color: rgba(0, 212, 255, 0.3);
+    border-color: rgba(197, 168, 128, 0.3);
     box-shadow: 0 20px 45px 0 rgba(0, 0, 0, 0.5),
-                0 0 25px 0 rgba(108, 99, 255, 0.18);
+                0 0 25px 0 rgba(197, 168, 128, 0.12);
     transform: translateY(-5px);
   }
 
@@ -81,7 +82,11 @@
 
   /* Gradient Text */
   .text-gradient {
-    background: linear-gradient(135deg, #6C63FF 0%, #00D4FF 50%, #0077FF 100%);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none; /* Keep natural case for elegant serif flow */
+    background: linear-gradient(135deg, #C5A880 0%, #EADBC8 50%, #C5A880 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -142,7 +147,7 @@ html.lenis, html.lenis body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6C63FF;
+  background: #C5A880;
 }
 
 /* Morphing scroll indicators */
@@ -246,8 +251,8 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
   background: rgba(255, 255, 255, 0.05) !important;
-  border-color: rgba(0, 212, 255, 0.35) !important;
-  box-shadow: 0 0 20px 0 rgba(0, 212, 255, 0.15), 
+  border-color: rgba(197, 168, 128, 0.35) !important;
+  box-shadow: 0 0 20px 0 rgba(197, 168, 128, 0.15), 
               inset 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
   outline: none !important;
 }

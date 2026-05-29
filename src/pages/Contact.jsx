@@ -32,7 +32,7 @@ export default function Contact() {
       particleCount: 120,
       spread: 80,
       origin: { y: 0.6 },
-      colors: ["#6C63FF", "#00D4FF", "#FFFFFF"]
+      colors: ["#C5A880", "#EADBC8", "#FFFFFF"]
     });
   };
 

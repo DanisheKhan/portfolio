@@ -38,7 +38,7 @@ export default function ContactCTA() {
           <MagneticButton range={25}>
             <Link
               to="/contact"
-              className="px-10 py-5 rounded-full bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent text-sm md:text-base font-medium text-white shadow-[0_8px_30px_rgba(108,99,255,0.25)] hover:shadow-[0_8px_40px_rgba(0,212,255,0.45)] transition-all duration-300 flex items-center gap-3 group cursor-pointer"
+              className="px-10 py-5 rounded-full bg-gradient-to-r from-primary-accent via-secondary-accent to-primary-accent text-sm md:text-base font-medium text-white shadow-[0_8px_30px_rgba(197,168,128,0.25)] hover:shadow-[0_8px_40px_rgba(234,219,200,0.4)] transition-all duration-300 flex items-center gap-3 group cursor-pointer"
             >
               Say Hello
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />

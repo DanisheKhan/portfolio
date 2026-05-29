@@ -156,7 +156,7 @@ export default function CustomCursor() {
       {/* 2. Center pinpoint indicator dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 -mt-0.75 -ml-0.75 rounded-full bg-secondary-accent pointer-events-none z-[99999] opacity-0 will-change-transform shadow-[0_0_12px_rgba(0,212,255,0.9)]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 -mt-0.75 -ml-0.75 rounded-full bg-secondary-accent pointer-events-none z-[99999] opacity-0 will-change-transform shadow-[0_0_12px_rgba(197,168,128,0.9)]"
       />
 
       {/* Modular Global Pointer Hider override */}

@@ -70,7 +70,7 @@ export default function About() {
                 <div className="absolute inset-0 border border-white/10 rounded-[32px] translate-x-5 translate-y-5 transition-all duration-500 ease-out group-hover:translate-x-3 group-hover:translate-y-3 group-hover:border-primary-accent/40 -z-10" />
 
                 {/* Glowing Accent Border Container */}
-                <div className="w-full h-full rounded-[32px] bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-[1.5px] transition-all duration-500 ease-out group-hover:from-primary-accent/50 group-hover:to-secondary-accent/50 group-hover:shadow-[0_20px_50px_rgba(108,99,255,0.2)]">
+                <div className="w-full h-full rounded-[32px] bg-gradient-to-b from-white/10 via-white/5 to-white/0 p-[1.5px] transition-all duration-500 ease-out group-hover:from-primary-accent/50 group-hover:to-secondary-accent/50 group-hover:shadow-[0_20px_50px_rgba(197,168,128,0.15)]">
                   
                   {/* Inner Image Mask and Layer */}
                   <div className="w-full h-full overflow-hidden rounded-[30px] bg-secondary-bg relative">

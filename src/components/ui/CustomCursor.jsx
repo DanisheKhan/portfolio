@@ -219,7 +219,7 @@ export default function CustomCursor() {
         ref={ringRef}
         className="fixed top-0 left-0 w-7 h-7 -mt-3.5 -ml-3.5 rounded-full border pointer-events-none z-[99999] opacity-0 transition-[background,border-color,box-shadow] duration-300 ease-out flex items-center justify-center will-change-transform"
         style={{
-          borderColor: "rgba(108, 99, 255, 0.7)",
+          borderColor: "rgba(197, 168, 128, 0.7)",
           background: "transparent",
           boxShadow: "none",
         }}
@@ -234,7 +234,7 @@ export default function CustomCursor() {
       {/* Center pinpoint indicator */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-1.5 h-1.5 -mt-0.75 -ml-0.75 rounded-full bg-secondary-accent pointer-events-none z-[99999] opacity-0 will-change-transform shadow-[0_0_12px_rgba(0,212,255,0.9)]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 -mt-0.75 -ml-0.75 rounded-full bg-secondary-accent pointer-events-none z-[99999] opacity-0 will-change-transform shadow-[0_0_12px_rgba(197, 168, 128, 0.9)]"
       />
 
       {/* Inline styles for custom hover dynamic transforms */}
@@ -243,9 +243,9 @@ export default function CustomCursor() {
           cursor: none !important;
         }
         .cursor-hovered {
-          border-color: rgba(0, 212, 255, 0.8) !important;
+          border-color: rgba(234, 219, 200, 0.8) !important;
           background: rgba(255, 255, 255, 0.03) !important;
-          box-shadow: 0 0 35px rgba(0, 212, 255, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
+          box-shadow: 0 0 35px rgba(197, 168, 128, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05) !important;
           backdrop-filter: blur(1.2px) contrast(125%) saturate(130%) brightness(110%) !important;
           -webkit-backdrop-filter: blur(1.2px) contrast(125%) saturate(130%) brightness(110%) !important;
         }

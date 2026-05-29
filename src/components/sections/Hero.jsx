@@ -40,7 +40,7 @@ function StarField() {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#00D4FF"
+          color="#C5A880"
           size={0.06}
           sizeAttenuation
           depthWrite={false}
@@ -95,7 +95,7 @@ export default function Hero() {
       {/* WebGL Fluid Plasma Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Plasma 
-          color="#8b5cf6"
+          color="#C5A880"
           speed={0.15}
           direction="pingpong"
           scale={1.2}
@@ -157,7 +157,7 @@ export default function Hero() {
           <MagneticButton range={15}>
             <Link
               to="/projects"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(108,99,255,0.2)] transition-all duration-300 gap-2.5 group cursor-pointer relative overflow-hidden"
+              className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#0d0d11]/80 backdrop-blur-xl border border-white/[0.08] hover:border-primary-accent/40 text-sm font-medium tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_rgba(197,168,128,0.2)] transition-all duration-300 gap-2.5 group cursor-pointer relative overflow-hidden"
             >
               {/* Sleek Ambient Inner Glow */}
               <span className="absolute inset-0 bg-gradient-to-r from-primary-accent/5 to-secondary-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
