@@ -122,13 +122,13 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Name — contained to left 52% so face stays clear */}
+        {/* Name — contained so face stays clear */}
         <div className="flex-1 flex flex-col justify-center py-12">
-          <div className="max-w-[52%] min-w-[320px] flex flex-col gap-0">
+          <div className="max-w-[60%] min-w-[320px] flex flex-col gap-0">
             <div className="overflow-hidden">
               <h1
                 className="name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] text-white uppercase"
-                style={{ fontSize: "clamp(3.2rem, 8.5vw, 8.5rem)" }}
+                style={{ fontSize: "clamp(4.5rem, 11.5vw, 12rem)" }}
               >
                 DANISH
               </h1>
@@ -137,7 +137,7 @@ export default function Hero() {
               <h1
                 className="name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] uppercase"
                 style={{
-                  fontSize: "clamp(3.2rem, 8.5vw, 8.5rem)",
+                  fontSize: "clamp(4.5rem, 11.5vw, 12rem)",
                   background: "linear-gradient(135deg, #C5A880 0%, #E8D5B0 50%, #C5A880 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
