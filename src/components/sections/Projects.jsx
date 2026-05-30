@@ -20,11 +20,9 @@ export default function Projects() {
   const sectionRef = useRef(null);
 
   const handleMouseMove = (e) => {
-    const rect = sectionRef.current?.getBoundingClientRect();
-    if (!rect) return;
     setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: e.clientX,
+      y: e.clientY,
     });
   };
 
@@ -181,8 +179,8 @@ export default function Projects() {
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="pointer-events-none fixed z-50 w-[220px] sm:w-[260px] lg:w-[320px] aspect-video rounded-2xl overflow-hidden border border-white/10 shadow-[0_30px_60px_rgba(0,0,0,0.6)] hidden md:block"
             style={{
-              left: mousePos.x + (sectionRef.current?.getBoundingClientRect().left || 0),
-              top: mousePos.y + (sectionRef.current?.getBoundingClientRect().top || 0),
+              left: mousePos.x,
+              top: mousePos.y,
               transform: "translate(-50%, -120%)",
             }}
           >

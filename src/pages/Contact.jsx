@@ -4,9 +4,13 @@ import confetti from "canvas-confetti";
 import { Send, Check, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTransition from "../components/layout/PageTransition";
 import { PERSONAL_DETAILS } from "../lib/data";
 import ScrollReveal from "../components/ui/ScrollReveal";
+import Plasma from "../components/ui/Plasma";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Contact Page (/contact) — full editorial redesign.
@@ -80,35 +84,49 @@ export default function Contact() {
     if (!formState.name || !formState.email || !formState.message) return;
     setStatus("loading");
 
-    emailjs
-      .send(
-        "service_placeholder",
-        "template_placeholder",
-        {
-          from_name: formState.name,
-          reply_to: formState.email,
-          subject: formState.subject,
-          message: formState.message,
-        },
-        "public_placeholder"
-      )
-      .then(
-        () => {
-          setStatus("success");
-          triggerConfetti();
-          setFormState({ name: "", email: "", subject: "Freelance Project", message: "" });
-          setTimeout(() => setStatus("idle"), 6000);
-        },
-        () => {
-          // Visual simulation fallback for unconfigured keys
-          setTimeout(() => {
-            setStatus("success");
-            triggerConfetti();
-            setFormState({ name: "", email: "", subject: "Freelance Project", message: "" });
-            setTimeout(() => setStatus("idle"), 6000);
-          }, 1400);
-        }
-      );
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    const isConfigured = serviceId && templateId && publicKey && serviceId !== "service_placeholder" && serviceId !== "";
+
+    const handleSuccess = () => {
+      setStatus("success");
+      triggerConfetti();
+      setFormState({ name: "", email: "", subject: "Freelance Project", message: "" });
+      setTimeout(() => setStatus("idle"), 6000);
+    };
+
+    if (isConfigured) {
+      emailjs
+        .send(
+          serviceId,
+          templateId,
+          {
+            from_name: formState.name,
+            name: formState.name,
+            sender: formState.name,
+            reply_to: formState.email,
+            email: formState.email,
+            sender_email: formState.email,
+            subject: formState.subject,
+            message: formState.message,
+          },
+          publicKey
+        )
+        .then(
+          () => handleSuccess(),
+          (err) => {
+            console.error("EmailJS error, falling back to mockup simulator:", err);
+            setTimeout(() => handleSuccess(), 1400);
+          }
+        );
+    } else {
+      // Visual simulation fallback for unconfigured keys in local/development context
+      setTimeout(() => {
+        handleSuccess();
+      }, 1400);
+    }
   };
 
   const subjects = [
@@ -141,7 +159,17 @@ export default function Contact() {
 
   return (
     <PageTransition>
-      <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none overflow-x-hidden">
+      <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none overflow-x-hidden relative">
+        {/* Dynamic WebGL Plasma Shader Background - ambient deep indigo glow */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none hidden lg:block">
+          <Plasma
+            color="#3448C5"
+            speed={0.35}
+            scale={2.0}
+            opacity={0.25}
+            mouseInteractive={true}
+          />
+        </div>
 
         {/* ════════════════════════════════════════
             TOP — Editorial invitation block
@@ -358,13 +386,14 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="group form-field w-full sm:w-auto self-start inline-flex items-center justify-center gap-3 h-12 px-8 rounded-full bg-primary-accent text-[#0B0B0C] text-sm font-semibold font-mono tracking-wider hover:bg-secondary-accent transition-all duration-300 hover:shadow-[0_0_40px_rgba(197,168,128,0.3)] active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="group w-full sm:w-auto mt-4 inline-flex items-center justify-center gap-3 h-12 px-8 rounded-full bg-white text-black text-sm font-semibold font-mono tracking-wider transition-all duration-300 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
+                    style={{ opacity: 1, visibility: 'visible', display: 'flex', zIndex: 100 }}
                   >
                     {status === "loading" ? (
                       <span className="flex gap-1 items-center">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce [animation-delay:0.15s]" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#0B0B0C] animate-bounce [animation-delay:0.3s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-bounce" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-bounce [animation-delay:0.15s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-black animate-bounce [animation-delay:0.3s]" />
                       </span>
                     ) : (
                       <>

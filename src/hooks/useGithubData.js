@@ -115,6 +115,32 @@ export function useGithubData(username) {
            dailyCounts = Array.from({ length: 180 }, () => Math.floor(Math.random() * 5));
         }
         
+        let processedRepos = [];
+        if (Array.isArray(repos)) {
+          processedRepos = repos
+            .filter(repo => !repo.fork)
+            .sort((a, b) => new Date(b.pushed_at || b.updated_at) - new Date(a.pushed_at || a.updated_at))
+            .slice(0, 12)
+            .map(repo => ({
+              name: repo.name,
+              description: repo.description || "Active open-source development workspace.",
+              stars: repo.stargazers_count,
+              forks: repo.forks_count,
+              url: repo.html_url,
+              language: repo.language,
+              updatedAt: new Date(repo.pushed_at || repo.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+            }));
+        }
+
+        if (processedRepos.length === 0) {
+          processedRepos = [
+            { name: "madina-perfumes", description: "Premium e-commerce platform built with Supabase, React 19, and Tailwind CSS.", stars: 5, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "May 2025" },
+            { name: "home-share", description: "Full stack MERN real estate listing and tenant connection hub.", stars: 4, forks: 1, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Feb 2025" },
+            { name: "currency-converter", description: "Real-time exchange rate calculation utility with interactive currency cards.", stars: 2, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Dec 2024" },
+            { name: "password-generator", description: "Cryptographically secure string builder with customizable entropy constraints.", stars: 1, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Oct 2024" }
+          ];
+        }
+
         setData({
           publicRepos: user.public_repos || 32,
           followers: user.followers || 15,
@@ -123,7 +149,8 @@ export function useGithubData(username) {
           longestStreak,
           currentStreak,
           languages: processedLanguages,
-          dailyCounts
+          dailyCounts,
+          repos: processedRepos
         });
 
       } catch (err) {
@@ -143,7 +170,13 @@ export function useGithubData(username) {
               { name: "CSS / Tailwind", percent: 10, color: "bg-primary-accent" },
               { name: "Database / SQL", percent: 5, color: "bg-green-500" }
             ],
-            dailyCounts: Array.from({ length: 180 }, () => Math.floor(Math.random() * 5))
+            dailyCounts: Array.from({ length: 180 }, () => Math.floor(Math.random() * 5)),
+            repos: [
+              { name: "madina-perfumes", description: "Premium e-commerce platform built with Supabase, React 19, and Tailwind CSS.", stars: 5, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "May 2025" },
+              { name: "home-share", description: "Full stack MERN real estate listing and tenant connection hub.", stars: 4, forks: 1, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Feb 2025" },
+              { name: "currency-converter", description: "Real-time exchange rate calculation utility with interactive currency cards.", stars: 2, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Dec 2024" },
+              { name: "password-generator", description: "Cryptographically secure string builder with customizable entropy constraints.", stars: 1, forks: 0, url: "https://github.com/DanisheKhan", language: "JavaScript", updatedAt: "Oct 2024" }
+            ]
           });
           setError(err);
         }

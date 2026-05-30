@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import Plasma from "../ui/Plasma";
 
 /**
  * Preloader — cinematic intro, single smooth upward exit wipe.
@@ -96,6 +97,16 @@ export default function Preloader({ onComplete }) {
       className="fixed inset-0 z-[999999] select-none overflow-hidden"
       style={{ background: "#080809" }}
     >
+      {/* WebGL Plasma Background - Ambient Gold Glow */}
+      <div className="absolute inset-0 z-0 opacity-25 pointer-events-none">
+        <Plasma
+          color="#EADBC8"
+          speed={0.15}
+          scale={1.5}
+          opacity={0.3}
+          mouseInteractive={false}
+        />
+      </div>
       {/* Ambient gold glow */}
       <div
         ref={glowRef}
