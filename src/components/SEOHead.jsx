@@ -18,6 +18,7 @@ const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
  * @param {string} [props.ogType]     — OG type (default: "website")
  * @param {Object} [props.jsonLd]     — Page-specific JSON-LD structured data
  */
+
 export default function SEOHead({
   title,
   description,
