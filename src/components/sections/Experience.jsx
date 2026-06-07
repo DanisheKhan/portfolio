@@ -1,4 +1,3 @@
-import React from "react";
 import { Briefcase } from "lucide-react";
 import { EXPERIENCE_DATA } from "../../lib/data";
 import ScrollReveal from "../ui/ScrollReveal";
@@ -9,7 +8,7 @@ import { Timeline } from "../ui/timeline";
  * Renders scroll-revealed timeline points and detailed accomplishments.
  */
 export default function Experience() {
-  const timelineData = EXPERIENCE_DATA.map((exp, index) => ({
+  const timelineData = EXPERIENCE_DATA.map((exp) => ({
     title: exp.duration,
     content: (
       <div className="glass-card p-6 md:p-8 rounded-2xl border border-border-color/60 bg-card-bg/15 relative hover:border-primary-accent/30 transition-all duration-300">

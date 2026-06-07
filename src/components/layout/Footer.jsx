@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowUp, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -58,7 +57,7 @@ export default function Footer() {
         <ScrollReveal direction="up" delay={0.08} className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 py-8 border-y border-border-color/60">
             {/* Quick Navigation Channels */}
-            <div className="flex flex-col gap-4">
+            <nav aria-label="Footer navigation" className="flex flex-col gap-4">
               <span className="text-xs uppercase font-mono tracking-widest text-text-secondary font-medium">
                 Navigation
               </span>
@@ -71,7 +70,7 @@ export default function Footer() {
                   {link.name}
                 </Link>
               ))}
-            </div>
+            </nav>
 
             {/* Social Profiles */}
             <div className="flex flex-col gap-4 col-span-2">

@@ -1,9 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
   <url>
     <loc>https://www.itsdanishkhan.me/</loc>
     <lastmod>2026-06-07</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/about</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Projects Catalog -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/contact</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Resume Page -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/resume</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project: Madina Perfumes -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/madina-perfumes</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Home Share -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/home-share</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Portfolio Website -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/portfolio-website</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Project: Frontend Showcase -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/frontend-showcase</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project: Contact Manager -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/contact-manager</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project: Currency Converter -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/currency-converter</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project: Password Generator -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/password-generator</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Project: Background Color Changer -->
+  <url>
+    <loc>https://www.itsdanishkhan.me/projects/bg-changer</loc>
+    <lastmod>2026-06-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

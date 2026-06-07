@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Database, Layout, Server, Code, Zap, Compass, ArrowUpRight } from "lucide-react";
 import { SERVICES_DATA } from "../../lib/data";

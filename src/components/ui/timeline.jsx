@@ -4,7 +4,7 @@ import {
   useTransform,
   motion,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const Timeline = ({ data }) => {
   const ref = useRef(null);

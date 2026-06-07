@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * GlassCard Component
  * Implements a premium acrylic backdrop blur and custom subtle borders.

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import useInView from "../../hooks/useInView";
 
 /**
@@ -11,19 +11,17 @@ export default function CountUp({
   suffix = "",
   className = ""
 }) {
-  const [count, setCount] = useState(0);
+  const endVal = parseInt(end, 10);
+  const [count, setCount] = useState(isNaN(endVal) ? end : 0);
   const [ref, isInView] = useInView({ triggerOnce: true });
-  const countRef = useRef(0);
 
   useEffect(() => {
     if (!isInView) return;
 
+    const targetVal = parseInt(end, 10);
+    if (isNaN(targetVal)) return;
+
     let startTime = null;
-    const endVal = parseInt(end, 10);
-    if (isNaN(endVal)) {
-      setCount(end); // Return static if not a number
-      return;
-    }
 
     const animateCount = (timestamp) => {
       if (!startTime) startTime = timestamp;
@@ -32,14 +30,14 @@ export default function CountUp({
       
       // Easing out quadratic
       const easeProgress = progressPercent * (2 - progressPercent);
-      const currentVal = Math.floor(easeProgress * endVal);
+      const currentVal = Math.floor(easeProgress * targetVal);
       
       setCount(currentVal);
 
       if (progress < duration) {
         requestAnimationFrame(animateCount);
       } else {
-        setCount(endVal);
+        setCount(targetVal);
       }
     };
 

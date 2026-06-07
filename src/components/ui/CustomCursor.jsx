@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * CustomCursor Component
@@ -53,6 +53,7 @@ export default function CustomCursor() {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setEnabled(true);
   }, []);
 

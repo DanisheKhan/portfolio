@@ -1,5 +1,3 @@
-import React from "react";
-
 /**
  * Marquee — redesigned as a seamless CSS infinite ticker.
  *

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -6,11 +6,11 @@ import {
   Printer,
   ExternalLink,
   FileText,
-  ChevronDown,
   Eye,
   ArrowUpRight,
 } from "lucide-react";
 import PageTransition from "../components/layout/PageTransition";
+import SEOHead from "../components/SEOHead";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
 const MotionLink = motion.create(Link);
@@ -74,6 +74,10 @@ export default function Resume() {
   return (
     <PageTransition>
       <div className="w-full relative bg-primary-bg select-none overflow-x-hidden">
+        <SEOHead
+          title="Resume — Danish Khan | Full Stack MERN Developer CV"
+          description="Download or view Danish Khan's resume. Full Stack MERN Developer with expertise in React.js, Node.js, MongoDB, and modern web development. B.Tech Computer Science student."
+        />
 
         {/* ─── HERO HEADER ─── */}
         <section className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pt-28 sm:pt-32 md:pt-36 pb-8 sm:pb-10">

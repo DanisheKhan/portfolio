@@ -1,4 +1,13 @@
+# Danish Khan Portfolio — Crawler Directives
+# https://www.itsdanishkhan.me
+
 User-agent: *
 Allow: /
+Disallow: /assets/
+Disallow: /*.pdf$
 
+# Sitemap location
 Sitemap: https://www.itsdanishkhan.me/sitemap.xml
+
+# Canonical host
+Host: https://www.itsdanishkhan.me

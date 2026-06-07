@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight, ArrowDown, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
@@ -197,7 +197,9 @@ export default function Hero() {
             <div className="mobile-photo relative w-full aspect-[1.18] rounded-[2.15rem] overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)] my-1">
               <img
                 src="/danish.jpeg"
-                alt="Danish Khan"
+                alt="Danish Khan — Full Stack MERN Developer from Bhusawal, Maharashtra"
+                loading="eager"
+                fetchpriority="high"
                 className="w-full h-full object-cover object-[40%_10%]"
               />
               {/* Inner gradients to give a luxury look */}
@@ -252,7 +254,9 @@ export default function Hero() {
         <div className="desktop-photo hidden lg:block absolute inset-0 pointer-events-none lg:inset-y-0 lg:right-0 lg:left-[45%]">
           <img
             src="/danish.jpeg"
-            alt="Danish Khan"
+            alt="Danish Khan — Full Stack MERN Developer from Bhusawal, Maharashtra"
+            loading="eager"
+            fetchpriority="high"
             className="w-full h-full object-cover object-[35%_top]"
           />
           {/* 1. Left blend */}

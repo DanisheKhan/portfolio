@@ -1,6 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { GitBranch, Star, BookOpen, ArrowUpRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGithubData } from "../../hooks/useGithubData";
@@ -218,7 +217,6 @@ export default function GitHubStats() {
 
 /* ─── Animated count-up number ─── */
 function CountUp({ to, sectionRef, className }) {
-  const ref = useRef(null);
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {

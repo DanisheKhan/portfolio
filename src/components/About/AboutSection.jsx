@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight, GraduationCap, Briefcase, Code2, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
@@ -104,24 +104,6 @@ export default function AboutSection() {
       label: "Location",
       value: PERSONAL_DETAILS.location,
       sub: "IST (UTC+5:30) · Open to Remote",
-    },
-  ];
-
-  const cards = [
-    {
-      number: "01",
-      title: "Clean Architecture",
-      body: "I treat every codebase like a product — modular, typed, and built to last. No shortcuts, no tech debt by design.",
-    },
-    {
-      number: "02",
-      title: "Performance-First",
-      body: "From algorithmic efficiency to layout-stable rendering, speed and precision are non-negotiable in everything I ship.",
-    },
-    {
-      number: "03",
-      title: "Pixel Craft",
-      body: "UI is not just styling. It's communication. I obsess over spacing, contrast, and motion until every detail feels intentional.",
     },
   ];
 

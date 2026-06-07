@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, Cpu, Code2, Database, LayoutGrid, Terminal, ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Cpu, Code2, Database, LayoutGrid, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
 
 /**

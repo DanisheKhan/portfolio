@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 /**
  * Access and control Lenis Smooth Scroll
  * Exposes methods to scroll to targets or temporarily freeze/unfreeze scrolling

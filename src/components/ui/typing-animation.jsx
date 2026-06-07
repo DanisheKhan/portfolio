@@ -1,6 +1,6 @@
 "use client";
 
-import React, {
+import {
   useEffect,
   useMemo,
   useRef,
@@ -72,12 +72,14 @@ export function TypingAnimation({
     [words, children]
   );
 
-  useEffect(() => {
+  const [prevSource, setPrevSource] = useState(animationSourceKey);
+  if (animationSourceKey !== prevSource) {
+    setPrevSource(animationSourceKey);
     setDisplayedText("");
     setCurrentWordIndex(0);
     setCurrentCharIndex(0);
     setPhase("typing");
-  }, [animationSourceKey]);
+  }
 
   useEffect(() => {
     let timeout = null;

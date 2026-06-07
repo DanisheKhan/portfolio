@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import confetti from "canvas-confetti";
 import { Send, Check, ArrowUpRight } from "lucide-react";
@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTransition from "../components/layout/PageTransition";
+import SEOHead from "../components/SEOHead";
 import { PERSONAL_DETAILS } from "../lib/data";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import Plasma from "../components/ui/Plasma";
@@ -160,6 +161,10 @@ export default function Contact() {
   return (
     <PageTransition>
       <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none overflow-x-hidden relative">
+        <SEOHead
+          title="Contact Danish Khan — Hire a Full Stack MERN Developer"
+          description="Get in touch with Danish Khan for freelance projects, full-time opportunities, or UI/UX collaborations. Full Stack MERN Developer available for hire. Response within 24 hours."
+        />
         {/* Dynamic WebGL Plasma Shader Background - ambient deep indigo glow */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none hidden lg:block">
           <Plasma

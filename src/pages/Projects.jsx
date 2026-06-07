@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/layout/PageTransition";
+import SEOHead from "../components/SEOHead";
 import { PROJECTS_DATA } from "../lib/data";
 import { gsap } from "gsap";
 import ScrollReveal from "../components/ui/ScrollReveal";
@@ -61,6 +62,10 @@ export default function Projects() {
   return (
     <PageTransition>
       <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none">
+        <SEOHead
+          title="Projects by Danish Khan — Full Stack Web Applications & Case Studies"
+          description="Explore Danish Khan's portfolio of full-stack web applications including e-commerce platforms, property rental apps, and interactive UI showcases. Built with React.js, Node.js, MongoDB, and modern technologies."
+        />
 
         {/* ════════════════════════════════
             Header

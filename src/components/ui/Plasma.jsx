@@ -233,7 +233,9 @@ export const Plasma = ({
       }
       try {
         containerEl?.removeChild(canvas);
-      } catch {}
+      } catch {
+        console.warn("Plasma component canvas could not be removed or was already unmounted.");
+      }
     };
   }, [color, speed, direction, scale, opacity, mouseInteractive]);
 

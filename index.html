@@ -2,47 +2,255 @@
 <html lang="en" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/danishTitle.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- SEO Headers -->
-    <title>Danish Khan | Full Stack MERN Developer</title>
-    <meta name="description" content="Full Stack MERN Developer specializing in React.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications." />
-    <meta name="keywords" content="Danish Khan, Full Stack Developer, full stack web developer, UI/UX Designer, Frontend Developer, frontend, backend, Web Designer, web dev, React Developer, Portfolio, Software Engineer, bhusawal, bhusawal developer, react developer, danish khan, bhusawal react developer, danish khan bhusawal, danish khan react developer, web developer in bhusawal, full stack developer bhusawal, software developer bhusawal, danish khan web developer, bhusawal web developer, react developer in bhusawal, mern stack developer, mern stack developer bhusawal, danish khan developer, fullstack developer, fullstack web developer, bhusawal full stack developer, bhusawal fullstack developer, danish khan full stack developer, danish khan fullstack developer, full stack developer portfolio, fullstack developer portfolio, freelance full stack developer, freelance fullstack developer, mern fullstack developer" />
+
+    <!-- ════════════════════════════════════════
+         PRIMARY SEO META TAGS
+    ════════════════════════════════════════ -->
+    <title>Danish Khan | Full Stack MERN Developer — Portfolio</title>
+    <meta name="description" content="Danish Khan is a Full Stack MERN Developer from Bhusawal, Maharashtra, India. Specializing in React.js, Node.js, Express.js, MongoDB, Tailwind CSS, and modern web applications. Hire for freelance or full-time roles." />
+    <meta name="keywords" content="Danish Khan, Full Stack Developer, MERN Stack Developer, React Developer, Node.js Developer, Web Developer, Software Engineer, Bhusawal Developer, Maharashtra Developer, UI/UX Designer, Frontend Developer, Backend Developer, JavaScript Developer, Portfolio, Freelance Developer, Full Stack Web Developer, React.js, MongoDB, Express.js, Tailwind CSS" />
     <meta name="author" content="Danish Khan" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
     <link rel="canonical" href="https://www.itsdanishkhan.me" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Language & Geo -->
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Bhusawal, Jalgaon, Maharashtra" />
+
+    <!-- Theme & App -->
+    <meta name="theme-color" content="#C5A880" />
+    <meta name="application-name" content="Danish Khan Portfolio" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Danish Khan" />
+
+    <!-- ════════════════════════════════════════
+         FAVICONS & MANIFEST
+    ════════════════════════════════════════ -->
+    <link rel="icon" type="image/png" href="/danishTitle.png" />
+    <link rel="apple-touch-icon" href="/danishTitle.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- ════════════════════════════════════════
+         OPEN GRAPH / FACEBOOK
+    ════════════════════════════════════════ -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.itsdanishkhan.me" />
-    <meta property="og:title" content="Danish Khan | Full Stack MERN Developer" />
-    <meta property="og:description" content="Full Stack MERN Developer specializing in React.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications." />
-    <meta property="og:image" content="https://www.itsdanishkhan.me/danishTitle.png" />
+    <meta property="og:title" content="Danish Khan | Full Stack MERN Developer — Portfolio" />
+    <meta property="og:description" content="Full Stack MERN Developer from Bhusawal, India. Specializing in React.js, Node.js, MongoDB, and building high-performance web applications. View projects and case studies." />
+    <meta property="og:image" content="https://www.itsdanishkhan.me/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Danish Khan — Full Stack MERN Developer Portfolio" />
+    <meta property="og:site_name" content="Danish Khan Portfolio" />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.itsdanishkhan.me" />
-    <meta property="twitter:title" content="Danish Khan | Full Stack MERN Developer" />
-    <meta property="twitter:description" content="Full Stack MERN Developer specializing in React.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications." />
-    <meta property="twitter:image" content="https://www.itsdanishkhan.me/danishTitle.png" />
+    <!-- ════════════════════════════════════════
+         TWITTER CARD
+    ════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.itsdanishkhan.me" />
+    <meta name="twitter:title" content="Danish Khan | Full Stack MERN Developer" />
+    <meta name="twitter:description" content="Full Stack MERN Developer from Bhusawal, India. Building modern, high-performance web apps with React.js, Node.js, and MongoDB." />
+    <meta name="twitter:image" content="https://www.itsdanishkhan.me/og-image.png" />
+    <meta name="twitter:image:alt" content="Danish Khan — Full Stack MERN Developer Portfolio" />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- ════════════════════════════════════════
+         STRUCTURED DATA (JSON-LD)
+    ════════════════════════════════════════ -->
+
+    <!-- Schema 1: Person -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Danish Khan",
         "url": "https://www.itsdanishkhan.me",
+        "image": "https://www.itsdanishkhan.me/danish.jpeg",
+        "jobTitle": "Full Stack MERN Developer",
+        "description": "Results-driven Full Stack Developer specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js) for building scalable, responsive, and secure web applications.",
+        "email": "mailto:danishkhan.jsx@gmail.com",
+        "telephone": "+919322990946",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Bhusawal",
+          "addressRegion": "Maharashtra",
+          "postalCode": "425201",
+          "addressCountry": "IN"
+        },
         "sameAs": [
           "https://github.com/DanisheKhan",
-          "https://www.linkedin.com/in/danish-jsx"
+          "https://www.linkedin.com/in/danish-jsx",
+          "https://wa.me/919322990946"
         ],
-        "jobTitle": "Full Stack MERN Developer",
-        "description": "Full Stack MERN Developer specializing in React.js, Node.js, Express.js, MongoDB, JavaScript, and modern web applications."
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Raisoni Engineering College",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Maharashtra",
+            "addressCountry": "IN"
+          }
+        },
+        "knowsAbout": [
+          "React.js", "Node.js", "Express.js", "MongoDB", "JavaScript", "TypeScript",
+          "Tailwind CSS", "Next.js", "REST APIs", "JWT Authentication", "Supabase",
+          "Firebase", "Git", "GitHub", "Vite", "GSAP", "Framer Motion",
+          "Full Stack Development", "Frontend Development", "Backend Development",
+          "UI/UX Design", "Web Performance Optimization"
+        ],
+        "knowsLanguage": ["English", "Hindi", "Urdu"],
+        "nationality": {
+          "@type": "Country",
+          "name": "India"
+        }
       }
     </script>
-    
+
+    <!-- Schema 2: WebSite with SearchAction -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Danish Khan Portfolio",
+        "url": "https://www.itsdanishkhan.me",
+        "description": "Portfolio of Danish Khan, a Full Stack MERN Developer from Bhusawal, Maharashtra, India.",
+        "author": {
+          "@type": "Person",
+          "name": "Danish Khan"
+        },
+        "inLanguage": "en"
+      }
+    </script>
+
+    <!-- Schema 3: ProfilePage -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "name": "Danish Khan — Full Stack Developer Portfolio",
+        "url": "https://www.itsdanishkhan.me",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Danish Khan",
+          "url": "https://www.itsdanishkhan.me"
+        }
+      }
+    </script>
+
+    <!-- Schema 4: ItemList of Projects -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Danish Khan's Projects",
+        "description": "Portfolio projects built by Danish Khan — full-stack web applications and UI/UX showcases.",
+        "numberOfItems": 8,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Madina Perfumes — E-Commerce Platform",
+            "url": "https://www.itsdanishkhan.me/projects/madina-perfumes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Home Share — Property Rental Web App",
+            "url": "https://www.itsdanishkhan.me/projects/home-share"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Portfolio Website",
+            "url": "https://www.itsdanishkhan.me/projects/portfolio-website"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Frontend Showcase",
+            "url": "https://www.itsdanishkhan.me/projects/frontend-showcase"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Contact Manager App",
+            "url": "https://www.itsdanishkhan.me/projects/contact-manager"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Currency Converter",
+            "url": "https://www.itsdanishkhan.me/projects/currency-converter"
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "name": "Password Generator",
+            "url": "https://www.itsdanishkhan.me/projects/password-generator"
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "name": "Background Color Changer",
+            "url": "https://www.itsdanishkhan.me/projects/bg-changer"
+          }
+        ]
+      }
+    </script>
+
+    <!-- Schema 5: BreadcrumbList -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.itsdanishkhan.me"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://www.itsdanishkhan.me/about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Projects",
+            "item": "https://www.itsdanishkhan.me/projects"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Contact",
+            "item": "https://www.itsdanishkhan.me/contact"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Resume",
+            "item": "https://www.itsdanishkhan.me/resume"
+          }
+        ]
+      }
+    </script>
+
+    <!-- ════════════════════════════════════════
+         PERFORMANCE: DNS PREFETCH & PRECONNECT
+    ════════════════════════════════════════ -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//api.fontshare.com" />
+    <link rel="dns-prefetch" href="//images.unsplash.com" />
+
     <!-- Fonts Integration -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,5 +270,96 @@
   <body class="bg-primary-bg text-text-primary antialiased selection:bg-primary-accent selection:text-white font-space-grotesk">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ════════════════════════════════════════
+         NOSCRIPT FALLBACK — Crawlable Content
+         Provides Google with indexable content
+         when JavaScript is not executed.
+    ════════════════════════════════════════ -->
+    <noscript>
+      <div style="max-width:800px;margin:0 auto;padding:40px 20px;font-family:system-ui,sans-serif;color:#fff;background:#0A0A0A;">
+        <header>
+          <h1>Danish Khan — Full Stack MERN Developer</h1>
+          <p>Results-driven Full Stack Developer from Bhusawal, Maharashtra, India. Specializing in the MERN stack (MongoDB, Express.js, React.js, Node.js) for building scalable, responsive, and secure web applications.</p>
+        </header>
+
+        <nav style="margin:30px 0;border-top:1px solid #333;border-bottom:1px solid #333;padding:15px 0;">
+          <strong>Navigation:</strong>
+          <a href="/" style="color:#C5A880;margin:0 10px;">Home</a>
+          <a href="/about" style="color:#C5A880;margin:0 10px;">About</a>
+          <a href="/projects" style="color:#C5A880;margin:0 10px;">Projects</a>
+          <a href="/contact" style="color:#C5A880;margin:0 10px;">Contact</a>
+          <a href="/resume" style="color:#C5A880;margin:0 10px;">Resume</a>
+        </nav>
+
+        <section>
+          <h2>About Danish Khan</h2>
+          <p>Passionate Full Stack Developer specializing in the MERN stack. Proficient in architecting RESTful APIs, implementing robust authentication systems, and utilizing Data Structures &amp; Algorithms to write clean, optimized code. Currently completing a B.Tech in Computer Science at Raisoni Engineering College, Maharashtra (CGPA: 7.79/10).</p>
+          <p><strong>Location:</strong> Bhusawal, Jalgaon, Maharashtra, India 425201</p>
+          <p><strong>Email:</strong> <a href="mailto:danishkhan.jsx@gmail.com" style="color:#C5A880;">danishkhan.jsx@gmail.com</a></p>
+          <p><strong>Availability:</strong> Available for freelance &amp; full-time roles</p>
+        </section>
+
+        <section>
+          <h2>Technical Skills</h2>
+          <h3>Frontend</h3>
+          <p>React.js, Next.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Tailwind CSS, Bootstrap, Redux Toolkit, Framer Motion, GSAP</p>
+          <h3>Backend</h3>
+          <p>Node.js, Express.js, MongoDB, Mongoose, SQL, MySQL, Supabase, Firebase, Appwrite, REST APIs, JWT Authentication</p>
+          <h3>Tools &amp; Deployment</h3>
+          <p>Git, GitHub, Vercel, Render, Cloudinary, Docker, Postman, Chrome DevTools</p>
+        </section>
+
+        <section>
+          <h2>Projects</h2>
+          <ul>
+            <li><a href="/projects/madina-perfumes" style="color:#C5A880;"><strong>Madina Perfumes</strong></a> — Full-stack luxury e-commerce platform with Supabase, React.js, and payment gateway integration.</li>
+            <li><a href="/projects/home-share" style="color:#C5A880;"><strong>Home Share</strong></a> — Property rental web application with MongoDB, Express.js, and secure authentication.</li>
+            <li><a href="/projects/portfolio-website" style="color:#C5A880;"><strong>Portfolio Website</strong></a> — High-performance portfolio with React.js, Framer Motion, and GSAP animations.</li>
+            <li><a href="/projects/frontend-showcase" style="color:#C5A880;"><strong>Frontend Showcase</strong></a> — Advanced Tailwind CSS showcase with responsive design and micro-animations.</li>
+            <li><a href="/projects/contact-manager" style="color:#C5A880;"><strong>Contact Manager</strong></a> — React + Firebase real-time contact management application.</li>
+            <li><a href="/projects/currency-converter" style="color:#C5A880;"><strong>Currency Converter</strong></a> — Real-time currency conversion tool with live exchange rates API.</li>
+            <li><a href="/projects/password-generator" style="color:#C5A880;"><strong>Password Generator</strong></a> — Secure cryptographic password builder with customizable options.</li>
+            <li><a href="/projects/bg-changer" style="color:#C5A880;"><strong>Background Color Changer</strong></a> — Interactive React state management demonstration.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Experience</h2>
+          <h3>Meet Bros — Full Stack Developer &amp; UI/UX Designer Intern (Remote)</h3>
+          <p>June 2025 — March 2026. Designed, developed, and launched multiple commercial web applications. Built robust interfaces using React.js, Node.js, Express.js, and Tailwind CSS.</p>
+          <h3>Madina Perfumes — Freelance Full Stack Developer</h3>
+          <p>2026. Architected a full-stack e-commerce platform with authentication, product catalogs, cart workflows, payment gateway, and admin dashboard.</p>
+        </section>
+
+        <section>
+          <h2>Education</h2>
+          <p><strong>Bachelor of Technology (B.Tech) in Computer Science</strong> — Raisoni Engineering College, Maharashtra. Expected June 2026. CGPA: 7.79/10.</p>
+        </section>
+
+        <section>
+          <h2>Services</h2>
+          <ul>
+            <li>Full Stack Development</li>
+            <li>Frontend Development (React.js)</li>
+            <li>Backend Development (Node.js, Express.js)</li>
+            <li>UI/UX Interface Design</li>
+            <li>Database Systems (MongoDB, SQL)</li>
+            <li>RESTful API Engineering</li>
+          </ul>
+        </section>
+
+        <footer style="margin-top:30px;border-top:1px solid #333;padding-top:15px;">
+          <p>Connect with Danish Khan:</p>
+          <ul>
+            <li><a href="https://github.com/DanisheKhan" style="color:#C5A880;">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/danish-jsx" style="color:#C5A880;">LinkedIn</a></li>
+            <li><a href="https://wa.me/919322990946" style="color:#C5A880;">WhatsApp</a></li>
+            <li><a href="mailto:danishkhan.jsx@gmail.com" style="color:#C5A880;">Email</a></li>
+          </ul>
+          <p>&copy; 2026 Danish Khan. All rights reserved.</p>
+        </footer>
+      </div>
+    </noscript>
   </body>
 </html>

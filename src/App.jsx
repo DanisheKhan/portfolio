@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -15,6 +15,7 @@ import Projects from "./pages/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
+import NotFound from "./pages/NotFound";
 
 // Styling
 import "./App.css";
@@ -118,7 +119,7 @@ function AppContent() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/resume" element={<Resume />} />
                     {/* Fallback route redirect */}
-                    <Route path="*" element={<Home />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </AnimatePresence>
               </main>

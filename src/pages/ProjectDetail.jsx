@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ArrowUpRight, ExternalLink } from "lucide-react";
 import { gsap } from "gsap";
 import PageTransition from "../components/layout/PageTransition";
+import SEOHead from "../components/SEOHead";
 import { PROJECTS_DATA } from "../lib/data";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
@@ -74,6 +75,22 @@ export default function ProjectDetail() {
 
   return (
     <PageTransition>
+      <SEOHead
+        title={`${project.title} — Case Study by Danish Khan`}
+        description={project.subtitle}
+        ogImage={project.image}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "name": project.title,
+          "description": project.subtitle,
+          "image": project.image,
+          "url": `https://www.itsdanishkhan.me/projects/${project.slug}`,
+          "author": { "@type": "Person", "name": "Danish Khan" },
+          "dateCreated": project.year,
+          "keywords": project.tech.join(", ")
+        }}
+      />
       <div ref={pageRef} className="w-full relative bg-primary-bg overflow-hidden select-none">
 
         {/* ══ Full-bleed hero ══ */}

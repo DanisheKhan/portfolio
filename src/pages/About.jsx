@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, GraduationCap, MapPin, Mail, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PageTransition from "../components/layout/PageTransition";
+import SEOHead from "../components/SEOHead";
 import { PERSONAL_DETAILS } from "../lib/data";
 import ScrollReveal from "../components/ui/ScrollReveal";
 
@@ -141,6 +142,10 @@ export default function About() {
 
   return (
     <PageTransition>
+      <SEOHead
+        title="About Danish Khan — Full Stack Developer | Skills, Education & Experience"
+        description="Learn about Danish Khan — a Full Stack MERN Developer from Bhusawal, Maharashtra. B.Tech in Computer Science at Raisoni Engineering College. Expert in React.js, Node.js, MongoDB, and UI/UX design."
+      />
       <div ref={pageRef} className="w-full relative bg-primary-bg select-none overflow-x-hidden">
 
         {/* ════════════════════════════════════════

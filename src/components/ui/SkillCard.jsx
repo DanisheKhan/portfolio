@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 import {
@@ -32,6 +32,7 @@ import { TbApi, TbNetwork } from "react-icons/tb";
  * SkillCard – redesigned as a horizontal scrollable "chip rail" inside a frosted panel.
  * Each chip lifts with a spring and emits a coloured glow matching the icon.
  */
+// eslint-disable-next-line no-unused-vars
 export default function SkillCard({ categoryKey, data, className = "" }) {
   /* ─── icon + brand-colour map ─── */
   const getSkillMeta = (name) => {

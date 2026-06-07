@@ -1,0 +1,26 @@
+{
+  "name": "Danish Khan — Full Stack MERN Developer",
+  "short_name": "Danish Khan",
+  "description": "Portfolio of Danish Khan, a Full Stack MERN Developer from Bhusawal, Maharashtra specializing in React.js, Node.js, Express.js, MongoDB, and modern web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#C5A880",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["portfolio", "development", "technology"],
+  "icons": [
+    {
+      "src": "/danishTitle.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

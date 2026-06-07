@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import { TESTIMONIALS_DATA } from "../../lib/data";
 import ScrollReveal from "../ui/ScrollReveal";
 
