@@ -62,6 +62,9 @@ export default function Projects() {
   return (
     <PageTransition>
       <div ref={pageRef} className="w-full min-h-screen bg-primary-bg select-none">
+        <h1 className="sr-only">
+          {activeTab === "featured" ? "Featured Projects Catalog — Danish Khan" : "Open Source Lab — Danish Khan"}
+        </h1>
         <SEOHead
           title="Projects by Danish Khan — Full Stack Web Applications & Case Studies"
           description="Explore Danish Khan's portfolio of full-stack web applications including e-commerce platforms, property rental apps, and interactive UI showcases. Built with React.js, Node.js, MongoDB, and modern technologies."

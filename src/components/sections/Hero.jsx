@@ -138,6 +138,9 @@ export default function Hero() {
       ref={sectionRef}
       className="relative w-full bg-[#080809] flex flex-col overflow-hidden select-none"
     >
+      <h1 className="sr-only">
+        Danish Khan - Full Stack Web Developer from Bhusawal, Maharashtra, India
+      </h1>
       {/* ══════════════════════════════════════════
           VIEWPORT UNIT
       ══════════════════════════════════════════ */}
@@ -162,15 +165,15 @@ export default function Hero() {
             {/* Name */}
             <div className="flex flex-col gap-0">
               <div className="overflow-hidden">
-                <h1
+                <div
                   className="mobile-name-line font-black font-clash-display tracking-[-0.04em] leading-[0.85] text-white uppercase"
                   style={{ fontSize: "clamp(3.2rem, 14vw, 5.5rem)" }}
                 >
                   DANISH
-                </h1>
+                </div>
               </div>
               <div className="overflow-hidden">
-                <h1
+                <div
                   className="mobile-name-line font-black font-clash-display tracking-[-0.04em] leading-[0.85] uppercase"
                   style={{
                     fontSize: "clamp(3.2rem, 14vw, 5.5rem)",
@@ -181,7 +184,7 @@ export default function Hero() {
                   }}
                 >
                   KHAN
-                </h1>
+                </div>
               </div>
             </div>
 
@@ -197,7 +200,8 @@ export default function Hero() {
             <div className="mobile-photo relative w-full aspect-[1.18] rounded-[2.15rem] overflow-hidden border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)] my-1">
               <img
                 src="/danish.jpeg"
-                alt="Danish Khan — Full Stack MERN Developer from Bhusawal, Maharashtra"
+                alt="Danish Khan - Full Stack Web Developer from Bhusawal"
+                aria-label="Danish Khan - Full Stack Web Developer from Bhusawal"
                 loading="eager"
                 fetchpriority="high"
                 className="w-full h-full object-cover object-[40%_10%]"
@@ -254,7 +258,8 @@ export default function Hero() {
         <div className="desktop-photo hidden lg:block absolute inset-0 pointer-events-none lg:inset-y-0 lg:right-0 lg:left-[45%]">
           <img
             src="/danish.jpeg"
-            alt="Danish Khan — Full Stack MERN Developer from Bhusawal, Maharashtra"
+            alt="Danish Khan - Full Stack Web Developer from Bhusawal"
+            aria-label="Danish Khan - Full Stack Web Developer from Bhusawal"
             loading="eager"
             fetchpriority="high"
             className="w-full h-full object-cover object-[35%_top]"
@@ -312,15 +317,15 @@ export default function Hero() {
           <div className="flex-1 flex flex-col justify-center py-12">
             <div className="max-w-[60%] flex flex-col gap-0">
               <div className="overflow-hidden">
-                <h1
+                <div
                   className="desktop-name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] text-white uppercase"
                   style={{ fontSize: "clamp(2.75rem, 11.5vw, 12rem)" }}
                 >
                   DANISH
-                </h1>
+                </div>
               </div>
               <div className="overflow-hidden">
-                <h1
+                <div
                   className="desktop-name-line font-black font-clash-display tracking-[-0.03em] leading-[0.88] uppercase"
                   style={{
                     fontSize: "clamp(2.75rem, 11.5vw, 12rem)",
@@ -331,7 +336,7 @@ export default function Hero() {
                   }}
                 >
                   KHAN
-                </h1>
+                </div>
               </div>
 
               <div className="desktop-fade flex items-center gap-3 mt-6">

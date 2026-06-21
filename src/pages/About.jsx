@@ -147,6 +147,7 @@ export default function About() {
         description="Learn about Danish Khan — a Full Stack MERN Developer from Bhusawal, Maharashtra. B.Tech in Computer Science at Raisoni Engineering College. Expert in React.js, Node.js, MongoDB, and UI/UX design."
       />
       <div ref={pageRef} className="w-full relative bg-primary-bg select-none overflow-x-hidden">
+        <h1 className="sr-only">About Danish Khan</h1>
 
         {/* ════════════════════════════════════════
             SECTION 1 — HERO: Name + portrait + meta

@@ -146,16 +146,16 @@ export default function Preloader({ onComplete }) {
       {/* Name — centre */}
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6">
         <div className="overflow-hidden w-full text-center">
-          <h1
+          <div
             ref={line1Ref}
             className="font-bold font-clash-display tracking-[-0.02em] text-white leading-none"
             style={{ fontSize: "clamp(3.5rem, 15vw, 13rem)" }}
           >
             DANISH
-          </h1>
+          </div>
         </div>
         <div className="overflow-hidden w-full text-center">
-          <h1
+          <div
             ref={line2Ref}
             className="font-bold font-clash-display tracking-[-0.02em] leading-none"
             style={{
@@ -167,7 +167,7 @@ export default function Preloader({ onComplete }) {
             }}
           >
             KHAN
-          </h1>
+          </div>
         </div>
       </div>
 

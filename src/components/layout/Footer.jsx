@@ -122,6 +122,9 @@ export default function Footer() {
             <span>Aesthetics & Animated UX</span>
           </div>
         </div>
+        <div className="w-full text-center text-[10px] text-text-secondary/40 font-mono mt-4">
+          Danish Khan © 2026 · Full Stack Web Developer · Bhusawal, Maharashtra, India
+        </div>
       </div>
     </footer>
   );

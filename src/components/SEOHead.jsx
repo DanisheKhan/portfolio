@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-const BASE_URL = "https://www.itsdanishkhan.me";
+const BASE_URL = "https://itsdanishkhan.me";
 const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 /**

@@ -85,7 +85,7 @@ export default function ProjectDetail() {
           "name": project.title,
           "description": project.subtitle,
           "image": project.image,
-          "url": `https://www.itsdanishkhan.me/projects/${project.slug}`,
+          "url": `https://itsdanishkhan.me/projects/${project.slug}`,
           "author": { "@type": "Person", "name": "Danish Khan" },
           "dateCreated": project.year,
           "keywords": project.tech.join(", ")
@@ -122,7 +122,7 @@ export default function ProjectDetail() {
 
           {/* Title — pinned to bottom */}
           <div className="absolute bottom-0 left-0 right-0 z-10 px-5 sm:px-6 md:px-12 pb-10 sm:pb-14">
-            <div ref={titleRef} className="flex flex-wrap gap-x-3 sm:gap-x-5 overflow-hidden">
+            <h1 ref={titleRef} className="flex flex-wrap gap-x-3 sm:gap-x-5 overflow-hidden">
               {words.map((word, i) => (
                 <div key={i} className="overflow-hidden">
                   <span
@@ -133,7 +133,7 @@ export default function ProjectDetail() {
                   </span>
                 </div>
               ))}
-            </div>
+            </h1>
           </div>
         </div>
 
