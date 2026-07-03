@@ -3,7 +3,6 @@
 
 User-agent: *
 Allow: /
-Disallow: /*.pdf$
 
 # Sitemap location
 Sitemap: https://itsdanishkhan.me/sitemap.xml
